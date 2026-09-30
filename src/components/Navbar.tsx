@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe, ChevronDown, Check, Sparkles, Search } from 'lucide-react';
+import { Globe, ChevronDown, Check, Sparkles, Search, Github } from 'lucide-react';
 import { ALL_100_LANGUAGES } from '../data/languages-100';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
@@ -7,12 +7,14 @@ interface NavbarProps {
   currentLang: SupportedLanguage;
   onLanguageChange: (lang: SupportedLanguage) => void;
   onOpenEarlyAccess: () => void;
+  onOpenGitHub?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentLang,
   onLanguageChange,
   onOpenEarlyAccess,
+  onOpenGitHub,
 }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -141,6 +143,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             )}
           </div>
+
+          {/* GitHub Repo Button */}
+          {onOpenGitHub && (
+            <button
+              onClick={onOpenGitHub}
+              className="flex items-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#1a050f]/80 px-2.5 py-2 text-xs font-medium text-[#ebdcc9] transition-all hover:border-[#be185d] hover:text-white"
+              title="GitHub Repository & Push"
+            >
+              <Github className="h-3.5 w-3.5 text-rose-300" />
+              <span className="hidden sm:inline">GitHub</span>
+            </button>
+          )}
 
           {/* Primary CTA button */}
           <button

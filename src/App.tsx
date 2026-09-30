@@ -15,10 +15,12 @@ import { CtaSection } from './components/CtaSection';
 import { Footer } from './components/Footer';
 import { EarlyAccessModal } from './components/EarlyAccessModal';
 import { FloatingLangEngineBar } from './components/FloatingLangEngineBar';
+import { GitHubPushModal } from './components/GitHubPushModal';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<string>('en');
   const [modalOpen, setModalOpen] = useState(false);
+  const [gitHubModalOpen, setGitHubModalOpen] = useState(false);
   const [totalNodes, setTotalNodes] = useState<number>(148);
   const [isTranslating, setIsTranslating] = useState<boolean>(false);
   const [latencyMs, setLatencyMs] = useState<number>(8);
@@ -153,6 +155,7 @@ export default function App() {
         currentLang={currentLang as any}
         onLanguageChange={handleLanguageChange}
         onOpenEarlyAccess={() => setModalOpen(true)}
+        onOpenGitHub={() => setGitHubModalOpen(true)}
       />
 
       <main>
@@ -212,6 +215,12 @@ export default function App() {
       <EarlyAccessModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
+      />
+
+      {/* GitHub Repository Push Modal */}
+      <GitHubPushModal
+        isOpen={gitHubModalOpen}
+        onClose={() => setGitHubModalOpen(false)}
       />
     </div>
   );
