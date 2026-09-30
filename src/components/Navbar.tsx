@@ -60,6 +60,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             {t('nav_architecture')}
           </a>
           <a
+            href="#server-studio"
+            className="transition-colors hover:text-[#9e1b32] font-semibold flex items-center gap-1.5"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[#9e1b32]" />
+            <span>Server Suite</span>
+          </a>
+          <a
             href="#benchmarks"
             className="transition-colors hover:text-[var(--text-hero)]"
           >
@@ -189,6 +196,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]"
             >
               <span>{t('nav_architecture')}</span>
+            </a>
+            <a
+              href="#server-studio"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-[#9e1b32] font-semibold hover:bg-[var(--bg-elevated)]"
+            >
+              <span>Server Suite & CLI</span>
             </a>
             <a
               href="#benchmarks"

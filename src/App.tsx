@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { LanguageGrid } from './components/LanguageGrid';
 import { ArchitectureBento } from './components/ArchitectureBento';
+import { ServerStudioSection } from './components/ServerStudioSection';
 import { SwitcherCustomizer } from './components/SwitcherCustomizer';
 import { PerformanceComparison } from './components/PerformanceComparison';
 import { FaqSection } from './components/FaqSection';
@@ -148,6 +149,9 @@ export default function App() {
 
         {/* Architecture & Asymmetric Bento Grid */}
         <ArchitectureBento />
+
+        {/* Server-Side Scanner & Studio */}
+        <ServerStudioSection />
 
         {/* Switcher Button Customizer & Standalone Generator */}
         <SwitcherCustomizer />

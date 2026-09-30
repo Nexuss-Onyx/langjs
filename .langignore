@@ -1,0 +1,68 @@
+# LangJS Codebase Scanner Ignore Patterns (.langignore)
+# Automatically excludes build artifacts, dependencies, and non-translatable assets
+
+# Dependencies
+node_modules/
+vendor/
+.pnpm-store/
+.yarn/
+
+# Build outputs & caches
+dist/
+build/
+out/
+.next/
+.nuxt/
+.astro/
+.svelte-kit/
+.turbo/
+.cache/
+.vite/
+target/
+
+# Version control & IDEs
+.git/
+.github/
+.vscode/
+.idea/
+
+# Static binary & media files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.avif
+*.ico
+*.svg
+*.pdf
+*.zip
+*.tar.gz
+*.mp3
+*.mp4
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# Lock files & configs
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lock
+bun.lockb
+composer.lock
+tsconfig*.json
+tailwind.config.*
+vite.config.*
+postcss.config.*
+eslint*
+
+# Environment & Secrets
+.env
+.env.*
+*.log
+
+# Generated translation files (to prevent recursive loops)
+lang/lang.json
+lang/

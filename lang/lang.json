@@ -1,0 +1,1342 @@
+{
+  "$schema": "https://langjs.dev/schema/v1.json",
+  "meta": {
+    "generator": "LangJS Server Scanner v1.1.0",
+    "version": "1.1.0",
+    "generatedAt": "2026-09-30T17:04:10.949Z",
+    "sourceLanguage": "en",
+    "targetLanguages": [
+      "en",
+      "am",
+      "es",
+      "fr",
+      "ja"
+    ],
+    "totalUniqueStrings": 50,
+    "totalOccurrences": 101
+  },
+  "locales": {
+    "en": {
+      "Langjs — Turn Any Static Website into Multi-Lingual in Seconds": "Langjs — Turn Any Static Website into Multi-Lingual in Seconds",
+      "TreeWalker API": "TreeWalker API",
+      "Deterministic Hash Keys": "Deterministic Hash Keys",
+      "Sub-10ms Mutations": "Sub-10ms Mutations",
+      "CACHE LAYER": "CACHE LAYER",
+      "99.4% CACHE HIT": "99.4% CACHE HIT",
+      "import": "import",
+      "from": "from",
+      "'@nexuss0781/langjs'": "'@nexuss0781/langjs'",
+      "const": "const",
+      "lang =": "lang =",
+      "new": "new",
+      "LangJS();": "LangJS();",
+      "// Switch to Japanese:": "// Switch to Japanese:",
+      "await": "await",
+      "lang.setLanguage(": "lang.setLanguage(",
+      "'ja'": "'ja'",
+      "dir=\"rtl\"": "dir=\"rtl\"",
+      "English": "English",
+      "Developer API & Integration": "Developer API & Integration",
+      "Simulate Execution": "Simulate Execution",
+      "API Execution Output": "API Execution Output",
+      "lang.setLanguage(code)": "lang.setLanguage(code)",
+      "lang.getLanguage()": "lang.getLanguage()",
+      "lang.override(dict)": "lang.override(dict)",
+      "lang.mount(selector)": "lang.mount(selector)",
+      "with Langjs Today": "with Langjs Today",
+      "View Documentation": "View Documentation",
+      "npm i @nexuss0781/langjs": "npm i @nexuss0781/langjs",
+      "GitHub": "GitHub",
+      "NPM Package": "NPM Package",
+      "Documentation": "Documentation",
+      "@nexuss0781/langjs@1.0.0": "@nexuss0781/langjs@1.0.0",
+      "GitHub Repository Deployment": "GitHub Repository Deployment",
+      "Ready to Sync with GitHub": "Ready to Sync with GitHub",
+      "AUTHENTICATED CLI COMMAND": "AUTHENTICATED CLI COMMAND",
+      "repo": "repo",
+      "scope at": "scope at",
+      "github.com/settings/tokens": "github.com/settings/tokens",
+      "QUICK TERMINAL COMMAND": "QUICK TERMINAL COMMAND",
+      "LangJS v1.0.0": "LangJS v1.0.0",
+      "Client-Side i18n SDK": "Client-Side i18n SDK",
+      "Zero Dependencies": "Zero Dependencies",
+      "GitHub Repository": "GitHub Repository",
+      "Installation": "Installation",
+      "Copied": "Copied",
+      "Copy": "Copy",
+      "lang.setLanguage(locale)": "lang.setLanguage(locale)",
+      "// Instant DOM mutation:": "// Instant DOM mutation:",
+      "Mutation latency": "Mutation latency"
+    },
+    "am": {
+      "Langjs — Turn Any Static Website into Multi-Lingual in Seconds": "Langjs - ማንኛውንም የማይንቀሳቀስ ድር ጣቢያ በሰከንዶች ውስጥ ወደ ብዙ ቋንቋ ይለውጡ",
+      "TreeWalker API": "TreeWalker API",
+      "Deterministic Hash Keys": "ቆራጥ የሃሽ ቁልፎች",
+      "Sub-10ms Mutations": "ንዑስ-10ሚሴ ሚውቴሽን",
+      "CACHE LAYER": "መሸጎጫ ሽፋን",
+      "99.4% CACHE HIT": "99.4% መሸጎጫ ደረሰ",
+      "import": "አስመጣ",
+      "from": "ከ",
+      "'@nexuss0781/langjs'": "'@nexuss0781/langjs'",
+      "const": "const",
+      "lang =": "ላንግ =",
+      "new": "አዲስ",
+      "LangJS();": "LangJS ();",
+      "// Switch to Japanese:": "// ወደ ጃፓን ቀይር፡",
+      "await": "መጠበቅ",
+      "lang.setLanguage(": "lang.setLanguage(",
+      "'ja'": "'ጃ'",
+      "dir=\"rtl\"": "dir=\"rtl\"",
+      "English": "እንግሊዝኛ",
+      "Developer API & Integration": "የገንቢ ኤፒአይ እና ውህደት",
+      "Simulate Execution": "ማስፈጸምን አስመስለው",
+      "API Execution Output": "የኤፒአይ አፈፃፀም ውፅዓት",
+      "lang.setLanguage(code)": "lang.setLanguage(ኮድ)",
+      "lang.getLanguage()": "lang.getLanguage()",
+      "lang.override(dict)": "lang.override(ዲክት)",
+      "lang.mount(selector)": "lang.mount(መራጭ)",
+      "with Langjs Today": "Langjs ዛሬ ጋር",
+      "View Documentation": "ሰነዶችን ይመልከቱ",
+      "npm i @nexuss0781/langjs": "npm i @nexuss0781 / langjs",
+      "GitHub": "GitHub",
+      "NPM Package": "NPM ጥቅል",
+      "Documentation": "ሰነድ",
+      "@nexuss0781/langjs@1.0.0": "@nexuss0781 / langjs @ 1.0.0",
+      "GitHub Repository Deployment": "GitHub ማከማቻ ማሰማራት",
+      "Ready to Sync with GitHub": "ከ GitHub ጋር ለማመሳሰል ዝግጁ ነው።",
+      "AUTHENTICATED CLI COMMAND": "የተረጋገጠ የ CLI ትእዛዝ",
+      "repo": "repo",
+      "scope at": "ስፋት በ",
+      "github.com/settings/tokens": "github.com/settings/tokens",
+      "QUICK TERMINAL COMMAND": "ፈጣን ተርሚናል ትእዛዝ",
+      "LangJS v1.0.0": "LangJS v1.0.0",
+      "Client-Side i18n SDK": "የደንበኛ-ጎን i18n ኤስዲኬ",
+      "Zero Dependencies": "ዜሮ ጥገኛዎች",
+      "GitHub Repository": "GitHub ማከማቻ",
+      "Installation": "መጫን",
+      "Copied": "ተገልብጧል",
+      "Copy": "ቅዳ",
+      "lang.setLanguage(locale)": "lang.setLanguage(አካባቢ)",
+      "// Instant DOM mutation:": "// ፈጣን የDOM ሚውቴሽን፡-",
+      "Mutation latency": "ሚውቴሽን መዘግየት"
+    },
+    "es": {
+      "Langjs — Turn Any Static Website into Multi-Lingual in Seconds": "Langjs: convierta cualquier sitio web estático en multilingüe en segundos",
+      "TreeWalker API": "API de caminante de árboles",
+      "Deterministic Hash Keys": "Claves hash deterministas",
+      "Sub-10ms Mutations": "Mutaciones inferiores a 10 ms",
+      "CACHE LAYER": "CAPA DE CACHÉ",
+      "99.4% CACHE HIT": "99,4 % de acceso al caché",
+      "import": "importar",
+      "from": "de",
+      "'@nexuss0781/langjs'": "'@nexuss0781/langjs'",
+      "const": "constante",
+      "lang =": "idioma =",
+      "new": "nuevo",
+      "LangJS();": "LangJS();",
+      "// Switch to Japanese:": "// Cambiar a japonés:",
+      "await": "esperar",
+      "lang.setLanguage(": "idioma.setLanguage(",
+      "'ja'": "'ja'",
+      "dir=\"rtl\"": "dir=\"rtl\"",
+      "English": "Inglés",
+      "Developer API & Integration": "API de desarrollador e integración",
+      "Simulate Execution": "Simular ejecución",
+      "API Execution Output": "Salida de ejecución de API",
+      "lang.setLanguage(code)": "idioma.setLanguage(código)",
+      "lang.getLanguage()": "idioma.getLanguage()",
+      "lang.override(dict)": "idioma.override(dict)",
+      "lang.mount(selector)": "idioma.montaje(selector)",
+      "with Langjs Today": "con Langjs hoy",
+      "View Documentation": "Ver documentación",
+      "npm i @nexuss0781/langjs": "npm yo @nexuss0781/langjs",
+      "GitHub": "GitHub",
+      "NPM Package": "Paquete MNP",
+      "Documentation": "Documentación",
+      "@nexuss0781/langjs@1.0.0": "@nexuss0781/langjs@1.0.0",
+      "GitHub Repository Deployment": "Implementación del repositorio de GitHub",
+      "Ready to Sync with GitHub": "Listo para sincronizar con GitHub",
+      "AUTHENTICATED CLI COMMAND": "COMANDO CLI AUTENTICADO",
+      "repo": "repositorio",
+      "scope at": "alcance en",
+      "github.com/settings/tokens": "github.com/settings/tokens",
+      "QUICK TERMINAL COMMAND": "COMANDO TERMINAL RÁPIDO",
+      "LangJS v1.0.0": "LangJS v1.0.0",
+      "Client-Side i18n SDK": "SDK i18n del lado del cliente",
+      "Zero Dependencies": "Cero dependencias",
+      "GitHub Repository": "Repositorio GitHub",
+      "Installation": "Instalación",
+      "Copied": "Copiado",
+      "Copy": "Copiar",
+      "lang.setLanguage(locale)": "idioma.setLanguage(local)",
+      "// Instant DOM mutation:": "// Mutación DOM instantánea:",
+      "Mutation latency": "Latencia de mutación"
+    },
+    "fr": {
+      "Langjs — Turn Any Static Website into Multi-Lingual in Seconds": "Langjs — Transformez n'importe quel site Web statique en multilingue en quelques secondes",
+      "TreeWalker API": "API TreeWalker",
+      "Deterministic Hash Keys": "Clés de hachage déterministes",
+      "Sub-10ms Mutations": "Mutations inférieures à 10 ms",
+      "CACHE LAYER": "COUCHE DE CACHE",
+      "99.4% CACHE HIT": "99,4 % d'accès au cache",
+      "import": "importer",
+      "from": "depuis",
+      "'@nexuss0781/langjs'": "'@nexuss0781/langjs'",
+      "const": "const",
+      "lang =": "langue =",
+      "new": "nouveau",
+      "LangJS();": "LangJS();",
+      "// Switch to Japanese:": "// Passer au japonais :",
+      "await": "attendre",
+      "lang.setLanguage(": "lang.setLanguage(",
+      "'ja'": "'oui'",
+      "dir=\"rtl\"": "dir=\"rtl\"",
+      "English": "Anglais",
+      "Developer API & Integration": "API et intégration du développeur",
+      "Simulate Execution": "Simuler l'exécution",
+      "API Execution Output": "Sortie d'exécution de l'API",
+      "lang.setLanguage(code)": "lang.setLanguage(code)",
+      "lang.getLanguage()": "lang.getLanguage()",
+      "lang.override(dict)": "lang.override(dict)",
+      "lang.mount(selector)": "lang.mount (sélecteur)",
+      "with Langjs Today": "avec Langjs aujourd'hui",
+      "View Documentation": "Afficher la documentation",
+      "npm i @nexuss0781/langjs": "npm je @nexuss0781/langjs",
+      "GitHub": "GitHub",
+      "NPM Package": "Forfait NPM",
+      "Documentation": "Documentation",
+      "@nexuss0781/langjs@1.0.0": "@nexuss0781/langjs@1.0.0",
+      "GitHub Repository Deployment": "Déploiement du référentiel GitHub",
+      "Ready to Sync with GitHub": "Prêt à synchroniser avec GitHub",
+      "AUTHENTICATED CLI COMMAND": "COMMANDE CLI AUTHENTIFIÉE",
+      "repo": "dépôt",
+      "scope at": "portée à",
+      "github.com/settings/tokens": "github.com/settings/tokens",
+      "QUICK TERMINAL COMMAND": "COMMANDE RAPIDE DU TERMINAL",
+      "LangJS v1.0.0": "LangJS v1.0.0",
+      "Client-Side i18n SDK": "SDK i18n côté client",
+      "Zero Dependencies": "Zéro dépendance",
+      "GitHub Repository": "Dépôt GitHub",
+      "Installation": "Installation",
+      "Copied": "Copié",
+      "Copy": "Copie",
+      "lang.setLanguage(locale)": "lang.setLanguage(locale)",
+      "// Instant DOM mutation:": "// Mutation DOM instantanée :",
+      "Mutation latency": "Latence des mutations"
+    },
+    "ja": {
+      "Langjs — Turn Any Static Website into Multi-Lingual in Seconds": "Langjs — あらゆる静的ウェブサイトを数秒で多言語化",
+      "TreeWalker API": "ツリーウォーカー API",
+      "Deterministic Hash Keys": "決定論的ハッシュキー",
+      "Sub-10ms Mutations": "10ms未満の突然変異",
+      "CACHE LAYER": "キャッシュ層",
+      "99.4% CACHE HIT": "99.4% キャッシュ ヒット",
+      "import": "輸入",
+      "from": "から",
+      "'@nexuss0781/langjs'": "「@nexuss0781/langjs」",
+      "const": "定数",
+      "lang =": "ラング =",
+      "new": "新しい",
+      "LangJS();": "LangJS();",
+      "// Switch to Japanese:": "// 日本語に切り替えます:",
+      "await": "待つ",
+      "lang.setLanguage(": "lang.setLanguage(",
+      "'ja'": "「じゃ」",
+      "dir=\"rtl\"": "dir=\"rtl\"",
+      "English": "英語",
+      "Developer API & Integration": "開発者 API と統合",
+      "Simulate Execution": "実行をシミュレートする",
+      "API Execution Output": "API実行出力",
+      "lang.setLanguage(code)": "lang.setLanguage(コード)",
+      "lang.getLanguage()": "lang.getLanguage()",
+      "lang.override(dict)": "lang.override(dict)",
+      "lang.mount(selector)": "lang.mount(セレクタ)",
+      "with Langjs Today": "今日のランジスと",
+      "View Documentation": "ドキュメントを見る",
+      "npm i @nexuss0781/langjs": "npm 私 @nexuss0781/langjs",
+      "GitHub": "GitHub",
+      "NPM Package": "NPMパッケージ",
+      "Documentation": "ドキュメント",
+      "@nexuss0781/langjs@1.0.0": "@nexuss0781/langjs@1.0.0",
+      "GitHub Repository Deployment": "GitHub リポジトリのデプロイメント",
+      "Ready to Sync with GitHub": "GitHub と同期する準備ができました",
+      "AUTHENTICATED CLI COMMAND": "認証された CLI コマンド",
+      "repo": "リポジトリ",
+      "scope at": "範囲",
+      "github.com/settings/tokens": "github.com/settings/tokens",
+      "QUICK TERMINAL COMMAND": "クイックターミナルコマンド",
+      "LangJS v1.0.0": "LangJS v1.0.0",
+      "Client-Side i18n SDK": "クライアント側 i18n SDK",
+      "Zero Dependencies": "依存関係ゼロ",
+      "GitHub Repository": "GitHub リポジトリ",
+      "Installation": "インストール",
+      "Copied": "コピーされました",
+      "Copy": "コピー",
+      "lang.setLanguage(locale)": "lang.setLanguage(ロケール)",
+      "// Instant DOM mutation:": "// インスタント DOM 突然変異:",
+      "Mutation latency": "突然変異の潜伏期間"
+    }
+  },
+  "sideBySide": [
+    {
+      "id": "str_1",
+      "source": "Langjs — Turn Any Static Website into Multi-Lingual in Seconds",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "index.html",
+          "line": 6
+        }
+      ],
+      "translations": {
+        "en": "Langjs — Turn Any Static Website into Multi-Lingual in Seconds",
+        "am": "Langjs - ማንኛውንም የማይንቀሳቀስ ድር ጣቢያ በሰከንዶች ውስጥ ወደ ብዙ ቋንቋ ይለውጡ",
+        "es": "Langjs: convierta cualquier sitio web estático en multilingüe en segundos",
+        "fr": "Langjs — Transformez n'importe quel site Web statique en multilingue en quelques secondes",
+        "ja": "Langjs — あらゆる静的ウェブサイトを数秒で多言語化"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_2",
+      "source": "TreeWalker API",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 55
+        }
+      ],
+      "translations": {
+        "en": "TreeWalker API",
+        "am": "TreeWalker API",
+        "es": "API de caminante de árboles",
+        "fr": "API TreeWalker",
+        "ja": "ツリーウォーカー API"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_3",
+      "source": "Deterministic Hash Keys",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 57
+        }
+      ],
+      "translations": {
+        "en": "Deterministic Hash Keys",
+        "am": "ቆራጥ የሃሽ ቁልፎች",
+        "es": "Claves hash deterministas",
+        "fr": "Clés de hachage déterministes",
+        "ja": "決定論的ハッシュキー"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_4",
+      "source": "Sub-10ms Mutations",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 59
+        }
+      ],
+      "translations": {
+        "en": "Sub-10ms Mutations",
+        "am": "ንዑስ-10ሚሴ ሚውቴሽን",
+        "es": "Mutaciones inferiores a 10 ms",
+        "fr": "Mutations inférieures à 10 ms",
+        "ja": "10ms未満の突然変異"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_5",
+      "source": "CACHE LAYER",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 93
+        }
+      ],
+      "translations": {
+        "en": "CACHE LAYER",
+        "am": "መሸጎጫ ሽፋን",
+        "es": "CAPA DE CACHÉ",
+        "fr": "COUCHE DE CACHE",
+        "ja": "キャッシュ層"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_6",
+      "source": "99.4% CACHE HIT",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 94
+        }
+      ],
+      "translations": {
+        "en": "99.4% CACHE HIT",
+        "am": "99.4% መሸጎጫ ደረሰ",
+        "es": "99,4 % de acceso al caché",
+        "fr": "99,4 % d'accès au cache",
+        "ja": "99.4% キャッシュ ヒット"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_7",
+      "source": "import",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 147
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 217
+        }
+      ],
+      "translations": {
+        "en": "import",
+        "am": "አስመጣ",
+        "es": "importar",
+        "fr": "importer",
+        "ja": "輸入"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_8",
+      "source": "from",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 147
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 217
+        }
+      ],
+      "translations": {
+        "en": "from",
+        "am": "ከ",
+        "es": "de",
+        "fr": "depuis",
+        "ja": "から"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_9",
+      "source": "'@nexuss0781/langjs'",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 147
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 217
+        }
+      ],
+      "translations": {
+        "en": "'@nexuss0781/langjs'",
+        "am": "'@nexuss0781/langjs'",
+        "es": "'@nexuss0781/langjs'",
+        "fr": "'@nexuss0781/langjs'",
+        "ja": "「@nexuss0781/langjs」"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_10",
+      "source": "const",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 148
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 218
+        }
+      ],
+      "translations": {
+        "en": "const",
+        "am": "const",
+        "es": "constante",
+        "fr": "const",
+        "ja": "定数"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_11",
+      "source": "lang =",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 148
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 218
+        }
+      ],
+      "translations": {
+        "en": "lang =",
+        "am": "ላንግ =",
+        "es": "idioma =",
+        "fr": "langue =",
+        "ja": "ラング ="
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_12",
+      "source": "new",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 148
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 218
+        }
+      ],
+      "translations": {
+        "en": "new",
+        "am": "አዲስ",
+        "es": "nuevo",
+        "fr": "nouveau",
+        "ja": "新しい"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_13",
+      "source": "LangJS();",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 148
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 218
+        }
+      ],
+      "translations": {
+        "en": "LangJS();",
+        "am": "LangJS ();",
+        "es": "LangJS();",
+        "fr": "LangJS();",
+        "ja": "LangJS();"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_14",
+      "source": "// Switch to Japanese:",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 149
+        }
+      ],
+      "translations": {
+        "en": "// Switch to Japanese:",
+        "am": "// ወደ ጃፓን ቀይር፡",
+        "es": "// Cambiar a japonés:",
+        "fr": "// Passer au japonais :",
+        "ja": "// 日本語に切り替えます:"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_15",
+      "source": "await",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 150
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 220
+        }
+      ],
+      "translations": {
+        "en": "await",
+        "am": "መጠበቅ",
+        "es": "esperar",
+        "fr": "attendre",
+        "ja": "待つ"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_16",
+      "source": "lang.setLanguage(",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 150
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 220
+        }
+      ],
+      "translations": {
+        "en": "lang.setLanguage(",
+        "am": "lang.setLanguage(",
+        "es": "idioma.setLanguage(",
+        "fr": "lang.setLanguage(",
+        "ja": "lang.setLanguage("
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_17",
+      "source": "'ja'",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 150
+        }
+      ],
+      "translations": {
+        "en": "'ja'",
+        "am": "'ጃ'",
+        "es": "'ja'",
+        "fr": "'oui'",
+        "ja": "「じゃ」"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_18",
+      "source": "dir=\"rtl\"",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/ArchitectureBento.tsx",
+          "line": 164
+        }
+      ],
+      "translations": {
+        "en": "dir=\"rtl\"",
+        "am": "dir=\"rtl\"",
+        "es": "dir=\"rtl\"",
+        "fr": "dir=\"rtl\"",
+        "ja": "dir=\"rtl\""
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_19",
+      "source": "English",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 29
+        }
+      ],
+      "translations": {
+        "en": "English",
+        "am": "እንግሊዝኛ",
+        "es": "Inglés",
+        "fr": "Anglais",
+        "ja": "英語"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_20",
+      "source": "Developer API & Integration",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 114
+        }
+      ],
+      "translations": {
+        "en": "Developer API & Integration",
+        "am": "የገንቢ ኤፒአይ እና ውህደት",
+        "es": "API de desarrollador e integración",
+        "fr": "API et intégration du développeur",
+        "ja": "開発者 API と統合"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_21",
+      "source": "Simulate Execution",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 177
+        },
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 212
+        }
+      ],
+      "translations": {
+        "en": "Simulate Execution",
+        "am": "ማስፈጸምን አስመስለው",
+        "es": "Simular ejecución",
+        "fr": "Simuler l'exécution",
+        "ja": "実行をシミュレートする"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_22",
+      "source": "API Execution Output",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 202
+        }
+      ],
+      "translations": {
+        "en": "API Execution Output",
+        "am": "የኤፒአይ አፈፃፀም ውፅዓት",
+        "es": "Salida de ejecución de API",
+        "fr": "Sortie d'exécution de l'API",
+        "ja": "API実行出力"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_23",
+      "source": "lang.setLanguage(code)",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 223
+        }
+      ],
+      "translations": {
+        "en": "lang.setLanguage(code)",
+        "am": "lang.setLanguage(ኮድ)",
+        "es": "idioma.setLanguage(código)",
+        "fr": "lang.setLanguage(code)",
+        "ja": "lang.setLanguage(コード)"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_24",
+      "source": "lang.getLanguage()",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 226
+        }
+      ],
+      "translations": {
+        "en": "lang.getLanguage()",
+        "am": "lang.getLanguage()",
+        "es": "idioma.getLanguage()",
+        "fr": "lang.getLanguage()",
+        "ja": "lang.getLanguage()"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_25",
+      "source": "lang.override(dict)",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 229
+        }
+      ],
+      "translations": {
+        "en": "lang.override(dict)",
+        "am": "lang.override(ዲክት)",
+        "es": "idioma.override(dict)",
+        "fr": "lang.override(dict)",
+        "ja": "lang.override(dict)"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_26",
+      "source": "lang.mount(selector)",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CodePlayground.tsx",
+          "line": 232
+        }
+      ],
+      "translations": {
+        "en": "lang.mount(selector)",
+        "am": "lang.mount(መራጭ)",
+        "es": "idioma.montaje(selector)",
+        "fr": "lang.mount (sélecteur)",
+        "ja": "lang.mount(セレクタ)"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_27",
+      "source": "with Langjs Today",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CtaSection.tsx",
+          "line": 27
+        }
+      ],
+      "translations": {
+        "en": "with Langjs Today",
+        "am": "Langjs ዛሬ ጋር",
+        "es": "con Langjs hoy",
+        "fr": "avec Langjs aujourd'hui",
+        "ja": "今日のランジスと"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_28",
+      "source": "View Documentation",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CtaSection.tsx",
+          "line": 41
+        },
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 103
+        },
+        {
+          "file": "src/components/Navbar.tsx",
+          "line": 161
+        }
+      ],
+      "translations": {
+        "en": "View Documentation",
+        "am": "ሰነዶችን ይመልከቱ",
+        "es": "Ver documentación",
+        "fr": "Afficher la documentation",
+        "ja": "ドキュメントを見る"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_29",
+      "source": "npm i @nexuss0781/langjs",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/CtaSection.tsx",
+          "line": 50
+        }
+      ],
+      "translations": {
+        "en": "npm i @nexuss0781/langjs",
+        "am": "npm i @nexuss0781 / langjs",
+        "es": "npm yo @nexuss0781/langjs",
+        "fr": "npm je @nexuss0781/langjs",
+        "ja": "npm 私 @nexuss0781/langjs"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_30",
+      "source": "GitHub",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Footer.tsx",
+          "line": 41
+        },
+        {
+          "file": "src/components/Navbar.tsx",
+          "line": 75
+        },
+        {
+          "file": "src/docs/DocsPage.tsx",
+          "line": 172
+        }
+      ],
+      "translations": {
+        "en": "GitHub",
+        "am": "GitHub",
+        "es": "GitHub",
+        "fr": "GitHub",
+        "ja": "GitHub"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_31",
+      "source": "NPM Package",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Footer.tsx",
+          "line": 51
+        }
+      ],
+      "translations": {
+        "en": "NPM Package",
+        "am": "NPM ጥቅል",
+        "es": "Paquete MNP",
+        "fr": "Forfait NPM",
+        "ja": "NPMパッケージ"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_32",
+      "source": "Documentation",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Footer.tsx",
+          "line": 60
+        }
+      ],
+      "translations": {
+        "en": "Documentation",
+        "am": "ሰነድ",
+        "es": "Documentación",
+        "fr": "Documentation",
+        "ja": "ドキュメント"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_33",
+      "source": "@nexuss0781/langjs@1.0.0",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Footer.tsx",
+          "line": 126
+        }
+      ],
+      "translations": {
+        "en": "@nexuss0781/langjs@1.0.0",
+        "am": "@nexuss0781 / langjs @ 1.0.0",
+        "es": "@nexuss0781/langjs@1.0.0",
+        "fr": "@nexuss0781/langjs@1.0.0",
+        "ja": "@nexuss0781/langjs@1.0.0"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_34",
+      "source": "GitHub Repository Deployment",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/GitHubPushModal.tsx",
+          "line": 67
+        }
+      ],
+      "translations": {
+        "en": "GitHub Repository Deployment",
+        "am": "GitHub ማከማቻ ማሰማራት",
+        "es": "Implementación del repositorio de GitHub",
+        "fr": "Déploiement du référentiel GitHub",
+        "ja": "GitHub リポジトリのデプロイメント"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_35",
+      "source": "Ready to Sync with GitHub",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/GitHubPushModal.tsx",
+          "line": 83
+        }
+      ],
+      "translations": {
+        "en": "Ready to Sync with GitHub",
+        "am": "ከ GitHub ጋር ለማመሳሰል ዝግጁ ነው።",
+        "es": "Listo para sincronizar con GitHub",
+        "fr": "Prêt à synchroniser avec GitHub",
+        "ja": "GitHub と同期する準備ができました"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_36",
+      "source": "AUTHENTICATED CLI COMMAND",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/GitHubPushModal.tsx",
+          "line": 90
+        }
+      ],
+      "translations": {
+        "en": "AUTHENTICATED CLI COMMAND",
+        "am": "የተረጋገጠ የ CLI ትእዛዝ",
+        "es": "COMANDO CLI AUTENTICADO",
+        "fr": "COMMANDE CLI AUTHENTIFIÉE",
+        "ja": "認証された CLI コマンド"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_37",
+      "source": "repo",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/GitHubPushModal.tsx",
+          "line": 122
+        }
+      ],
+      "translations": {
+        "en": "repo",
+        "am": "repo",
+        "es": "repositorio",
+        "fr": "dépôt",
+        "ja": "リポジトリ"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_38",
+      "source": "scope at",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/GitHubPushModal.tsx",
+          "line": 122
+        }
+      ],
+      "translations": {
+        "en": "scope at",
+        "am": "ስፋት በ",
+        "es": "alcance en",
+        "fr": "portée à",
+        "ja": "範囲"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_39",
+      "source": "github.com/settings/tokens",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/GitHubPushModal.tsx",
+          "line": 122
+        }
+      ],
+      "translations": {
+        "en": "github.com/settings/tokens",
+        "am": "github.com/settings/tokens",
+        "es": "github.com/settings/tokens",
+        "fr": "github.com/settings/tokens",
+        "ja": "github.com/settings/tokens"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_40",
+      "source": "QUICK TERMINAL COMMAND",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/GitHubPushModal.tsx",
+          "line": 136
+        }
+      ],
+      "translations": {
+        "en": "QUICK TERMINAL COMMAND",
+        "am": "ፈጣን ተርሚናል ትእዛዝ",
+        "es": "COMANDO TERMINAL RÁPIDO",
+        "fr": "COMMANDE RAPIDE DU TERMINAL",
+        "ja": "クイックターミナルコマンド"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_41",
+      "source": "LangJS v1.0.0",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 74
+        }
+      ],
+      "translations": {
+        "en": "LangJS v1.0.0",
+        "am": "LangJS v1.0.0",
+        "es": "LangJS v1.0.0",
+        "fr": "LangJS v1.0.0",
+        "ja": "LangJS v1.0.0"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_42",
+      "source": "Client-Side i18n SDK",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 76
+        }
+      ],
+      "translations": {
+        "en": "Client-Side i18n SDK",
+        "am": "የደንበኛ-ጎን i18n ኤስዲኬ",
+        "es": "SDK i18n del lado del cliente",
+        "fr": "SDK i18n côté client",
+        "ja": "クライアント側 i18n SDK"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_43",
+      "source": "Zero Dependencies",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 78
+        }
+      ],
+      "translations": {
+        "en": "Zero Dependencies",
+        "am": "ዜሮ ጥገኛዎች",
+        "es": "Cero dependencias",
+        "fr": "Zéro dépendance",
+        "ja": "依存関係ゼロ"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_44",
+      "source": "GitHub Repository",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 114
+        },
+        {
+          "file": "src/components/Navbar.tsx",
+          "line": 209
+        }
+      ],
+      "translations": {
+        "en": "GitHub Repository",
+        "am": "GitHub ማከማቻ",
+        "es": "Repositorio GitHub",
+        "fr": "Dépôt GitHub",
+        "ja": "GitHub リポジトリ"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_45",
+      "source": "Installation",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 124
+        }
+      ],
+      "translations": {
+        "en": "Installation",
+        "am": "መጫን",
+        "es": "Instalación",
+        "fr": "Installation",
+        "ja": "インストール"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_46",
+      "source": "Copied",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 161
+        }
+      ],
+      "translations": {
+        "en": "Copied",
+        "am": "ተገልብጧል",
+        "es": "Copiado",
+        "fr": "Copié",
+        "ja": "コピーされました"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_47",
+      "source": "Copy",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 166
+        }
+      ],
+      "translations": {
+        "en": "Copy",
+        "am": "ቅዳ",
+        "es": "Copiar",
+        "fr": "Copie",
+        "ja": "コピー"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_48",
+      "source": "lang.setLanguage(locale)",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 181
+        }
+      ],
+      "translations": {
+        "en": "lang.setLanguage(locale)",
+        "am": "lang.setLanguage(አካባቢ)",
+        "es": "idioma.setLanguage(local)",
+        "fr": "lang.setLanguage(locale)",
+        "ja": "lang.setLanguage(ロケール)"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_49",
+      "source": "// Instant DOM mutation:",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 219
+        }
+      ],
+      "translations": {
+        "en": "// Instant DOM mutation:",
+        "am": "// ፈጣን የDOM ሚውቴሽን፡-",
+        "es": "// Mutación DOM instantánea:",
+        "fr": "// Mutation DOM instantanée :",
+        "ja": "// インスタント DOM 突然変異:"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    },
+    {
+      "id": "str_50",
+      "source": "Mutation latency",
+      "type": "tag_text",
+      "occurrences": [
+        {
+          "file": "src/components/Hero.tsx",
+          "line": 225
+        }
+      ],
+      "translations": {
+        "en": "Mutation latency",
+        "am": "ሚውቴሽን መዘግየት",
+        "es": "Latencia de mutación",
+        "fr": "Latence des mutations",
+        "ja": "突然変異の潜伏期間"
+      },
+      "verified": false,
+      "notes": "Initial scan via LangJS. Editable by developer or AI agent."
+    }
+  ]
+}

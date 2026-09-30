@@ -12,7 +12,7 @@ if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
 
-// 1. Build ESM
+// 1. Build Client ESM
 esbuild.buildSync({
   entryPoints: ['src/sdk/index.ts'],
   outfile: path.join(distDir, 'index.js'),
@@ -24,7 +24,7 @@ esbuild.buildSync({
   external: ['react', 'react-dom'],
 });
 
-// 2. Build CommonJS
+// 2. Build Client CommonJS
 esbuild.buildSync({
   entryPoints: ['src/sdk/index.ts'],
   outfile: path.join(distDir, 'index.cjs'),
@@ -49,7 +49,31 @@ esbuild.buildSync({
   external: ['react', 'react-dom'],
 });
 
-// 4. Write pristine, comprehensive TypeScript declaration file
+// 4. Build Server ESM
+esbuild.buildSync({
+  entryPoints: ['src/sdk/server/index.ts'],
+  outfile: path.join(distDir, 'server.js'),
+  bundle: true,
+  platform: 'node',
+  format: 'esm',
+  target: 'node18',
+  sourcemap: true,
+  minify: false,
+});
+
+// 5. Build Server CommonJS
+esbuild.buildSync({
+  entryPoints: ['src/sdk/server/index.ts'],
+  outfile: path.join(distDir, 'server.cjs'),
+  bundle: true,
+  platform: 'node',
+  format: 'cjs',
+  target: 'node18',
+  sourcemap: true,
+  minify: false,
+});
+
+// 6. Write Client TypeScript declaration file
 const dtsContent = `/**
  * @license MIT
  * @nexuss0781/langjs TypeScript Definitions
@@ -58,30 +82,19 @@ const dtsContent = `/**
 export type SupportedLanguageCode = 
   | 'en' | 'es' | 'fr' | 'de' | 'it' | 'pt' | 'nl' | 'ru' 
   | 'zh' | 'ja' | 'ko' | 'ar' | 'hi' | 'tr' | 'pl' | 'sv' 
-  | string;
+  | 'am' | string;
 
 export interface LangOptions {
-  /** Target root element to scan (defaults to document.body) */
   root?: HTMLElement | string;
-  /** Default source language of the website (defaults to 'en') */
   defaultLanguage?: string;
-  /** Current active language */
   currentLanguage?: string;
-  /** Array of supported languages */
   languages?: string[];
-  /** Custom class name added to scanned elements (defaults to 'langjs-node') */
   className?: string;
-  /** Storage key for persistence (defaults to 'langjs_storage') */
   storageKey?: string;
-  /** Whether to automatically detect browser language (defaults to false) */
   autoDetect?: boolean;
-  /** Whether to observe dynamic DOM mutations (defaults to false) */
   observeMutations?: boolean;
-  /** Custom overrides dictionary or path to JSON */
   overrides?: Record<string, Record<string, string>>;
-  /** Automatically manage document.documentElement.dir for RTL languages */
   autoRTL?: boolean;
-  /** Custom API endpoint for Google Translate / Neural proxy (optional) */
   translateApiEndpoint?: string;
 }
 
@@ -158,6 +171,108 @@ export default LangJS;
 
 fs.writeFileSync(path.join(distDir, 'index.d.ts'), dtsContent);
 
+// 7. Write Server TypeScript declaration file
+const serverDtsContent = `/**
+ * @license MIT
+ * @nexuss0781/langjs/server TypeScript Definitions
+ */
+
+export interface ScanOccurrence {
+  file: string;
+  line: number;
+  snippet?: string;
+}
+
+export interface ExtractedCodebaseString {
+  id: string;
+  sourceText: string;
+  occurrences: ScanOccurrence[];
+  type: 'tag_text' | 'placeholder' | 'aria-label' | 'title' | 'alt';
+}
+
+export interface SideBySideRecord {
+  id: string;
+  source: string;
+  type: string;
+  occurrences: ScanOccurrence[];
+  translations: Record<string, string>;
+  verified: boolean;
+  notes?: string;
+  lastEditedBy?: string;
+}
+
+export interface LangJsonManifest {
+  $schema?: string;
+  meta: {
+    generator: string;
+    version: string;
+    generatedAt: string;
+    sourceLanguage: string;
+    targetLanguages: string[];
+    totalUniqueStrings: number;
+    totalOccurrences: number;
+  };
+  locales: Record<string, Record<string, string>>;
+  sideBySide: SideBySideRecord[];
+}
+
+export interface ScannerOptions {
+  rootDir?: string;
+  extensions?: string[];
+  sourceLanguage?: string;
+  targetLanguages?: string[];
+  ignoreFiles?: string[];
+  additionalIgnorePatterns?: string[];
+  translateCallback?: (texts: string[], targetLang: string) => Promise<string[]>;
+}
+
+export declare class IgnoreRuleMatcher {
+  constructor(baseDir?: string, ignoreFiles?: string[], extraPatterns?: string[]);
+  shouldIgnore(relativePath: string): boolean;
+}
+
+export declare class UniversalTextExtractor {
+  extract(content: string, filePath: string): ExtractedCodebaseString[];
+  isValidTranslatableText(text: string): boolean;
+}
+
+export declare class CodebaseScanner {
+  constructor(options?: ScannerOptions);
+  collectFiles(dir?: string): string[];
+  scanCodebase(): ExtractedCodebaseString[];
+  generateLangJson(
+    extractedStrings?: ExtractedCodebaseString[],
+    targetLanguages?: string[]
+  ): Promise<LangJsonManifest>;
+  writeManifest(manifest: LangJsonManifest, outputPath?: string): string;
+}
+
+export interface ServerRuntimeOptions {
+  manifestPath?: string;
+  initialManifest?: LangJsonManifest;
+  defaultLanguage?: string;
+  supportedLanguages?: string[];
+  autoPersistMissing?: boolean;
+}
+
+export declare class ServerTranslateRuntime {
+  constructor(options?: ServerRuntimeOptions);
+  loadManifest(filePath: string): boolean;
+  getManifest(): LangJsonManifest | null;
+  setManifest(manifest: LangJsonManifest): void;
+  translateHtml(rawHtml: string, targetLang: string): string;
+  persistCorrection(
+    sourceText: string,
+    targetLang: string,
+    correctedTranslation: string,
+    editedBy?: string
+  ): boolean;
+  createMiddleware(): (req: any, res: any, next: () => void) => void;
+}
+`;
+
+fs.writeFileSync(path.join(distDir, 'server.d.ts'), serverDtsContent);
+
 // Copy README and LICENSE
 if (fs.existsSync('README.md')) {
   fs.copyFileSync('README.md', path.join(pkgDir, 'README.md'));
@@ -166,4 +281,4 @@ if (fs.existsSync('LICENSE')) {
   fs.copyFileSync('LICENSE', path.join(pkgDir, 'LICENSE'));
 }
 
-console.log('✅ Package build complete in pkg/dist (ESM, CJS, IIFE, and Types)');
+console.log('✅ Package build complete in pkg/dist (Client, Server, ESM, CJS, and Types)');

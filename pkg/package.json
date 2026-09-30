@@ -1,7 +1,7 @@
 {
   "name": "@nexuss0781/langjs",
-  "version": "1.0.2",
-  "description": "Zero-config client-side internationalization SDK and dynamic 100+ language translation engine for modern web applications",
+  "version": "1.1.0",
+  "description": "Zero-config client-side internationalization SDK and dynamic 100+ language translation engine for modern web applications, with server-side codebase scanner and universal HTML runtime",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -12,6 +12,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js",
+      "require": "./dist/server.cjs"
     }
   },
   "files": [
@@ -19,6 +24,9 @@
     "README.md",
     "LICENSE"
   ],
+  "bin": {
+    "langjs-scan": "./dist/server.cjs"
+  },
   "keywords": [
     "i18n",
     "internationalization",
@@ -28,7 +36,9 @@
     "langjs",
     "dom-crawler",
     "multilingual",
-    "react-i18n"
+    "react-i18n",
+    "ssr-i18n",
+    "server-translate"
   ],
   "author": "nexuss0781 <nexuss0781@gmail.com>",
   "license": "MIT",
