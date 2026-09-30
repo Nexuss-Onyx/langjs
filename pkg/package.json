@@ -1,0 +1,41 @@
+{
+  "name": "langjs-sdk",
+  "version": "1.0.0",
+  "description": "Zero-config client-side internationalization SDK and dynamic 100+ language translation engine for modern web applications",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "localization",
+    "translation",
+    "google-translate",
+    "langjs",
+    "dom-crawler",
+    "multilingual"
+  ],
+  "author": "nexuss0781 <nexuss0781@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nexuss-Onyx/langjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nexuss-Onyx/langjs/issues"
+  },
+  "homepage": "https://github.com/Nexuss-Onyx/langjs#readme"
+}
