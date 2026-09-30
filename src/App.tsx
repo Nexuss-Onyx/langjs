@@ -10,7 +10,6 @@ import { PerformanceComparison } from './components/PerformanceComparison';
 import { FaqSection } from './components/FaqSection';
 import { CtaSection } from './components/CtaSection';
 import { Footer } from './components/Footer';
-import { FloatingLangEngineBar } from './components/FloatingLangEngineBar';
 import { GitHubPushModal } from './components/GitHubPushModal';
 import { DocsPage } from './docs/DocsPage';
 
@@ -18,9 +17,6 @@ export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'docs'>('home');
   const [currentLang, setCurrentLang] = useState<string>('en');
   const [gitHubModalOpen, setGitHubModalOpen] = useState(false);
-  const [totalNodes, setTotalNodes] = useState<number>(148);
-  const [isTranslating, setIsTranslating] = useState<boolean>(false);
-  const [latencyMs, setLatencyMs] = useState<number>(8);
   const langInstanceRef = useRef<LangJS | null>(null);
 
   // Check URL pathname or hash on load
@@ -102,15 +98,10 @@ export default function App() {
     langInstanceRef.current = sdk;
 
     // Initial scan
-    const tracked = sdk.scan();
-    setTotalNodes(tracked.size || 148);
+    sdk.scan();
 
-    sdk.on('languageChanging', () => setIsTranslating(true));
     sdk.on('languageChanged', (evt) => {
-      setIsTranslating(false);
       setCurrentLang(evt.language);
-      if (evt.totalNodes) setTotalNodes(evt.totalNodes);
-      if (evt.latencyMs) setLatencyMs(evt.latencyMs);
     });
 
     return () => {
@@ -122,19 +113,6 @@ export default function App() {
     setCurrentLang(langCode);
     if (langInstanceRef.current) {
       await langInstanceRef.current.setLanguage(langCode);
-    }
-  };
-
-  const handleToggleHighlight = () => {
-    if (langInstanceRef.current) {
-      return langInstanceRef.current.toggleHighlight();
-    }
-    return false;
-  };
-
-  const handleDownloadManifest = () => {
-    if (langInstanceRef.current) {
-      langInstanceRef.current.downloadJson('landing-page-manifest.json');
     }
   };
 
@@ -189,17 +167,6 @@ export default function App() {
         currentLang={currentLang as any}
         onLanguageChange={handleLanguageChange}
         onNavigateToDocs={() => navigateTo('docs')}
-      />
-
-      {/* Floating Live LangJS Engine Status & 100+ Selector Bar */}
-      <FloatingLangEngineBar
-        currentLang={currentLang}
-        onLanguageChange={handleLanguageChange}
-        onToggleHighlight={handleToggleHighlight}
-        onDownloadManifest={handleDownloadManifest}
-        totalTrackedNodes={totalNodes}
-        isTranslating={isTranslating}
-        latencyMs={latencyMs}
       />
 
       {/* GitHub Repository Push Modal */}
