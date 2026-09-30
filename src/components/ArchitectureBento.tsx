@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Cpu, FileJson, Layers, Compass, Check, Copy } from 'lucide-react';
+import bentoNeuralImg from '../assets/images/bento_dom_neural_network_1790761611142.jpg';
 
 export const ArchitectureBento: React.FC = () => {
   const [copiedSnippet, setCopiedSnippet] = useState(false);
@@ -61,7 +62,7 @@ export const ArchitectureBento: React.FC = () => {
 
               <div className="relative overflow-hidden rounded-xl border border-[var(--border-color)] bg-[#1a1410] lg:col-span-5 aspect-[4/3] shadow-inner">
                 <img
-                  src="/src/assets/images/bento_dom_neural_network_1790761611142.jpg"
+                  src={bentoNeuralImg}
                   alt="DOM TreeWalker Architecture"
                   className="h-full w-full object-cover opacity-90"
                 />
