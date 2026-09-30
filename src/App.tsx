@@ -149,7 +149,7 @@ export default function App() {
 
   // Welcoming Landing Page
   return (
-    <div className="min-h-screen bg-[#090205] text-[#f6efe2] selection:bg-[#9e1b32] selection:text-white">
+    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)] selection:bg-[#9e1b32] selection:text-white transition-colors duration-300">
       {/* Navigation Bar */}
       <Navbar
         currentLang={currentLang as any}
