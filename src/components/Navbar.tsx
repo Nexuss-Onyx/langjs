@@ -150,13 +150,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Github className="h-4 w-4 text-rose-400" />
           </a>
 
-          {/* Prominent Burgundy View Documentation CTA */}
+          {/* Prominent Burgundy View Documentation CTA: Icon-only on mobile, full label on desktop */}
           <button
             onClick={onNavigateToDocs}
-            className="luxury-button-primary flex items-center gap-1.5 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="luxury-button-primary flex items-center justify-center gap-1.5 rounded-lg p-2 sm:px-4 sm:py-2 text-xs font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+            title="View Documentation"
+            aria-label="View Documentation"
           >
-            <BookOpen className="h-3.5 w-3.5 text-white/90" />
-            <span>View Documentation</span>
+            <BookOpen className="h-4 w-4 text-white shrink-0" />
+            <span className="hidden sm:inline">View Documentation</span>
           </button>
 
           {/* Mobile Menu Toggle */}
