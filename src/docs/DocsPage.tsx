@@ -20,7 +20,8 @@ import {
   FileJson, 
   ExternalLink,
   Layers,
-  X
+  X,
+  Menu
 } from 'lucide-react';
 
 interface DocsPageProps {
@@ -39,6 +40,7 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [collapsedCategories, setCollapsedCategories] = useState<Record<string, boolean>>({});
   const [activeTab, setActiveTab] = useState<'npm' | 'pnpm' | 'yarn' | 'bun'>('npm');
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   // Handle URL hash sync or initial ID
   useEffect(() => {
@@ -158,10 +160,18 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
         </div>
 
         {/* Right: Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+            className="flex md:hidden items-center justify-center rounded-lg border border-[#f6efe2]/15 bg-[#18040f] p-1.5 text-[#ebdcc9] hover:text-white"
+            aria-label="Toggle docs navigation"
+          >
+            {mobileSidebarOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+
           <button
             onClick={onBackToHome}
-            className="flex items-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#18040f] px-3 py-1.5 text-xs font-medium text-[#ebdcc9] hover:border-[#be185d] hover:text-white transition-colors"
+            className="flex items-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#18040f] px-2.5 sm:px-3 py-1.5 text-xs font-medium text-[#ebdcc9] hover:border-[#be185d] hover:text-white transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5 text-rose-400" />
             <span className="hidden sm:inline">Back to Showcase</span>
@@ -190,6 +200,55 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
           </a>
         </div>
       </header>
+
+      {/* Mobile Sidebar Navigation Drawer */}
+      {mobileSidebarOpen && (
+        <div className="md:hidden border-b border-[#f6efe2]/15 bg-[#11030c]/98 p-4 shadow-2xl backdrop-blur-3xl z-30 max-h-[70vh] overflow-y-auto custom-scrollbar animate-in slide-in-from-top-2">
+          {/* Quick Filter Input */}
+          <div className="relative mb-4">
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#ebdcc9]/40" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search documentation..."
+              className="w-full rounded-xl border border-[#f6efe2]/15 bg-[#18040f] py-1.5 pl-8 pr-7 text-xs text-[#fdfbf7] placeholder:text-[#ebdcc9]/30 focus:border-[#be185d] focus:outline-none"
+            />
+          </div>
+
+          <div className="space-y-4">
+            {DOC_CATEGORIES.map((category) => (
+              <div key={category.id} className="space-y-1">
+                <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-[#cbb89e]/60">
+                  {category.title}
+                </div>
+                {category.items.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setActiveDocId(item.id);
+                      setMobileSidebarOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className={`flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-xs transition-colors ${
+                      item.id === activeDocId
+                        ? 'bg-[#9e1b32]/40 text-white font-semibold border border-[#be185d]/40'
+                        : 'text-[#ebdcc9]/70 hover:bg-[#1a0510] hover:text-white'
+                    }`}
+                  >
+                    <span className="truncate">{item.title}</span>
+                    {item.badge && (
+                      <span className={`ml-2 rounded border px-1.5 py-0.2 text-[9px] font-mono-code font-bold uppercase ${getBadgeStyle(item.badgeType)}`}>
+                        {item.badge}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Docs Body Layout */}
       <div className="flex-1 flex max-w-7xl mx-auto w-full">
