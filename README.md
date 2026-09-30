@@ -5,7 +5,6 @@
 **The zero-config, client-side internationalization SDK and dynamic 100+ language translation engine for modern web applications.**
 
 [![npm version](https://img.shields.io/npm/v/@nexuss0781/langjs.svg?style=flat-square&color=9e1b32)](https://www.npmjs.com/package/@nexuss0781/langjs)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/@nexuss0781/langjs?style=flat-square&color=emerald)](https://bundlephobia.com/package/@nexuss0781/langjs)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![dependencies](https://img.shields.io/badge/dependencies-0-success?style=flat-square)](package.json)
 [![demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-rose?style=flat-square&logo=github)](https://nexuss-onyx.github.io/langjs/)
