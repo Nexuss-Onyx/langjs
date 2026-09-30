@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Globe, ChevronDown, Check, Search, Github, BookOpen, Menu, X, Sun, Moon } from 'lucide-react';
+import { ChevronDown, Check, Search, Github, BookOpen, Menu, X } from 'lucide-react';
 import { ALL_100_LANGUAGES } from '../data/languages-100';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
-import { useTheme } from '../context/ThemeContext';
 
 interface NavbarProps {
   currentLang: SupportedLanguage;
@@ -14,10 +13,8 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   currentLang,
   onLanguageChange,
-  onOpenGitHub,
   onNavigateToDocs,
 }) => {
-  const { theme, toggleTheme } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -79,27 +76,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
         </nav>
 
-        {/* Action Controls: Theme Switcher + Language Dropdown + Docs CTA */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5">
-          {/* Theme Toggle (Dark Obsidian <-> Warm Cream) */}
-          <button
-            onClick={toggleTheme}
-            className="flex items-center justify-center rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] p-1.5 sm:p-2 text-[var(--text-secondary)] hover:text-[var(--text-hero)] hover:border-[var(--border-hover)] transition-colors"
-            aria-label="Toggle Theme"
-            title={theme === 'dark' ? 'Switch to Warm Cream Mode' : 'Switch to Obsidian Black Mode'}
-          >
-            {theme === 'dark' ? (
-              <Sun className="h-4 w-4 text-amber-300" />
-            ) : (
-              <Moon className="h-4 w-4 text-rose-900" />
-            )}
-          </button>
-
+        {/* Action Controls: Language Dropdown + Prominent Burgundy Docs CTA */}
+        <div className="flex items-center gap-1.5 sm:gap-3">
           {/* Visual Flag / Language Switcher */}
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] px-2 sm:px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] backdrop-blur-md transition-all hover:border-[var(--border-hover)]"
+              className="flex items-center gap-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] px-2 sm:px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] backdrop-blur-md transition-all hover:border-[var(--border-hover)] hover:bg-[var(--bg-card-hover)]"
               aria-label="Select Language"
             >
               <span className="text-sm">{activeLangInfo.flag}</span>
@@ -138,7 +121,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       }}
                       className={`flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-xs transition-colors ${
                         currentLang === lang.code
-                          ? 'bg-rose-900/30 text-[var(--text-hero)] font-semibold'
+                          ? 'bg-[#9e1b32]/40 text-[var(--text-hero)] font-semibold'
                           : 'text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)] hover:text-[var(--text-hero)]'
                       }`}
                     >
@@ -147,7 +130,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <span className="truncate">{lang.name} ({lang.nativeName})</span>
                       </span>
                       {currentLang === lang.code && (
-                        <Check className="h-3.5 w-3.5 text-rose-500" />
+                        <Check className="h-3.5 w-3.5 text-[#e11d48]" />
                       )}
                     </button>
                   ))}
@@ -167,13 +150,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Github className="h-4 w-4 text-rose-400" />
           </a>
 
-          {/* Primary Action: View Docs */}
+          {/* Prominent Burgundy View Documentation CTA */}
           <button
             onClick={onNavigateToDocs}
-            className="luxury-button-primary flex items-center gap-1.5 rounded-lg px-2.5 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="luxury-button-primary flex items-center gap-1.5 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            <BookOpen className="h-3.5 w-3.5 opacity-90" />
-            <span>Docs</span>
+            <BookOpen className="h-3.5 w-3.5 text-white/90" />
+            <span>View Documentation</span>
           </button>
 
           {/* Mobile Menu Toggle */}
