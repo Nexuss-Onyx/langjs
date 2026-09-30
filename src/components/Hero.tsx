@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import { Sparkles, Terminal, Copy, Check, ArrowRight, Play, Cpu, Zap, FileCode2 } from 'lucide-react';
+import { Sparkles, Terminal, Copy, Check, ArrowRight, Play, Cpu, Zap, FileCode2, BookOpen } from 'lucide-react';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
 interface HeroProps {
   currentLang: SupportedLanguage;
   onOpenEarlyAccess: () => void;
   onScrollToSandbox: () => void;
+  onNavigateToDocs?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   currentLang,
   onOpenEarlyAccess,
   onScrollToSandbox,
+  onNavigateToDocs,
 }) => {
   const [copied, setCopied] = useState(false);
   const [installMethod, setInstallMethod] = useState<'npm' | 'cdn'>('npm');
 
   const t = (key: string) => DICTIONARY[key]?.[currentLang] || DICTIONARY[key]?.['en'] || key;
 
-  const npmCommand = 'npm install langjs';
-  const cdnCommand = '<script src="https://cdn.jsdelivr.net/npm/langjs/dist/lang.min.js"></script>';
+  const npmCommand = 'npm install @nexuss0781/langjs';
+  const cdnCommand = '<script src="https://cdn.jsdelivr.net/npm/@nexuss0781/langjs/dist/lang.min.js"></script>';
 
   const handleCopy = () => {
     const textToCopy = installMethod === 'npm' ? npmCommand : cdnCommand;
@@ -72,6 +74,16 @@ export const Hero: React.FC<HeroProps> = ({
             <span>{t('hero_cta_primary')}</span>
             <ArrowRight className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-1" />
           </button>
+
+          {onNavigateToDocs && (
+            <button
+              onClick={onNavigateToDocs}
+              className="flex h-12 items-center justify-center gap-2 rounded-xl border border-rose-500/30 bg-[#280a18] px-7 text-sm font-semibold text-rose-200 transition-all hover:border-rose-400 hover:bg-[#380e22] hover:text-white"
+            >
+              <BookOpen className="h-4 w-4 text-rose-300" />
+              <span>Read Documentation</span>
+            </button>
+          )}
 
           <button
             onClick={onOpenEarlyAccess}
@@ -138,129 +150,90 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
         </div>
 
-        {/* Hero Interactive Media & Architecture Showcase Card */}
-        <div className="relative mx-auto mt-16 max-w-5xl">
-          <div className="relative rounded-2xl border border-[#f6efe2]/15 bg-[#15040d]/90 p-4 shadow-2xl shadow-black/90 backdrop-blur-2xl sm:p-6 lg:p-8">
-            {/* Header simulated browser bar */}
-            <div className="flex items-center justify-between border-b border-[#f6efe2]/10 pb-4">
+        {/* Hero Visual: Neural Translation Glass Globe & Matrix Preview */}
+        <div className="relative mt-16 lg:mt-24">
+          <div className="relative mx-auto max-w-5xl rounded-2xl border border-[#f6efe2]/15 bg-[#14050d]/80 p-3 shadow-2xl backdrop-blur-2xl ring-1 ring-white/10">
+            {/* Window control bar */}
+            <div className="flex items-center justify-between border-b border-[#f6efe2]/10 px-4 py-3">
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-rose-500/80" />
-                <div className="h-3 w-3 rounded-full bg-amber-500/80" />
-                <div className="h-3 w-3 rounded-full bg-emerald-500/80" />
-                <span className="ml-3 font-mono-code text-xs text-[#ebdcc9]/60">
-                  langjs-runtime · live dom mutation observer
+                <div className="h-3 w-3 rounded-full bg-[#e11d48]/80" />
+                <div className="h-3 w-3 rounded-full bg-[#fbbf24]/80" />
+                <div className="h-3 w-3 rounded-full bg-[#10b981]/80" />
+                <span className="ml-2 font-mono-code text-xs text-[#ebdcc9]/50">
+                  langjs-core.runtime.wasm — active 100+ locales
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-[#ebdcc9]/80 font-mono-code">
-                <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                <span>ACTIVE ENGINE: Google Translate Neural v2</span>
+              <div className="flex items-center gap-3 text-xs text-[#ebdcc9]/70">
+                <span className="flex items-center gap-1 font-mono-code text-emerald-400">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+                  Neural Online
+                </span>
               </div>
             </div>
 
-            {/* Split layout inside hero window */}
-            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center">
-              {/* Left Column: Glass Globe Visual */}
-              <div className="relative overflow-hidden rounded-xl border border-[#f6efe2]/10 bg-[#090205] lg:col-span-6 aspect-[16/10] group">
+            {/* Visual Glass Content */}
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 lg:p-6 overflow-hidden rounded-xl bg-gradient-to-b from-[#1c0712]/90 to-[#0c0207]/90">
+              {/* Left Column: Metrics & Architecture Stats */}
+              <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-rose-400 text-xs font-semibold uppercase tracking-wider">
+                    <Cpu className="h-4 w-4" />
+                    <span>DOM-Level Neural Pipeline</span>
+                  </div>
+                  <h3 className="font-serif-luxury text-2xl font-bold text-[#fdfbf7]">
+                    Translates 100% of visible nodes in &lt;10ms
+                  </h3>
+                  <p className="text-xs text-[#ebdcc9]/75 leading-relaxed">
+                    Langjs crawls your runtime DOM with zero virtual-DOM conflicts, replacing textual nodes, attributes, placeholders, and tooltips instantly in-place.
+                  </p>
+                </div>
+
+                {/* Micro Metric Cards */}
+                <div className="grid grid-cols-2 gap-3 pt-2">
+                  <div className="rounded-xl border border-[#f6efe2]/10 bg-[#250817]/60 p-3">
+                    <div className="flex items-center gap-1.5 text-xs text-[#ebdcc9]/70">
+                      <Zap className="h-3.5 w-3.5 text-amber-400" />
+                      <span>Latency</span>
+                    </div>
+                    <div className="mt-1 font-mono-code text-xl font-bold text-[#fdfbf7]">
+                      8.4ms
+                    </div>
+                    <div className="text-[10px] text-emerald-400">Sub-frame render</div>
+                  </div>
+
+                  <div className="rounded-xl border border-[#f6efe2]/10 bg-[#250817]/60 p-3">
+                    <div className="flex items-center gap-1.5 text-xs text-[#ebdcc9]/70">
+                      <FileCode2 className="h-3.5 w-3.5 text-rose-400" />
+                      <span>Bundle Size</span>
+                    </div>
+                    <div className="mt-1 font-mono-code text-xl font-bold text-[#fdfbf7]">
+                      &lt;2.8 KB
+                    </div>
+                    <div className="text-[10px] text-rose-300">Zero dependencies</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Hero Visual Globe Graphic */}
+              <div className="lg:col-span-7 relative flex items-center justify-center min-h-[260px] rounded-xl border border-[#f6efe2]/10 bg-[#090205] overflow-hidden">
                 <img
                   src="/src/assets/images/hero_langjs_globe_glass_1790761598623.jpg"
-                  alt="Langjs multi-lingual neural globe"
-                  referrerPolicy="no-referrer"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  alt="Langjs Globe Glass Architecture"
+                  className="absolute inset-0 w-full h-full object-cover opacity-85 hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#090205]/90 via-transparent to-transparent" />
-                
-                {/* Visual overlay tag */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-lg border border-[#f6efe2]/10 bg-[#16040d]/80 px-3 py-2 backdrop-blur-md">
-                  <div className="flex items-center gap-2 text-xs text-[#fdfbf7]">
-                    <Cpu className="h-3.5 w-3.5 text-[#e11d48]" />
-                    <span>Real-time Text Node TreeWalker</span>
-                  </div>
-                  <span className="font-mono-code text-[11px] text-emerald-400">0.08ms latency</span>
-                </div>
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#090205] via-transparent to-[#090205]/40" />
 
-              {/* Right Column: Key Capability Highlights */}
-              <div className="space-y-4 lg:col-span-6">
-                <div className="rounded-xl border border-[#f6efe2]/10 bg-[#1e0712]/50 p-4 transition-all hover:border-[#be185d]/40">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#9e1b32]/30 text-[#e11d48]">
-                      <Zap className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-[#fdfbf7]">
-                        {t('hero_stats_nodes')}
-                      </h4>
-                      <p className="mt-1 text-xs leading-relaxed text-[#ebdcc9]/75">
-                        Detects all visible text, paragraphs, buttons, placeholders, and tooltips automatically with deterministic token classes.
-                      </p>
-                    </div>
+                <div className="relative z-10 text-center p-4">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-rose-400/30 bg-[#350b1f]/80 px-3.5 py-1 text-xs font-medium text-rose-200 backdrop-blur-md">
+                    <Sparkles className="h-3.5 w-3.5 text-rose-300" />
+                    <span>Active Global Mesh</span>
                   </div>
-                </div>
-
-                <div className="rounded-xl border border-[#f6efe2]/10 bg-[#1e0712]/50 p-4 transition-all hover:border-[#be185d]/40">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#be185d]/30 text-rose-300">
-                      <Sparkles className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-[#fdfbf7]">
-                        {t('hero_stats_speed')}
-                      </h4>
-                      <p className="mt-1 text-xs leading-relaxed text-[#ebdcc9]/75">
-                        Translates DOM nodes directly without full page reload or layout shift. Edge cached for instantaneous re-renders.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-xl border border-[#f6efe2]/10 bg-[#1e0712]/50 p-4 transition-all hover:border-[#be185d]/40">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-900/30 text-amber-300">
-                      <FileCode2 className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-[#fdfbf7]">
-                        {t('hero_stats_override')}
-                      </h4>
-                      <p className="mt-1 text-xs leading-relaxed text-[#ebdcc9]/75">
-                        Easily override automated translations with hand-crafted JSON dictionary files per language whenever needed.
-                      </p>
-                    </div>
+                  <div className="mt-2 font-mono-code text-xs text-[#ebdcc9]/90">
+                    100+ Auto-Detected Real-Time Dialects
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Social Proof & Metrics Strip (Claim-to-Proof Adjacency) */}
-        <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-4 text-center sm:grid-cols-4">
-          <div className="rounded-xl border border-[#f6efe2]/10 bg-[#16040d]/40 p-4 backdrop-blur-md">
-            <div className="font-serif-luxury text-3xl font-bold text-[#fdfbf7] tabular-nums sm:text-4xl">
-              &lt; 0.8<span className="text-xs font-normal text-[#e11d48]">KB</span>
-            </div>
-            <div className="mt-1 text-xs font-medium text-[#ebdcc9]/70">Gzipped Runtime</div>
-          </div>
-
-          <div className="rounded-xl border border-[#f6efe2]/10 bg-[#16040d]/40 p-4 backdrop-blur-md">
-            <div className="font-serif-luxury text-3xl font-bold text-[#fdfbf7] tabular-nums sm:text-4xl">
-              100<span className="text-xs font-normal text-[#e11d48]">+</span>
-            </div>
-            <div className="mt-1 text-xs font-medium text-[#ebdcc9]/70">Global Languages</div>
-          </div>
-
-          <div className="rounded-xl border border-[#f6efe2]/10 bg-[#16040d]/40 p-4 backdrop-blur-md">
-            <div className="font-serif-luxury text-3xl font-bold text-[#fdfbf7] tabular-nums sm:text-4xl">
-              0<span className="text-xs font-normal text-[#e11d48]">ms</span>
-            </div>
-            <div className="mt-1 text-xs font-medium text-[#ebdcc9]/70">Build Step Setup</div>
-          </div>
-
-          <div className="rounded-xl border border-[#f6efe2]/10 bg-[#16040d]/40 p-4 backdrop-blur-md">
-            <div className="font-serif-luxury text-3xl font-bold text-[#fdfbf7] tabular-nums sm:text-4xl">
-              100<span className="text-xs font-normal text-[#e11d48]">%</span>
-            </div>
-            <div className="mt-1 text-xs font-medium text-[#ebdcc9]/70">HTML / SPA Compatibility</div>
           </div>
         </div>
       </div>

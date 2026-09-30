@@ -5,9 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { LiveInteractiveDemo } from './components/LiveInteractiveDemo';
 import { LanguageGrid } from './components/LanguageGrid';
-import { SdkWorkbench } from './components/SdkWorkbench';
 import { ArchitectureBento } from './components/ArchitectureBento';
-import { CodePlayground } from './components/CodePlayground';
 import { SwitcherCustomizer } from './components/SwitcherCustomizer';
 import { PerformanceComparison } from './components/PerformanceComparison';
 import { FaqSection } from './components/FaqSection';
@@ -16,8 +14,10 @@ import { Footer } from './components/Footer';
 import { EarlyAccessModal } from './components/EarlyAccessModal';
 import { FloatingLangEngineBar } from './components/FloatingLangEngineBar';
 import { GitHubPushModal } from './components/GitHubPushModal';
+import { DocsPage } from './docs/DocsPage';
 
 export default function App() {
+  const [currentView, setCurrentView] = useState<'home' | 'docs'>('home');
   const [currentLang, setCurrentLang] = useState<string>('en');
   const [modalOpen, setModalOpen] = useState(false);
   const [gitHubModalOpen, setGitHubModalOpen] = useState(false);
@@ -26,12 +26,41 @@ export default function App() {
   const [latencyMs, setLatencyMs] = useState<number>(8);
   const langInstanceRef = useRef<LangJS | null>(null);
 
-  // Initialize global LangJS library to translate the entire landing page DOM
+  // Check URL pathname or hash on load
   useEffect(() => {
+    const syncRoute = () => {
+      const path = window.location.pathname;
+      const hash = window.location.hash;
+      if (path === '/docs' || path.startsWith('/docs') || hash === '#docs' || hash.startsWith('#docs')) {
+        setCurrentView('docs');
+      } else {
+        setCurrentView('home');
+      }
+    };
+
+    syncRoute();
+    window.addEventListener('popstate', syncRoute);
+    return () => window.removeEventListener('popstate', syncRoute);
+  }, []);
+
+  const navigateTo = (view: 'home' | 'docs') => {
+    setCurrentView(view);
+    if (view === 'docs') {
+      window.history.pushState(null, '', '/docs');
+    } else {
+      window.history.pushState(null, '', '/');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Initialize global LangJS library on the landing page
+  useEffect(() => {
+    if (currentView !== 'home') return;
+
     const sdk = new LangJS({
       root: document.body,
       defaultLanguage: 'en',
-      currentLanguage: 'en',
+      currentLanguage: currentLang,
       languages: ALL_100_LANGUAGES.map((l) => l.code),
       autoRTL: true,
       overrides: {
@@ -74,37 +103,13 @@ export default function App() {
           'Get Started': 'ابدأ الآن',
           'Architecture': 'البنية الهندسية',
           'Live Sandbox': 'تجربة حية',
-        },
-        zh: {
-          'Turn Any Static Website': '将任何静态网站',
-          'into Multi-Lingual in Seconds': '数秒内转化为多语言站点',
-          'Quick Install': '极速安装',
-          'Get Started': '立即体验',
-          'Architecture': '核心架构',
-          'Live Sandbox': '在线演示',
-        },
-        ru: {
-          'Turn Any Static Website': 'Превратите любой статический сайт',
-          'into Multi-Lingual in Seconds': 'в многоязычный за считанные секунды',
-          'Quick Install': 'Быстрая установка',
-          'Get Started': 'Начать',
-          'Architecture': 'Архитектура',
-          'Live Sandbox': 'Интерактивная песочница',
-        },
-        hi: {
-          'Turn Any Static Website': 'किसी भी स्टेटिक वेबसाइट को',
-          'into Multi-Lingual in Seconds': 'सेकंडों में बहुभाषी बनाएं',
-          'Quick Install': 'त्वरित स्थापना',
-          'Get Started': 'शुरू करें',
-          'Architecture': 'संरचना',
-          'Live Sandbox': 'लाइव डेमो',
         }
       },
     });
 
     langInstanceRef.current = sdk;
 
-    // Scan the live landing page DOM
+    // Initial scan
     const tracked = sdk.scan();
     setTotalNodes(tracked.size || 148);
 
@@ -119,7 +124,7 @@ export default function App() {
     return () => {
       sdk.destroy();
     };
-  }, []);
+  }, [currentView]);
 
   const handleLanguageChange = async (langCode: string) => {
     setCurrentLang(langCode);
@@ -148,6 +153,16 @@ export default function App() {
     }
   };
 
+  // If on Documentation view, render dedicated DocsPage
+  if (currentView === 'docs') {
+    return (
+      <DocsPage
+        onBackToHome={() => navigateTo('home')}
+      />
+    );
+  }
+
+  // Welcoming Landing Page
   return (
     <div className="min-h-screen bg-[#090205] text-[#f6efe2] selection:bg-[#9e1b32] selection:text-white">
       {/* Navigation Bar */}
@@ -156,14 +171,16 @@ export default function App() {
         onLanguageChange={handleLanguageChange}
         onOpenEarlyAccess={() => setModalOpen(true)}
         onOpenGitHub={() => setGitHubModalOpen(true)}
+        onNavigateToDocs={() => navigateTo('docs')}
       />
 
       <main>
-        {/* Hero Section with Burgundy Ambient Light & Visual Globe */}
+        {/* Welcoming Hero Section with Burgundy Ambient Light & Visual Globe */}
         <Hero
           currentLang={currentLang as any}
           onOpenEarlyAccess={() => setModalOpen(true)}
           onScrollToSandbox={scrollToSandbox}
+          onNavigateToDocs={() => navigateTo('docs')}
         />
 
         {/* Live Interactive Sandbox */}
@@ -172,14 +189,8 @@ export default function App() {
         {/* 100+ Global Languages Catalog & Search */}
         <LanguageGrid onSelectLanguage={handleLanguageChange} activeLanguage={currentLang} />
 
-        {/* Live SDK Engine & Manifest Workbench */}
-        <SdkWorkbench />
-
         {/* Architecture & Asymmetric Bento Grid */}
         <ArchitectureBento />
-
-        {/* JavaScript API & Interactive Code Playground */}
-        <CodePlayground />
 
         {/* Switcher Button Customizer & Live Generator */}
         <SwitcherCustomizer />
@@ -198,6 +209,7 @@ export default function App() {
       <Footer
         currentLang={currentLang as any}
         onLanguageChange={handleLanguageChange}
+        onNavigateToDocs={() => navigateTo('docs')}
       />
 
       {/* Floating Live LangJS Engine Status & 100+ Selector Bar */}

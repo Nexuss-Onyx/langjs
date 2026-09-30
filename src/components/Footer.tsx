@@ -1,13 +1,15 @@
 import React from 'react';
-import { Globe, Github, Twitter, BookOpen, Shield } from 'lucide-react';
-import { LANGUAGES, SupportedLanguage } from '../data/translations';
+import { Globe, Github, Package, BookOpen, Sparkles } from 'lucide-react';
+import { ALL_100_LANGUAGES } from '../data/languages-100';
+import { SupportedLanguage } from '../data/translations';
 
 interface FooterProps {
   currentLang: SupportedLanguage;
   onLanguageChange: (lang: SupportedLanguage) => void;
+  onNavigateToDocs?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ currentLang, onLanguageChange }) => {
+export const Footer: React.FC<FooterProps> = ({ currentLang, onLanguageChange, onNavigateToDocs }) => {
   return (
     <footer className="border-t border-[#f6efe2]/10 bg-[#070104] py-14 text-xs text-[#ebdcc9]/70">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -26,49 +28,51 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onLanguageChange })
               </span>
             </a>
             <p className="mt-4 max-w-md text-xs leading-relaxed text-[#ebdcc9]/70">
-              The high-performance client-side translation engine that dynamically converts static websites and single page apps into multilingual experiences using Google Translate Neural API and custom JSON overrides.
+              The high-performance client-side internationalization SDK and dynamic translation engine that powers 100+ languages in modern web applications without build-step key friction.
             </p>
             <div className="mt-6 flex items-center gap-4 text-[#ebdcc9]/60">
               <a
-                href="https://github.com"
+                href="https://github.com/Nexuss-Onyx/langjs"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-1.5 transition-colors hover:text-[#fdfbf7]"
               >
-                <Github className="h-4 w-4" />
+                <Github className="h-4 w-4 text-rose-400" />
                 <span>GitHub</span>
               </a>
               <span>·</span>
               <a
-                href="https://twitter.com"
+                href="https://www.npmjs.com/package/@nexuss0781/langjs"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-1.5 transition-colors hover:text-[#fdfbf7]"
               >
-                <Twitter className="h-4 w-4" />
-                <span>Community</span>
+                <Package className="h-4 w-4 text-rose-400" />
+                <span>NPM Package</span>
               </a>
               <span>·</span>
-              <a
-                href="#api"
-                className="flex items-center gap-1.5 transition-colors hover:text-[#fdfbf7]"
-              >
-                <BookOpen className="h-4 w-4" />
-                <span>Documentation</span>
-              </a>
+              {onNavigateToDocs && (
+                <button
+                  onClick={onNavigateToDocs}
+                  className="flex items-center gap-1.5 transition-colors text-rose-300 hover:text-white"
+                >
+                  <BookOpen className="h-4 w-4" />
+                  <span>Documentation</span>
+                </button>
+              )}
             </div>
           </div>
 
           {/* Col 2: Navigation Links */}
           <div>
             <h4 className="font-semibold uppercase tracking-wider text-[#fdfbf7] text-[11px]">
-              Engine Architecture
+              Platform & Resources
             </h4>
             <ul className="mt-4 space-y-2.5">
               <li>
-                <a href="#architecture" className="hover:text-[#fdfbf7] transition-colors">
-                  DOM Text Crawler
-                </a>
+                <button onClick={onNavigateToDocs} className="hover:text-[#fdfbf7] transition-colors text-left text-rose-300">
+                  Documentation & Guides
+                </button>
               </li>
               <li>
                 <a href="#sandbox" className="hover:text-[#fdfbf7] transition-colors">
@@ -76,18 +80,18 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onLanguageChange })
                 </a>
               </li>
               <li>
-                <a href="#api" className="hover:text-[#fdfbf7] transition-colors">
-                  JavaScript API
+                <a href="#languages" className="hover:text-[#fdfbf7] transition-colors">
+                  100+ Global Languages
                 </a>
               </li>
               <li>
-                <a href="#overrides" className="hover:text-[#fdfbf7] transition-colors">
-                  Custom JSON Overrides
+                <a href="#architecture" className="hover:text-[#fdfbf7] transition-colors">
+                  DOM TreeWalker Architecture
                 </a>
               </li>
               <li>
                 <a href="#benchmarks" className="hover:text-[#fdfbf7] transition-colors">
-                  Performance Metrics
+                  Latency Benchmarks
                 </a>
               </li>
             </ul>
@@ -99,35 +103,32 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onLanguageChange })
               Active Page Language
             </h4>
             <div className="mt-4 flex flex-wrap gap-1.5">
-              {LANGUAGES.map((l) => (
+              {ALL_100_LANGUAGES.slice(0, 8).map((lang) => (
                 <button
-                  key={l.code}
-                  onClick={() => onLanguageChange(l.code)}
-                  className={`rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
-                    currentLang === l.code
-                      ? 'bg-[#9e1b32] text-white'
-                      : 'border border-[#f6efe2]/10 bg-[#14030d] text-[#ebdcc9]/70 hover:text-white'
+                  key={lang.code}
+                  onClick={() => onLanguageChange(lang.code as any)}
+                  className={`rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
+                    currentLang === lang.code
+                      ? 'border border-[#be185d] bg-[#9e1b32]/40 text-[#fdfbf7] shadow-sm'
+                      : 'border border-[#f6efe2]/10 bg-[#16040d] text-[#ebdcc9]/70 hover:border-[#f6efe2]/30 hover:text-[#fdfbf7]'
                   }`}
                 >
-                  <span className="mr-1">{l.flag}</span>
-                  <span>{l.name}</span>
+                  <span className="mr-1">{lang.flag}</span>
+                  <span>{lang.nativeName}</span>
                 </button>
               ))}
-            </div>
-            <div className="mt-6 flex items-center gap-1.5 text-[11px] text-[#ebdcc9]/50">
-              <Shield className="h-3.5 w-3.5 text-emerald-400" />
-              <span>MIT Licensed · Open Source SDK</span>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Subfooter */}
         <div className="mt-12 flex flex-col items-center justify-between border-t border-[#f6efe2]/10 pt-6 text-[11px] text-[#ebdcc9]/50 sm:flex-row">
-          <div>© 2026 Langjs Foundation. All rights reserved.</div>
-          <div className="mt-3 sm:mt-0 flex gap-4">
-            <a href="#" className="hover:underline">Privacy Policy</a>
-            <a href="#" className="hover:underline">Terms of Service</a>
-            <a href="#" className="hover:underline">Security</a>
+          <div>
+            © {new Date().getFullYear()} LangJS Architecture. Published under MIT License.
+          </div>
+          <div className="mt-2 sm:mt-0 flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <span className="text-emerald-400 font-mono-code">@nexuss0781/langjs@1.0.0</span>
           </div>
         </div>
       </div>

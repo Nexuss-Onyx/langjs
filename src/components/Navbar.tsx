@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe, ChevronDown, Check, Sparkles, Search, Github } from 'lucide-react';
+import { Globe, ChevronDown, Check, Sparkles, Search, Github, BookOpen } from 'lucide-react';
 import { ALL_100_LANGUAGES } from '../data/languages-100';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
@@ -8,6 +8,7 @@ interface NavbarProps {
   onLanguageChange: (lang: SupportedLanguage) => void;
   onOpenEarlyAccess: () => void;
   onOpenGitHub?: () => void;
+  onNavigateToDocs?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -15,6 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLanguageChange,
   onOpenEarlyAccess,
   onOpenGitHub,
+  onNavigateToDocs,
 }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -32,12 +34,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#f6efe2]/10 bg-[#090205]/85 backdrop-blur-xl transition-colors">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
-        {/* Zone 1: Single text element wordmark */}
+        {/* Zone 1: Wordmark */}
         <a
           href="#"
           className="group flex items-center gap-2.5 font-serif-luxury text-2xl font-bold tracking-tight text-[#fdfbf7] transition-all hover:text-[#ebdcc9]"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#9e1b32] to-[#4a0d24] text-sm text-[#fdfbf7] shadow-inner shadow-rose-400/20">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#9e1b32] to-[#4a0d24] text-sm text-[#fdfbf7] shadow-inner shadow-rose-400/20 group-hover:scale-105 transition-transform">
             L
           </span>
           <span className="tracking-tight">
@@ -45,14 +47,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </a>
 
-        {/* Zone 2: 4-5 clean text navigation links */}
+        {/* Zone 2: Navigation Links */}
         <nav className="hidden items-center gap-8 text-sm font-medium text-[#ebdcc9]/80 lg:flex">
-          <a
-            href="#architecture"
-            className="transition-colors hover:text-[#fdfbf7]"
-          >
-            {t('nav_architecture')}
-          </a>
           <a
             href="#sandbox"
             className="transition-colors hover:text-[#fdfbf7]"
@@ -67,20 +63,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>100+ Languages</span>
           </a>
           <a
-            href="#sdk-workbench"
+            href="#architecture"
             className="transition-colors hover:text-[#fdfbf7]"
           >
-            SDK & Manifest
+            {t('nav_architecture')}
           </a>
           <a
-            href="#api"
+            href="#benchmarks"
             className="transition-colors hover:text-[#fdfbf7]"
           >
-            {t('nav_api')}
+            Benchmarks
           </a>
+          <button
+            onClick={onNavigateToDocs}
+            className="flex items-center gap-1.5 font-semibold text-rose-300 hover:text-white transition-colors"
+          >
+            <BookOpen className="h-4 w-4" />
+            <span>Documentation</span>
+          </button>
         </nav>
 
-        {/* Zone 3: 1-2 primary actions + Interactive Language Switcher */}
+        {/* Zone 3: Actions + Interactive Language Switcher */}
         <div className="flex items-center gap-3">
           {/* Working Live Navbar Language Switcher */}
           <div className="relative">
@@ -116,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   />
                 </div>
 
-                <div className="max-h-56 overflow-y-auto space-y-0.5">
+                <div className="max-h-56 overflow-y-auto space-y-0.5 custom-scrollbar">
                   {filteredLanguages.slice(0, 40).map((lang) => (
                     <button
                       key={lang.code}
@@ -144,12 +147,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
+          {/* Docs Direct Button (Mobile & Desktop) */}
+          <button
+            onClick={onNavigateToDocs}
+            className="flex items-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#1a050f]/80 px-2.5 py-2 text-xs font-medium text-[#ebdcc9] transition-all hover:border-[#be185d] hover:text-white"
+            title="Read Documentation"
+          >
+            <BookOpen className="h-3.5 w-3.5 text-rose-300" />
+            <span className="hidden sm:inline">Docs</span>
+          </button>
+
           {/* GitHub Repo Button */}
           {onOpenGitHub && (
             <button
               onClick={onOpenGitHub}
               className="flex items-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#1a050f]/80 px-2.5 py-2 text-xs font-medium text-[#ebdcc9] transition-all hover:border-[#be185d] hover:text-white"
-              title="GitHub Repository & Push"
+              title="GitHub Repository"
             >
               <Github className="h-3.5 w-3.5 text-rose-300" />
               <span className="hidden sm:inline">GitHub</span>
@@ -169,4 +182,3 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
-
