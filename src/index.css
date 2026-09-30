@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #090205;
+    color: #f6efe2;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-luxury {
+    font-family: var(--font-serif);
+  }
+
+  code, pre, .font-mono-code {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom glow and luxury background utilities */
+.bg-radial-burgundy {
+  background: radial-gradient(circle at 50% 0%, rgba(110, 15, 38, 0.45) 0%, rgba(35, 6, 15, 0.6) 45%, rgba(9, 2, 5, 1) 85%);
+}
+
+.bg-burgundy-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(180, 24, 60, 0.22) 0%, rgba(110, 15, 38, 0.08) 50%, transparent 75%);
+}
+
+.luxury-card {
+  background: linear-gradient(180deg, rgba(32, 9, 18, 0.65) 0%, rgba(18, 4, 10, 0.8) 100%);
+  border: 1px solid rgba(246, 239, 226, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.luxury-card:hover {
+  border-color: rgba(225, 29, 72, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(158, 27, 50, 0.3);
+}
+
+.luxury-card-active {
+  border-color: rgba(246, 239, 226, 0.25);
+  box-shadow: 0 0 25px rgba(180, 24, 60, 0.25);
+}
+
+.luxury-button-primary {
+  background: linear-gradient(135deg, #a81c3b 0%, #780d27 100%);
+  box-shadow: 0 4px 20px rgba(168, 28, 59, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.luxury-button-primary:hover {
+  background: linear-gradient(135deg, #be2044 0%, #8c102e 100%);
+  box-shadow: 0 6px 28px rgba(190, 32, 68, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+
+.luxury-button-cream {
+  background: linear-gradient(180deg, #fdfbf7 0%, #ede3d1 100%);
+  color: #1a040b;
+  box-shadow: 0 4px 20px rgba(246, 239, 226, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.luxury-button-cream:hover {
+  background: #ffffff;
+  box-shadow: 0 6px 25px rgba(246, 239, 226, 0.35);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090205;
+}
+::-webkit-scrollbar-thumb {
+  background: #3b0b1c;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6e0f26;
+}
+
+/* Animated subtle light sweep */
+@keyframes subtle-sweep {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(200%) rotate(25deg); }
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Live LangJS DOM inspection indicator */
+.langjs-highlight-active .langjs-node {
+  outline: 1px solid rgba(225, 29, 72, 0.6) !important;
+  outline-offset: 2px;
+  background-color: rgba(158, 27, 50, 0.12) !important;
+  transition: all 0.2s ease;
+}
+
+.langjs-highlight-active .langjs-node:hover {
+  outline: 1.5px solid rgba(251, 113, 133, 0.9) !important;
+  background-color: rgba(158, 27, 50, 0.25) !important;
+}
+
