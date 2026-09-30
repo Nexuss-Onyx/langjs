@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe, ChevronDown, Check, Sparkles, Search, Github, BookOpen, Menu, X } from 'lucide-react';
+import { Globe, ChevronDown, Check, Search, Github, BookOpen, Menu, X, ArrowRight } from 'lucide-react';
 import { ALL_100_LANGUAGES } from '../data/languages-100';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#f6efe2]/10 bg-[#090205]/90 backdrop-blur-xl transition-colors">
+    <header className="sticky top-0 z-50 w-full border-b border-[#f6efe2]/10 bg-[#090205]/95 backdrop-blur-xl transition-colors">
       <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-12">
         {/* Zone 1: Wordmark */}
         <a
@@ -58,10 +58,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
           <a
             href="#languages"
-            className="transition-colors hover:text-[#fdfbf7] flex items-center gap-1.5"
+            className="transition-colors hover:text-[#fdfbf7]"
           >
-            <Globe className="h-3.5 w-3.5 text-[#e11d48]" />
-            <span>100+ Languages</span>
+            100+ Languages
           </a>
           <a
             href="#architecture"
@@ -103,9 +102,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="absolute right-0 mt-2 w-56 sm:w-64 max-w-[calc(100vw-2rem)] rounded-xl border border-[#f6efe2]/15 bg-[#16040d]/98 p-2 shadow-2xl shadow-black/90 backdrop-blur-2xl z-50">
                 <div className="flex items-center justify-between px-1 pb-2 border-b border-[#f6efe2]/10">
                   <span className="text-[10px] font-semibold uppercase tracking-wider text-[#cbb89e]/70">
-                    100+ Global Locales
+                    100+ Locales
                   </span>
-                  <span className="font-mono-code text-[9px] text-emerald-400">Google Translate</span>
+                  <span className="font-mono-code text-[9px] text-[#ebdcc9]/50">Google Translate</span>
                 </div>
 
                 <div className="relative mt-2 mb-1.5">
@@ -173,10 +172,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Primary CTA button */}
           <button
             onClick={onOpenEarlyAccess}
-            className="luxury-button-primary hidden xs:flex items-center gap-1.5 sm:gap-2 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-[#fdfbf7] transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="luxury-button-primary hidden xs:flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 sm:py-2 text-xs font-semibold text-[#fdfbf7] transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            <Sparkles className="h-3.5 w-3.5 text-rose-300" />
-            <span className="whitespace-nowrap">{t('nav_get_started')}</span>
+            <span>{t('nav_get_started')}</span>
+            <ArrowRight className="h-3.5 w-3.5 opacity-70" />
           </button>
 
           {/* Mobile Hamburger Toggle */}
@@ -206,10 +205,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-[#ebdcc9] hover:bg-[#250817] hover:text-white"
             >
-              <span className="flex items-center gap-2">
-                <Globe className="h-4 w-4 text-rose-400" />
-                <span>100+ Global Languages</span>
-              </span>
+              <span>100+ Global Languages</span>
             </a>
             <a
               href="#architecture"
@@ -257,7 +253,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
                 className="flex-1 luxury-button-primary flex items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-semibold text-white"
               >
-                <Sparkles className="h-3.5 w-3.5 text-rose-300" />
                 <span>{t('nav_get_started')}</span>
               </button>
             </div>

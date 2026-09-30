@@ -89,15 +89,14 @@ export const SwitcherCustomizer: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#f6efe2]/15 bg-[#1f0712] px-3.5 py-1 text-xs font-semibold text-[#ebdcc9]">
-            <Palette className="h-3.5 w-3.5 text-[#e11d48]" />
-            <span>Interactive Switcher Customizer</span>
+          <div className="text-xs font-mono-code text-rose-300 uppercase tracking-wider">
+            UI Customization
           </div>
-          <h2 className="mt-4 font-serif-luxury text-3xl font-bold tracking-tight text-[#fdfbf7] sm:text-5xl">
-            Style Your Switcher with a Few Lines
+          <h2 className="mt-3 font-serif-luxury text-3xl font-bold tracking-tight text-[#fdfbf7] sm:text-5xl">
+            Custom Switcher Components
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-[#ebdcc9]/80">
-            Design the translation trigger to match your exact brand aesthetic. Choose a preset or copy the vanilla CSS/JS snippet.
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-[#ebdcc9]/80">
+            Design translation triggers to match your exact brand aesthetic. Choose a preset or copy the standalone HTML/CSS snippet.
           </p>
         </div>
 

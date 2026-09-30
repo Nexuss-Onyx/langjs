@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Github, Package, BookOpen, Sparkles } from 'lucide-react';
+import { Globe, Github, Package, BookOpen } from 'lucide-react';
 import { ALL_100_LANGUAGES } from '../data/languages-100';
 import { SupportedLanguage } from '../data/translations';
 

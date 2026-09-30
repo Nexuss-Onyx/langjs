@@ -136,10 +136,10 @@ export const LanguageGrid: React.FC<LanguageGridProps> = ({ onSelectLanguage, ac
         {/* Footnote */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 rounded-xl border border-[#f6efe2]/10 bg-[#11030a] px-4 py-3 text-xs text-[#ebdcc9]/70">
           <div className="flex items-center gap-2 text-center sm:text-left">
-            <Sparkles className="h-4 w-4 text-rose-400 shrink-0" />
+            <Globe className="h-4 w-4 text-rose-400 shrink-0" />
             <span>Click any language card above to instantly translate the entire page live.</span>
           </div>
-          <span className="font-mono-code text-[11px] text-emerald-400">
+          <span className="font-mono-code text-[11px] text-[#ebdcc9]/60">
             Auto-detects browser locale on load
           </span>
         </div>

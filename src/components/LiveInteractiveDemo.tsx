@@ -181,15 +181,14 @@ export const LiveInteractiveDemo: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#f6efe2]/15 bg-[#1f0712] px-3.5 py-1 text-xs font-semibold text-[#ebdcc9]">
-            <Sparkles className="h-3.5 w-3.5 text-[#e11d48]" />
-            <span>Interactive Live Engine Sandbox</span>
+          <div className="text-xs font-mono-code text-rose-300 uppercase tracking-wider">
+            Interactive Live Sandbox
           </div>
-          <h2 className="mt-4 font-serif-luxury text-3xl font-bold tracking-tight text-[#fdfbf7] sm:text-5xl">
+          <h2 className="mt-3 font-serif-luxury text-3xl font-bold tracking-tight text-[#fdfbf7] sm:text-5xl">
             Experience Langjs in Action
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-[#ebdcc9]/80">
-            Click any language below to watch Langjs discover DOM nodes, assign dynamic tracker classes, and perform instant zero-layout-shift translation.
+            Select any language to test client-side DOM TreeWalker parsing, attribute translation, and zero-layout-shift mutation.
           </p>
         </div>
 
@@ -267,8 +266,7 @@ export const LiveInteractiveDemo: React.FC = () => {
                 title="Toggle highlighted DOM token IDs"
               >
                 <Eye className="h-3.5 w-3.5 text-[#e11d48]" />
-                <span>Inspect DOM Classes</span>
-                <span className={`h-1.5 w-1.5 rounded-full ${showTokens ? 'bg-emerald-400 animate-pulse' : 'bg-zinc-600'}`} />
+                <span>Inspect DOM Nodes</span>
               </button>
 
               <button
@@ -281,7 +279,7 @@ export const LiveInteractiveDemo: React.FC = () => {
                 title="Toggle custom JSON file overrides"
               >
                 <ShieldCheck className="h-3.5 w-3.5 text-amber-400" />
-                <span>JSON Override Engine</span>
+                <span>JSON Overrides</span>
               </button>
             </div>
           </div>
@@ -289,21 +287,21 @@ export const LiveInteractiveDemo: React.FC = () => {
           {/* Engine Telemetry Ribbon */}
           <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs font-mono-code text-[#ebdcc9]/70">
             <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1 text-emerald-400">
+              <span className="flex items-center gap-1.5 text-emerald-400">
                 <CheckCircle2 className="h-3.5 w-3.5" />
                 <span>TreeWalker: 16 Text Nodes Tracked</span>
               </span>
-              <span className="hidden md:inline">·</span>
+              <span className="hidden md:inline text-[#ebdcc9]/40">·</span>
               <span className="hidden md:inline text-[#ebdcc9]/60">
                 Token Strategy: <code className="text-rose-300">data-langjs-id</code>
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-amber-300">
-                Speed: <span className="font-bold text-[#fdfbf7]">{translationLatency}ms</span> DOM Patch
+              <span className="text-[#ebdcc9]">
+                Latency: <span className="font-bold text-emerald-400">{translationLatency}ms</span>
               </span>
-              <span>·</span>
-              <span className="text-rose-300">Layout Shift: 0.000 CLS</span>
+              <span className="text-[#ebdcc9]/40">·</span>
+              <span className="text-[#ebdcc9]/80">Layout Shift: 0.000 CLS</span>
             </div>
           </div>
 

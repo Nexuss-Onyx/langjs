@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
-      q: 'How does Langjs detect and class text without modifying our source HTML?',
+      q: 'How does Langjs detect and classify text without modifying source HTML?',
       a: 'Langjs uses a high-performance TreeWalker DOM algorithm when your page mounts. It identifies all text nodes, input placeholders, title attributes, and aria-labels. It attaches non-destructive runtime tracking classes (`.langjs-node`) and deterministic hash identifiers (`data-langjs-id="txt_xxx"`), preserving all event listeners, frameworks, and styles.',
     },
     {
-      q: 'How does the Google Translate integration work with custom JSON overrides?',
-      a: 'Langjs first checks your local override dictionary (e.g. `locales/es.json`). If a matching phrase or token key exists, it applies your custom human-crafted translation immediately. For any unmapped text, it queries the Google Translate Neural Cloud API and caches the result locally and at the edge CDN, ensuring zero repeat requests.',
+      q: 'How does the translation integration work with custom JSON overrides?',
+      a: 'Langjs first checks your local override dictionary. If a matching phrase or token key exists, it applies your custom human-crafted translation immediately. For any unmapped text, it queries the translation API and caches the result in LocalStorage, ensuring zero repeat requests.',
     },
     {
       q: 'Can I implement my own custom styled language switcher button?',
-      a: 'Absolutely. Langjs provides a lightweight headless JavaScript API. You can design any button or select dropdown in HTML/CSS and call `lang.setLanguage("ja")` or `lang.toggle()` in its click handler. You can also listen to `lang.on("change", ...)` to update button labels and icons dynamically.',
+      a: 'Absolutely. Langjs provides a lightweight headless JavaScript API. You can design any button or select dropdown in HTML/CSS and call `lang.setLanguage("ja")` in its click handler. You can also listen to `lang.on("languageChanged", ...)` to update button labels and icons dynamically.',
     },
     {
       q: 'Is Langjs compatible with Single Page Apps (React, Vue, Svelte) and static sites?',
@@ -23,24 +23,23 @@ export const FaqSection: React.FC = () => {
     },
     {
       q: 'How does Langjs support Right-to-Left (RTL) languages like Arabic?',
-      a: 'When an RTL language (such as Arabic or Hebrew) is selected, Langjs automatically toggles `document.documentElement.dir = "rtl"` and dynamically switches font styling to language-appropriate typography stacks.',
+      a: 'When an RTL language (such as Arabic or Hebrew) is selected, Langjs automatically toggles `document.documentElement.dir = "rtl"` and dynamically switches layout alignment.',
     },
     {
-      q: 'Does it support SEO and Googlebot crawling for localized versions?',
-      a: 'Yes. Langjs can dynamically update `<html lang="...">`, meta descriptions, and inject `<link rel="alternate" hreflang="...">` tags for search engine bots, or integrate with static prerendering workflows.',
+      q: 'Can I export all translated strings into a static JSON manifest for offline deployment?',
+      a: 'Yes. Calling `lang.downloadJson()` extracts every scanned DOM node and its multi-lingual translations into a portable `lang.json` manifest that can be hosted on your CDN with zero runtime translation dependencies.',
     },
   ];
 
   return (
-    <section className="relative py-24 bg-[#090205]">
-      <div className="relative mx-auto max-w-4xl px-6 lg:px-12">
+    <section className="relative py-20 lg:py-28 bg-[#090205]">
+      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#f6efe2]/15 bg-[#1f0712] px-3.5 py-1 text-xs font-semibold text-[#ebdcc9]">
-            <HelpCircle className="h-3.5 w-3.5 text-[#e11d48]" />
-            <span>Frequently Asked Questions</span>
+          <div className="text-xs font-mono-code text-rose-300 uppercase tracking-wider">
+            Questions & Answers
           </div>
-          <h2 className="mt-4 font-serif-luxury text-3xl font-bold tracking-tight text-[#fdfbf7] sm:text-5xl">
+          <h2 className="mt-3 font-serif-luxury text-3xl font-bold tracking-tight text-[#fdfbf7] sm:text-5xl">
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#ebdcc9]/80">
@@ -49,28 +48,29 @@ export const FaqSection: React.FC = () => {
         </div>
 
         {/* Accordion */}
-        <div className="mt-12 space-y-4">
+        <div className="mt-12 space-y-3">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="luxury-card overflow-hidden rounded-xl border border-[#f6efe2]/10 transition-colors"
+                className="overflow-hidden rounded-xl border border-[#f6efe2]/10 bg-[#12030b] transition-colors"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between p-5 text-left text-sm font-semibold text-[#fdfbf7] hover:text-[#ebdcc9]"
+                  className="flex w-full items-center justify-between p-5 text-left transition-colors hover:bg-[#190510]"
                 >
-                  <span>{faq.q}</span>
+                  <span className="font-serif-luxury text-base sm:text-lg font-semibold text-[#fdfbf7] pr-4">
+                    {faq.q}
+                  </span>
                   <ChevronDown
-                    className={`h-4 w-4 shrink-0 text-[#e11d48] transition-transform duration-200 ${
+                    className={`h-4 w-4 shrink-0 text-rose-400 transition-transform duration-200 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
-
                 {isOpen && (
-                  <div className="border-t border-[#f6efe2]/5 px-5 pb-5 pt-3 text-xs sm:text-sm leading-relaxed text-[#ebdcc9]/80">
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#ebdcc9]/80 leading-relaxed border-t border-[#f6efe2]/5">
                     {faq.a}
                   </div>
                 )}

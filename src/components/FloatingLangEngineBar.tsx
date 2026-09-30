@@ -48,8 +48,8 @@ export const FloatingLangEngineBar: React.FC<FloatingLangEngineBarProps> = ({
       <div className="flex items-center gap-1.5 sm:gap-2 rounded-2xl border border-[#f6efe2]/20 bg-[#15040d]/95 p-1.5 sm:p-2 shadow-2xl shadow-black/90 backdrop-blur-2xl transition-all">
         {/* Live Engine Indicator */}
         <div className="hidden md:flex items-center gap-2 px-3 py-1 border-r border-[#f6efe2]/10 font-mono-code text-xs text-[#ebdcc9]">
-          <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-emerald-400 font-bold">LangJS Live:</span>
+          <span className="h-2 w-2 rounded-full bg-emerald-400" />
+          <span className="text-emerald-400 font-semibold">LangJS Live:</span>
           <span>{totalTrackedNodes} Nodes Tracked</span>
           <span className="text-[#ebdcc9]/40">·</span>
           <span className="text-rose-300">{latencyMs > 0 ? `${latencyMs}ms` : '< 10ms'}</span>

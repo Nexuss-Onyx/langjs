@@ -11,7 +11,7 @@ import {
   ChevronDown, 
   ArrowLeft, 
   ArrowRight, 
-  Sparkles, 
+  Info, 
   BookOpen, 
   Github, 
   Package, 
@@ -138,8 +138,8 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
             </div>
           </button>
 
-          <span className="rounded-full border border-emerald-500/30 bg-emerald-950/60 px-2 py-0.5 font-mono-code text-[11px] font-semibold text-emerald-300">
-            • v1.0.0
+          <span className="font-mono-code text-xs text-[#ebdcc9]/60">
+            v1.0.0
           </span>
         </div>
 
@@ -389,7 +389,7 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
                     : 'border-[#be185d]/30 bg-[#1f0513]/60 text-rose-200'
                 }`}
               >
-                <Sparkles className="h-4 w-4 shrink-0 mt-0.5" />
+                <Info className="h-4 w-4 shrink-0 mt-0.5 text-rose-300" />
                 <div>{note.text}</div>
               </div>
             ))}
