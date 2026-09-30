@@ -6,7 +6,6 @@ import { SupportedLanguage, DICTIONARY } from '../data/translations';
 interface NavbarProps {
   currentLang: SupportedLanguage;
   onLanguageChange: (lang: SupportedLanguage) => void;
-  onOpenEarlyAccess: () => void;
   onOpenGitHub?: () => void;
   onNavigateToDocs?: () => void;
 }
@@ -14,7 +13,6 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   currentLang,
   onLanguageChange,
-  onOpenEarlyAccess,
   onOpenGitHub,
   onNavigateToDocs,
 }) => {
@@ -68,16 +66,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             Benchmarks
           </a>
-          <button
-            onClick={onNavigateToDocs}
-            className="flex items-center gap-1.5 font-semibold text-rose-300 hover:text-white transition-colors"
+          <a
+            href="https://github.com/Nexuss-Onyx/langjs"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors hover:text-[#fdfbf7] flex items-center gap-1.5"
           >
-            <BookOpen className="h-4 w-4" />
-            <span>Documentation</span>
-          </button>
+            <Github className="h-4 w-4 text-rose-400" />
+            <span>GitHub</span>
+          </a>
         </nav>
 
-        {/* Zone 3: Actions + Interactive Language Switcher */}
+        {/* Zone 3: Language Switcher + Single Primary CTA (View Documentation) */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Working Live Navbar Language Switcher */}
           <div className="relative">
@@ -141,35 +141,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
-          {/* Docs Direct Button (Desktop) */}
+          {/* Primary CTA: View Documentation */}
           <button
             onClick={onNavigateToDocs}
-            className="hidden sm:flex items-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#1a050f]/80 px-2.5 py-1.5 sm:py-2 text-xs font-medium text-[#ebdcc9] transition-all hover:border-[#be185d] hover:text-white"
-            title="Read Documentation"
+            className="luxury-button-primary flex items-center gap-2 rounded-lg px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-[#fdfbf7] transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            <BookOpen className="h-3.5 w-3.5 text-rose-300" />
-            <span>Docs</span>
-          </button>
-
-          {/* GitHub Repo Button (Desktop) */}
-          {onOpenGitHub && (
-            <button
-              onClick={onOpenGitHub}
-              className="hidden sm:flex items-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#1a050f]/80 px-2.5 py-1.5 sm:py-2 text-xs font-medium text-[#ebdcc9] transition-all hover:border-[#be185d] hover:text-white"
-              title="GitHub Repository"
-            >
-              <Github className="h-3.5 w-3.5 text-rose-300" />
-              <span>GitHub</span>
-            </button>
-          )}
-
-          {/* Primary CTA button */}
-          <button
-            onClick={onOpenEarlyAccess}
-            className="luxury-button-primary hidden xs:flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 sm:py-2 text-xs font-semibold text-[#fdfbf7] transition-all hover:scale-[1.02] active:scale-[0.98]"
-          >
-            <span>{t('nav_get_started')}</span>
-            <ArrowRight className="h-3.5 w-3.5 opacity-70" />
+            <BookOpen className="h-3.5 w-3.5 text-white/90" />
+            <span>View Documentation</span>
           </button>
 
           {/* Mobile Hamburger Toggle */}
@@ -214,34 +192,22 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onNavigateToDocs?.();
               }}
-              className="flex items-center gap-2 rounded-lg bg-rose-950/40 border border-rose-500/30 px-3 py-2.5 text-sm font-semibold text-rose-200 hover:bg-rose-900/50"
+              className="flex items-center justify-center gap-2 rounded-lg luxury-button-primary py-2.5 text-sm font-semibold text-white"
             >
-              <BookOpen className="h-4 w-4 text-rose-400" />
-              <span>Full Documentation & API</span>
+              <BookOpen className="h-4 w-4" />
+              <span>View Documentation & API</span>
             </button>
 
-            <div className="pt-2 border-t border-[#f6efe2]/10 flex items-center gap-2">
-              {onOpenGitHub && (
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenGitHub();
-                  }}
-                  className="flex-1 flex items-center justify-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#190510] py-2 text-xs font-medium text-[#ebdcc9]"
-                >
-                  <Github className="h-4 w-4" />
-                  <span>GitHub</span>
-                </button>
-              )}
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenEarlyAccess();
-                }}
-                className="flex-1 luxury-button-primary flex items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-semibold text-white"
+            <div className="pt-2 border-t border-[#f6efe2]/10">
+              <a
+                href="https://github.com/Nexuss-Onyx/langjs"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-1.5 rounded-lg border border-[#f6efe2]/15 bg-[#190510] py-2 text-xs font-medium text-[#ebdcc9] hover:text-white"
               >
-                <span>{t('nav_get_started')}</span>
-              </button>
+                <Github className="h-4 w-4" />
+                <span>GitHub Repository</span>
+              </a>
             </div>
           </div>
         </div>

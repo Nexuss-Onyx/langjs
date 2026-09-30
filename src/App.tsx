@@ -10,7 +10,6 @@ import { PerformanceComparison } from './components/PerformanceComparison';
 import { FaqSection } from './components/FaqSection';
 import { CtaSection } from './components/CtaSection';
 import { Footer } from './components/Footer';
-import { EarlyAccessModal } from './components/EarlyAccessModal';
 import { FloatingLangEngineBar } from './components/FloatingLangEngineBar';
 import { GitHubPushModal } from './components/GitHubPushModal';
 import { DocsPage } from './docs/DocsPage';
@@ -18,7 +17,6 @@ import { DocsPage } from './docs/DocsPage';
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'docs'>('home');
   const [currentLang, setCurrentLang] = useState<string>('en');
-  const [modalOpen, setModalOpen] = useState(false);
   const [gitHubModalOpen, setGitHubModalOpen] = useState(false);
   const [totalNodes, setTotalNodes] = useState<number>(148);
   const [isTranslating, setIsTranslating] = useState<boolean>(false);
@@ -156,16 +154,14 @@ export default function App() {
       <Navbar
         currentLang={currentLang as any}
         onLanguageChange={handleLanguageChange}
-        onOpenEarlyAccess={() => setModalOpen(true)}
         onOpenGitHub={() => setGitHubModalOpen(true)}
         onNavigateToDocs={() => navigateTo('docs')}
       />
 
       <main>
-        {/* Welcoming Hero Section with Burgundy Ambient Light */}
+        {/* Welcoming Hero Section */}
         <Hero
           currentLang={currentLang as any}
-          onOpenEarlyAccess={() => setModalOpen(true)}
           onNavigateToDocs={() => navigateTo('docs')}
         />
 
@@ -185,7 +181,7 @@ export default function App() {
         <FaqSection />
 
         {/* Call to Action Section */}
-        <CtaSection onOpenEarlyAccess={() => setModalOpen(true)} />
+        <CtaSection onNavigateToDocs={() => navigateTo('docs')} />
       </main>
 
       {/* 3-Zone Footer */}
@@ -204,12 +200,6 @@ export default function App() {
         totalTrackedNodes={totalNodes}
         isTranslating={isTranslating}
         latencyMs={latencyMs}
-      />
-
-      {/* Developer Starter / Early Access Modal */}
-      <EarlyAccessModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
       />
 
       {/* GitHub Repository Push Modal */}

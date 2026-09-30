@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { Terminal, Copy, Check, ArrowRight, BookOpen, Layers, Zap, Code2, Globe } from 'lucide-react';
+import { Terminal, Copy, Check, ArrowRight, BookOpen, Layers, Zap, Code2, Github } from 'lucide-react';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
 interface HeroProps {
   currentLang: SupportedLanguage;
-  onOpenEarlyAccess: () => void;
-  onNavigateToDocs?: () => void;
+  onNavigateToDocs: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   currentLang,
-  onOpenEarlyAccess,
   onNavigateToDocs,
 }) => {
   const [copied, setCopied] = useState(false);
@@ -29,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-24 lg:pb-32">
+    <section className="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-28">
       {/* Subtle Dark Ambient Gradients */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#801428]/25 to-transparent blur-[140px]" />
       
@@ -59,32 +57,25 @@ export const Hero: React.FC<HeroProps> = ({
           </p>
         </div>
 
-        {/* Action Buttons */}
+        {/* Single Primary Action Button + Secondary GitHub Link */}
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <button
-            onClick={onOpenEarlyAccess}
-            className="w-full sm:w-auto luxury-button-primary flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl px-7 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+            onClick={onNavigateToDocs}
+            className="w-full sm:w-auto luxury-button-primary flex h-11 sm:h-12 items-center justify-center gap-2.5 rounded-xl px-8 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            <span>{t('nav_get_started')}</span>
+            <BookOpen className="h-4 w-4 text-white/90" />
+            <span>View Documentation</span>
             <ArrowRight className="h-4 w-4 opacity-70" />
           </button>
 
-          {onNavigateToDocs && (
-            <button
-              onClick={onNavigateToDocs}
-              className="w-full sm:w-auto flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl border border-[#f6efe2]/15 bg-[#17050f] px-7 text-sm font-semibold text-[#fdfbf7] transition-all hover:border-[#be185d] hover:bg-[#220716]"
-            >
-              <BookOpen className="h-4 w-4 text-rose-400" />
-              <span>Read Documentation</span>
-            </button>
-          )}
-
           <a
-            href="#languages"
+            href="https://github.com/Nexuss-Onyx/langjs"
+            target="_blank"
+            rel="noreferrer"
             className="w-full sm:w-auto flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl border border-[#f6efe2]/10 bg-[#12030b] px-6 text-sm font-medium text-[#ebdcc9]/90 transition-all hover:border-[#f6efe2]/25 hover:text-white"
           >
-            <Globe className="h-4 w-4 text-[#ebdcc9]/60" />
-            <span>100+ Languages</span>
+            <Github className="h-4 w-4 text-[#ebdcc9]/70" />
+            <span>GitHub Repository</span>
           </a>
         </div>
 
@@ -145,7 +136,7 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Clean Engineering Spec Bar */}
-        <div className="mt-16 sm:mt-24 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
           <div className="rounded-xl border border-[#f6efe2]/10 bg-[#12030b] p-5">
             <div className="flex items-center gap-2 text-rose-400 text-xs font-mono-code uppercase tracking-wider">
               <Zap className="h-4 w-4" />
