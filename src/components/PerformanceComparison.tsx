@@ -42,53 +42,53 @@ export const PerformanceComparison: React.FC = () => {
   ];
 
   return (
-    <section id="benchmarks" className="relative scroll-mt-24 py-20 lg:py-28 bg-[#090205]">
+    <section id="benchmarks" className="relative scroll-mt-24 py-20 lg:py-28">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center">
-          <div className="text-xs font-mono-code text-rose-300 uppercase tracking-wider">
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="text-xs font-mono-code text-[#9e1b32] uppercase tracking-wider font-semibold">
             Quantitative Comparison
           </div>
-          <h2 className="mt-3 font-serif-luxury text-3xl font-bold tracking-tight text-[#fdfbf7] sm:text-5xl">
+          <h2 className="mt-3 font-serif-luxury text-3xl font-bold tracking-tight text-[var(--text-hero)] sm:text-5xl">
             Why Modern Teams Migrate to Langjs
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-[#ebdcc9]/80">
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-[var(--text-secondary)]">
             Eliminate weeks of painful key extraction and broken localization pipelines with a client-side DOM localization engine.
           </p>
         </div>
 
         {/* Comparison Table */}
-        <div className="mt-12 overflow-hidden rounded-2xl border border-[#f6efe2]/10 bg-[#12030b] shadow-xl">
+        <div className="mt-12 overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] shadow-xs">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-[#f6efe2]/10 bg-[#1a0510]">
-                  <th className="py-4 px-6 font-semibold text-[#fdfbf7]">Capability / Metric</th>
-                  <th className="py-4 px-6 font-semibold text-[#ebdcc9]/60">Traditional i18n Libraries</th>
-                  <th className="py-4 px-6 font-semibold text-rose-300">Langjs Engine</th>
+                <tr className="border-b border-[var(--border-color)] bg-[var(--bg-elevated)]">
+                  <th className="py-4 px-6 font-semibold text-[var(--text-hero)]">Capability / Metric</th>
+                  <th className="py-4 px-6 font-semibold text-[var(--text-muted)]">Traditional i18n Libraries</th>
+                  <th className="py-4 px-6 font-semibold text-[#9e1b32]">Langjs Engine</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#f6efe2]/5">
+              <tbody className="divide-y divide-[var(--border-color)]">
                 {comparisonData.map((row, idx) => (
                   <tr
                     key={idx}
-                    className={`transition-colors hover:bg-[#1c0612]/50 ${
-                      row.highlight ? 'bg-[#18040f]/40' : ''
+                    className={`transition-colors hover:bg-[var(--bg-card-hover)] ${
+                      row.highlight ? 'bg-[#9e1b32]/5' : ''
                     }`}
                   >
-                    <td className="py-4 px-6 font-medium text-[#fdfbf7]">
+                    <td className="py-4 px-6 font-medium text-[var(--text-hero)]">
                       {row.feature}
                     </td>
-                    <td className="py-4 px-6 text-[#ebdcc9]/60">
+                    <td className="py-4 px-6 text-[var(--text-secondary)]">
                       <div className="flex items-start gap-2">
-                        <X className="h-4 w-4 text-rose-500/70 shrink-0 mt-0.5" />
+                        <X className="h-4 w-4 text-rose-500/80 shrink-0 mt-0.5" />
                         <span>{row.traditional}</span>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-[#fdfbf7] font-medium">
-                      <div className="flex items-start gap-2 text-emerald-300">
-                        <Check className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{row.langjs}</span>
+                    <td className="py-4 px-6 text-[var(--text-hero)] font-medium">
+                      <div className="flex items-start gap-2 text-emerald-800">
+                        <Check className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <span className="font-semibold">{row.langjs}</span>
                       </div>
                     </td>
                   </tr>

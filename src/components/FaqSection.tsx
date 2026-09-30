@@ -32,17 +32,17 @@ export const FaqSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-20 lg:py-28 bg-[#090205]">
+    <section className="relative py-20 lg:py-28">
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center">
-          <div className="text-xs font-mono-code text-rose-300 uppercase tracking-wider">
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="text-xs font-mono-code text-[#9e1b32] uppercase tracking-wider font-semibold">
             Questions & Answers
           </div>
-          <h2 className="mt-3 font-serif-luxury text-3xl font-bold tracking-tight text-[#fdfbf7] sm:text-5xl">
+          <h2 className="mt-3 font-serif-luxury text-3xl font-bold tracking-tight text-[var(--text-hero)] sm:text-5xl">
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#ebdcc9]/80">
+          <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)]">
             Everything you need to know about the Langjs DOM crawler, caching layers, and custom locale overrides.
           </p>
         </div>
@@ -54,24 +54,23 @@ export const FaqSection: React.FC = () => {
             return (
               <div
                 key={index}
-                className="overflow-hidden rounded-xl border border-[#f6efe2]/10 bg-[#12030b] transition-colors"
+                className="overflow-hidden rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] transition-colors shadow-xs"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between p-5 text-left transition-colors hover:bg-[#190510]"
+                  className="flex w-full items-center justify-between px-6 py-4.5 text-left text-sm sm:text-base font-semibold text-[var(--text-hero)] transition-colors hover:text-[#9e1b32]"
                 >
-                  <span className="font-serif-luxury text-base sm:text-lg font-semibold text-[#fdfbf7] pr-4">
-                    {faq.q}
-                  </span>
+                  <span className="pr-4">{faq.q}</span>
                   <ChevronDown
-                    className={`h-4 w-4 shrink-0 text-rose-400 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180' : ''
+                    className={`h-4 w-4 text-[var(--text-muted)] transition-transform duration-200 shrink-0 ${
+                      isOpen ? 'rotate-180 text-[#9e1b32]' : ''
                     }`}
                   />
                 </button>
+
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#ebdcc9]/80 leading-relaxed border-t border-[#f6efe2]/5">
-                    {faq.a}
+                  <div className="border-t border-[var(--border-color)] bg-[var(--bg-card-hover)] px-6 py-4 text-xs sm:text-sm leading-relaxed text-[var(--text-secondary)]">
+                    <p>{faq.a}</p>
                   </div>
                 )}
               </div>
