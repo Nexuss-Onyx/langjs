@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Terminal, Copy, Check, ArrowRight, BookOpen, Layers, Zap, Code2, Github } from 'lucide-react';
+import { Terminal, Copy, Check, ArrowRight, BookOpen, Zap, Code2, Layers, Github, ArrowRightLeft } from 'lucide-react';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
 interface HeroProps {
@@ -13,6 +13,7 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   const [copied, setCopied] = useState(false);
   const [installMethod, setInstallMethod] = useState<'npm' | 'cdn'>('npm');
+  const [previewLang, setPreviewLang] = useState<'en' | 'es' | 'ja' | 'fr' | 'ar'>('es');
 
   const t = (key: string) => DICTIONARY[key]?.[currentLang] || DICTIONARY[key]?.['en'] || key;
 
@@ -26,10 +27,45 @@ export const Hero: React.FC<HeroProps> = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const previewSnippets: Record<string, { title: string; desc: string; button: string; rtl?: boolean }> = {
+    en: {
+      title: 'Crafted Precision Timepieces',
+      desc: 'Handcrafted luxury watches designed for discerning collectors worldwide.',
+      button: 'Explore Catalog',
+      rtl: false,
+    },
+    es: {
+      title: 'Relojes Artesanales de Precisión',
+      desc: 'Relojes de lujo hechos a mano para coleccionistas exigentes en todo el mundo.',
+      button: 'Explorar Catálogo',
+      rtl: false,
+    },
+    ja: {
+      title: '至高のハンドクラフト高級腕時計',
+      desc: '世界中の審美眼を持つコレクターのために手作業で作られた最高峰の時計。',
+      button: 'コレクションを見る',
+      rtl: false,
+    },
+    fr: {
+      title: 'Montres Artisanales de Haute Précision',
+      desc: 'Garde-temps d’exception façonnés à la main pour les collectionneurs avertis.',
+      button: 'Découvrir la Collection',
+      rtl: false,
+    },
+    ar: {
+      title: 'ساعات يدوية الصنع فائقة الدقة',
+      desc: 'ساعات فاخرة مصنوعة يدويًا للمقتنين المتميزين حول العالم بأعلى معايير الحرفية.',
+      button: 'استكشف المجموعة',
+      rtl: true,
+    },
+  };
+
+  const currentPreview = previewSnippets[previewLang] || previewSnippets.en;
+
   return (
-    <section className="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-28">
+    <section className="relative overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-24 lg:pt-24 lg:pb-32">
       {/* Subtle Dark Ambient Gradients */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#801428]/25 to-transparent blur-[140px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#801428]/20 to-transparent blur-[140px]" />
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
         {/* Release Metadata */}
@@ -39,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({
             <span className="mx-2 text-[#ebdcc9]/30">·</span>
             <span className="text-rose-300">Client-Side i18n SDK</span>
             <span className="mx-2 text-[#ebdcc9]/30">·</span>
-            <span>MIT Licensed</span>
+            <span>Zero Dependencies</span>
           </div>
         </div>
 
@@ -80,7 +116,7 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Quick Install Command Box */}
-        <div className="mx-auto mt-10 max-w-lg">
+        <div className="mx-auto mt-8 max-w-lg">
           <div className="rounded-xl border border-[#f6efe2]/15 bg-[#12030b] p-3 shadow-xl">
             <div className="flex items-center justify-between border-b border-[#f6efe2]/10 pb-2 text-xs text-[#ebdcc9]/70">
               <div className="flex items-center gap-2 font-mono-code">
@@ -135,45 +171,137 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
         </div>
 
-        {/* Clean Engineering Spec Bar */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          <div className="rounded-xl border border-[#f6efe2]/10 bg-[#12030b] p-5">
-            <div className="flex items-center gap-2 text-rose-400 text-xs font-mono-code uppercase tracking-wider">
-              <Zap className="h-4 w-4" />
-              <span>Sub-10ms DOM Patching</span>
+        {/* Iconic Focal Concept Card: 1 Line of Code Live Interactive Visual */}
+        <div className="mt-14 sm:mt-20 max-w-4xl mx-auto">
+          <div className="rounded-2xl border border-[#f6efe2]/15 bg-[#14040d] overflow-hidden shadow-2xl">
+            {/* Window bar */}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#f6efe2]/10 bg-[#1b0512] px-4 py-3">
+              <div className="flex items-center gap-2 font-mono-code text-xs text-[#ebdcc9]/70">
+                <Code2 className="h-3.5 w-3.5 text-rose-400" />
+                <span>lang.setLanguage(locale)</span>
+              </div>
+
+              {/* Instant Language Switcher Tabs */}
+              <div className="flex items-center gap-1">
+                {[
+                  { code: 'en', label: 'English' },
+                  { code: 'es', label: 'Español' },
+                  { code: 'ja', label: '日本語' },
+                  { code: 'fr', label: 'Français' },
+                  { code: 'ar', label: 'العربية' },
+                ].map((item) => (
+                  <button
+                    key={item.code}
+                    onClick={() => setPreviewLang(item.code as any)}
+                    className={`px-2.5 py-1 rounded-md text-xs font-mono-code transition-colors ${
+                      previewLang === item.code
+                        ? 'bg-[#801428] text-white font-medium'
+                        : 'text-[#ebdcc9]/60 hover:text-white hover:bg-[#250817]'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="mt-2 font-serif-luxury text-xl font-bold text-[#fdfbf7]">
-              In-Place TreeWalker
+
+            {/* Split Visual: Code on Left / Instant DOM Output on Right */}
+            <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#f6efe2]/10">
+              {/* Left Column: Minimal JS Snippet */}
+              <div className="md:col-span-5 p-5 sm:p-6 bg-[#0e0208] flex flex-col justify-between font-mono-code text-xs text-[#ebdcc9]/90 space-y-4">
+                <div>
+                  <div className="text-[11px] text-[#ebdcc9]/50 uppercase tracking-wider mb-2">
+                    JavaScript Integration
+                  </div>
+                  <pre className="text-rose-200/90 leading-relaxed overflow-x-auto">
+                    <span className="text-[#be185d]">import</span> {'{ LangJS }'} <span className="text-[#be185d]">from</span> <span className="text-emerald-300">'@nexuss0781/langjs'</span>;<br /><br />
+                    <span className="text-[#be185d]">const</span> lang = <span className="text-[#be185d]">new</span> LangJS();<br />
+                    <span className="text-[#ebdcc9]/40">// Instant DOM mutation:</span><br />
+                    <span className="text-rose-300">await</span> lang.setLanguage(<span className="text-emerald-300">'{previewLang}'</span>);
+                  </pre>
+                </div>
+
+                <div className="pt-3 border-t border-[#f6efe2]/10 flex items-center justify-between text-[11px] text-[#ebdcc9]/60">
+                  <span>Mutation latency</span>
+                  <span className="font-bold text-emerald-400">4.2ms</span>
+                </div>
+              </div>
+
+              {/* Right Column: Live In-Place Rendered DOM Component */}
+              <div
+                className="md:col-span-7 p-6 sm:p-8 bg-[#12030b] flex flex-col justify-center"
+                dir={currentPreview.rtl ? 'rtl' : 'ltr'}
+              >
+                <div className="text-[11px] font-mono-code text-rose-400 uppercase tracking-wider mb-1.5">
+                  Rendered HTML Output
+                </div>
+                <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#fdfbf7] transition-all duration-200">
+                  {currentPreview.title}
+                </h3>
+                <p className="mt-2 text-xs sm:text-sm text-[#ebdcc9]/80 leading-relaxed transition-all duration-200">
+                  {currentPreview.desc}
+                </p>
+                <div className="mt-5">
+                  <button className="luxury-button-primary px-4 py-2 rounded-lg text-xs font-semibold text-white">
+                    {currentPreview.button}
+                  </button>
+                </div>
+              </div>
             </div>
-            <p className="mt-1 text-xs text-[#ebdcc9]/70 leading-relaxed">
-              Discovers visible text nodes and mutates text content in-place without triggering React re-renders or layout recalculations.
-            </p>
+          </div>
+        </div>
+
+        {/* 3 Iconic Highlights */}
+        <div className="mt-16 sm:mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="rounded-2xl border border-[#f6efe2]/10 bg-[#12030b] p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-950/40 text-rose-400">
+                <Zap className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-serif-luxury text-xl font-bold text-[#fdfbf7]">
+                Sub-10ms DOM Patching
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-[#ebdcc9]/70 leading-relaxed">
+                Discovers visible text nodes and mutates text in-place with zero React re-renders or layout shifts.
+              </p>
+            </div>
+            <div className="mt-4 font-mono-code text-[11px] text-rose-300/80">
+              TreeWalker DOM Crawler
+            </div>
           </div>
 
-          <div className="rounded-xl border border-[#f6efe2]/10 bg-[#12030b] p-5">
-            <div className="flex items-center gap-2 text-rose-400 text-xs font-mono-code uppercase tracking-wider">
-              <Code2 className="h-4 w-4" />
-              <span>Zero-Config Setup</span>
+          <div className="rounded-2xl border border-[#f6efe2]/10 bg-[#12030b] p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-950/40 text-rose-400">
+                <Code2 className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-serif-luxury text-xl font-bold text-[#fdfbf7]">
+                Zero-Config Setup
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-[#ebdcc9]/70 leading-relaxed">
+                Eliminates the maintenance overhead of managing thousands of static translation keys in manual JSON files.
+              </p>
             </div>
-            <div className="mt-2 font-serif-luxury text-xl font-bold text-[#fdfbf7]">
+            <div className="mt-4 font-mono-code text-[11px] text-rose-300/80">
               No Translation Keys
             </div>
-            <p className="mt-1 text-xs text-[#ebdcc9]/70 leading-relaxed">
-              Eliminates the maintenance overhead of managing thousands of static translation dictionary keys in manual JSON files.
-            </p>
           </div>
 
-          <div className="rounded-xl border border-[#f6efe2]/10 bg-[#12030b] p-5">
-            <div className="flex items-center gap-2 text-rose-400 text-xs font-mono-code uppercase tracking-wider">
-              <Layers className="h-4 w-4" />
-              <span>100+ Global Locales</span>
+          <div className="rounded-2xl border border-[#f6efe2]/10 bg-[#12030b] p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-950/40 text-rose-400">
+                <Layers className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-serif-luxury text-xl font-bold text-[#fdfbf7]">
+                100+ Global Locales
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-[#ebdcc9]/70 leading-relaxed">
+                Seamlessly adapts layout directions (`dir="rtl"`) for Arabic, Hebrew, Urdu, and Persian out of the box.
+              </p>
             </div>
-            <div className="mt-2 font-serif-luxury text-xl font-bold text-[#fdfbf7]">
+            <div className="mt-4 font-mono-code text-[11px] text-rose-300/80">
               Automatic RTL Switching
             </div>
-            <p className="mt-1 text-xs text-[#ebdcc9]/70 leading-relaxed">
-              Seamlessly adapts layout directions (`dir="rtl"`) for Arabic, Hebrew, Urdu, and Persian with single-method invocations.
-            </p>
           </div>
         </div>
       </div>
