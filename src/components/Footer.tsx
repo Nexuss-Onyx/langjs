@@ -75,11 +75,6 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onLanguageChange, o
                 </button>
               </li>
               <li>
-                <a href="#sandbox" className="hover:text-[#fdfbf7] transition-colors">
-                  Interactive Sandbox
-                </a>
-              </li>
-              <li>
                 <a href="#languages" className="hover:text-[#fdfbf7] transition-colors">
                   100+ Global Languages
                 </a>

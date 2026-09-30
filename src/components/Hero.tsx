@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { Terminal, Copy, Check, ArrowRight, Play, BookOpen, Layers, Zap, Code2 } from 'lucide-react';
+import { Terminal, Copy, Check, ArrowRight, BookOpen, Layers, Zap, Code2, Globe } from 'lucide-react';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
 interface HeroProps {
   currentLang: SupportedLanguage;
   onOpenEarlyAccess: () => void;
-  onScrollToSandbox: () => void;
   onNavigateToDocs?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   currentLang,
   onOpenEarlyAccess,
-  onScrollToSandbox,
   onNavigateToDocs,
 }) => {
   const [copied, setCopied] = useState(false);
@@ -36,7 +34,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#801428]/25 to-transparent blur-[140px]" />
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-        {/* Release Metadata (Clean unboxed text, no pulsing dots or pills) */}
+        {/* Release Metadata */}
         <div className="flex justify-center">
           <div className="text-xs font-mono-code text-[#ebdcc9]/70 tracking-wide">
             <span>LangJS v1.0.0</span>
@@ -64,11 +62,10 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Action Buttons */}
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <button
-            onClick={onScrollToSandbox}
-            className="w-full sm:w-auto luxury-button-primary flex h-11 sm:h-12 items-center justify-center gap-2.5 rounded-xl px-7 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+            onClick={onOpenEarlyAccess}
+            className="w-full sm:w-auto luxury-button-primary flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl px-7 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            <Play className="h-4 w-4 fill-current text-white/90" />
-            <span>{t('hero_cta_primary')}</span>
+            <span>{t('nav_get_started')}</span>
             <ArrowRight className="h-4 w-4 opacity-70" />
           </button>
 
@@ -78,16 +75,17 @@ export const Hero: React.FC<HeroProps> = ({
               className="w-full sm:w-auto flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl border border-[#f6efe2]/15 bg-[#17050f] px-7 text-sm font-semibold text-[#fdfbf7] transition-all hover:border-[#be185d] hover:bg-[#220716]"
             >
               <BookOpen className="h-4 w-4 text-rose-400" />
-              <span>Documentation</span>
+              <span>Read Documentation</span>
             </button>
           )}
 
-          <button
-            onClick={onOpenEarlyAccess}
+          <a
+            href="#languages"
             className="w-full sm:w-auto flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl border border-[#f6efe2]/10 bg-[#12030b] px-6 text-sm font-medium text-[#ebdcc9]/90 transition-all hover:border-[#f6efe2]/25 hover:text-white"
           >
-            <span>{t('hero_cta_secondary')}</span>
-          </button>
+            <Globe className="h-4 w-4 text-[#ebdcc9]/60" />
+            <span>100+ Languages</span>
+          </a>
         </div>
 
         {/* Quick Install Command Box */}

@@ -51,12 +51,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Zone 2: Navigation Links (Desktop) */}
         <nav className="hidden items-center gap-6 lg:gap-8 text-sm font-medium text-[#ebdcc9]/80 lg:flex">
           <a
-            href="#sandbox"
-            className="transition-colors hover:text-[#fdfbf7]"
-          >
-            {t('nav_demo')}
-          </a>
-          <a
             href="#languages"
             className="transition-colors hover:text-[#fdfbf7]"
           >
@@ -193,13 +187,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden border-b border-[#f6efe2]/10 bg-[#0f030a]/98 px-4 py-5 shadow-2xl backdrop-blur-2xl animate-in slide-in-from-top-2">
           <div className="flex flex-col space-y-3">
-            <a
-              href="#sandbox"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-[#ebdcc9] hover:bg-[#250817] hover:text-white"
-            >
-              <span>{t('nav_demo')}</span>
-            </a>
             <a
               href="#languages"
               onClick={() => setMobileMenuOpen(false)}

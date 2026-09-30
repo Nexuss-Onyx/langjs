@@ -3,7 +3,6 @@ import { ALL_100_LANGUAGES } from './data/languages-100';
 import { LangJS } from './sdk/lang';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { LiveInteractiveDemo } from './components/LiveInteractiveDemo';
 import { LanguageGrid } from './components/LanguageGrid';
 import { ArchitectureBento } from './components/ArchitectureBento';
 import { SwitcherCustomizer } from './components/SwitcherCustomizer';
@@ -70,7 +69,6 @@ export default function App() {
           'Quick Install': 'Instalación Rápida',
           'Get Started': 'Comenzar',
           'Architecture': 'Arquitectura',
-          'Live Sandbox': 'Demo en Vivo',
         },
         fr: {
           'Turn Any Static Website': 'Transformez N’importe Quel Site Statique',
@@ -78,7 +76,6 @@ export default function App() {
           'Quick Install': 'Installation Rapide',
           'Get Started': 'Commencer',
           'Architecture': 'Architecture',
-          'Live Sandbox': 'Bac à Sable',
         },
         de: {
           'Turn Any Static Website': 'Verwandeln Sie Jede Statische Website',
@@ -86,7 +83,6 @@ export default function App() {
           'Quick Install': 'Schnellinstallation',
           'Get Started': 'Loslegen',
           'Architecture': 'Architektur',
-          'Live Sandbox': 'Live-Demo',
         },
         ja: {
           'Turn Any Static Website': 'あらゆる静的ウェブサイトを',
@@ -94,7 +90,6 @@ export default function App() {
           'Quick Install': 'クイックインストール',
           'Get Started': '使ってみる',
           'Architecture': 'アーキテクチャ',
-          'Live Sandbox': 'ライブデモ',
         },
         ar: {
           'Turn Any Static Website': 'حوّل أي موقع إلكتروني ثابت',
@@ -102,7 +97,6 @@ export default function App() {
           'Quick Install': 'تثبيت سريع',
           'Get Started': 'ابدأ الآن',
           'Architecture': 'البنية الهندسية',
-          'Live Sandbox': 'تجربة حية',
         }
       },
     });
@@ -146,13 +140,6 @@ export default function App() {
     }
   };
 
-  const scrollToSandbox = () => {
-    const el = document.getElementById('sandbox');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   // If on Documentation view, render dedicated DocsPage
   if (currentView === 'docs') {
     return (
@@ -175,16 +162,12 @@ export default function App() {
       />
 
       <main>
-        {/* Welcoming Hero Section with Burgundy Ambient Light & Visual Globe */}
+        {/* Welcoming Hero Section with Burgundy Ambient Light */}
         <Hero
           currentLang={currentLang as any}
           onOpenEarlyAccess={() => setModalOpen(true)}
-          onScrollToSandbox={scrollToSandbox}
           onNavigateToDocs={() => navigateTo('docs')}
         />
-
-        {/* Live Interactive Sandbox */}
-        <LiveInteractiveDemo />
 
         {/* 100+ Global Languages Catalog & Search */}
         <LanguageGrid onSelectLanguage={handleLanguageChange} activeLanguage={currentLang} />
@@ -192,7 +175,7 @@ export default function App() {
         {/* Architecture & Asymmetric Bento Grid */}
         <ArchitectureBento />
 
-        {/* Switcher Button Customizer & Live Generator */}
+        {/* Switcher Button Customizer & Standalone Generator */}
         <SwitcherCustomizer />
 
         {/* Quantitative Comparison & Benchmarks */}
