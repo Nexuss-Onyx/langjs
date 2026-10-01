@@ -32,7 +32,7 @@ export const ArchitectureBento: React.FC = () => {
             Engineered for Zero-Friction Localization
           </h2>
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--text-secondary)]">
-            A surgical client-side framework designed to localize existing websites without requiring code refactoring, template syntax rewriting, or complicated translation pipelines.
+            A surgical full-stack framework combining client-side DOM TreeWalker crawling with server-side AST template scanning, .langignore rules, and universal HTML post-render stream interception.
           </p>
         </div>
 

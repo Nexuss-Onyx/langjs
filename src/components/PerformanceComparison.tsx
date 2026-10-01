@@ -53,7 +53,7 @@ export const PerformanceComparison: React.FC = () => {
             Why Modern Teams Migrate to Langjs
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-[var(--text-secondary)]">
-            Eliminate weeks of painful key extraction and broken localization pipelines with a client-side DOM localization engine.
+            Eliminate weeks of painful key extraction and broken localization pipelines with a unified client-side and server-side localization engine.
           </p>
         </div>
 

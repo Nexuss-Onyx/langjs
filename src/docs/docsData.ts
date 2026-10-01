@@ -52,13 +52,13 @@ export const DOC_CATEGORIES: DocCategory[] = [
         category: 'GET STARTED',
         badge: 'v1.1.0',
         badgeType: 'guide',
-        summary: 'Overview of LangJS, the ultra-lightweight client-side internationalization SDK and dynamic 100+ language neural translation engine.',
+        summary: 'Overview of LangJS, the zero-config client-side and server-side internationalization SDK and dynamic 100+ language neural translation engine.',
         content: {
-          overview: 'LangJS is a modern client-side internationalization (i18n) framework designed for zero-config multi-lingual applications. Unlike traditional i18n libraries that require manual key extraction (`t("hero.title")`) or large pre-compiled bundles, LangJS uses an automated DOM-crawling engine and Google Neural Translation to translate entire web applications in real-time with sub-10ms DOM mutation latency.',
+          overview: 'LangJS is a modern full-stack internationalization (i18n) framework designed for zero-config multi-lingual applications across both client-side and server-side runtimes. It pairs an automated browser DOM TreeWalker with a powerful server-side AST codebase scanner and universal HTML post-render stream interceptor, translating entire web applications into 100+ languages with sub-10ms DOM mutations and sub-3ms SSR stream transformation.',
           notes: [
             {
               type: 'info',
-              text: 'LangJS operates completely client-side with persistent LocalStorage and IndexedDB caching, making it instant after the first translation round-trip.'
+              text: 'LangJS provides complete full-stack flexibility: run purely in the browser with LocalStorage/IndexedDB caching, or run on the server with Express, Fastify, Next.js, and Nuxt to pre-render localized HTML for search engine crawlers and social share bots.'
             }
           ],
           sections: [

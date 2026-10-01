@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onLanguageChange, o
               </span>
             </a>
             <p className="mt-4 max-w-md text-xs leading-relaxed text-[var(--text-secondary)]">
-              The high-performance client-side internationalization SDK and dynamic translation engine that powers 100+ languages in modern web applications without build-step key friction.
+              The high-performance client-side and server-side internationalization SDK and dynamic translation engine that powers 100+ languages in modern web applications without build-step key friction.
             </p>
             <div className="mt-6 flex items-center gap-4 text-[var(--text-muted)]">
               <a

@@ -71,9 +71,9 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Release Metadata */}
         <div className="flex justify-center">
           <div className="text-xs font-mono-code text-[var(--text-secondary)] tracking-wide bg-[var(--bg-card)] px-4 py-1.5 rounded-full border border-[var(--border-color)] shadow-xs">
-            <span className="font-semibold text-[var(--text-hero)]">LangJS v1.0.0</span>
+            <span className="font-semibold text-[var(--text-hero)]">LangJS v1.1.0</span>
             <span className="mx-2 text-[var(--border-hover)]">·</span>
-            <span className="text-[#9e1b32] font-medium">Client-Side i18n SDK</span>
+            <span className="text-[#9e1b32] font-medium">Client & Server-Side i18n SDK</span>
             <span className="mx-2 text-[var(--border-hover)]">·</span>
             <span>Zero Dependencies</span>
           </div>

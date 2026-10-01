@@ -2,7 +2,7 @@
 
 # 🌐 Langjs
 
-**The zero-config, client-side internationalization SDK and dynamic 100+ language translation engine for modern web applications.**
+**The zero-config, universal client-side & server-side internationalization SDK and dynamic 100+ language translation engine for modern web applications.**
 
 [![npm version](https://img.shields.io/npm/v/@nexuss0781/langjs.svg?style=flat-square&color=9e1b32)](https://www.npmjs.com/package/@nexuss0781/langjs)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -27,12 +27,15 @@ Traditional internationalization libraries require **weeks of tedious engineerin
 - Massive bundle bloating and frequent layout re-renders.
 - Fragile build pipelines that break when templates or dynamic components change.
 
-**Langjs rethinks internationalization from the ground up.** It uses a high-performance **DOM TreeWalker** that crawls your rendered HTML, identifies text nodes, classifies tokens, and dynamically translates visible text into **100+ languages in sub-10 milliseconds**—with **zero changes to your source HTML markup**.
+**Langjs rethinks internationalization from the ground up.** It combines an ultra-fast **client-side DOM TreeWalker** with a **server-side AST codebase scanner** and **universal HTML post-render stream interceptor**—translating web applications into **100+ languages with zero manual key extraction**.
 
 ---
 
 ## ✨ Features
 
+- 🌐 **Full-Stack: Client-Side & Server-Side** — Seamlessly operates in browser DOM (sub-10ms mutations) and server-side runtimes (Express, Fastify, Next.js SSR, Nuxt, Astro, Blade, Django) with sub-3ms stream transformation.
+- 🔍 **Automated Codebase AST Scanner** — Crawls your repository templates, respects `.gitignore` & `.langignore`, and generates side-by-side `lang/lang.json` files for human and AI verification.
+- 🛡️ **Side-by-Side Accuracy Persistence** — Correct Google machine translation mistakes in `lang/lang.json` so human and AI agent fixes are preserved with 100% reliability.
 - 🚀 **Zero-Config DOM Crawling** — Traverses and localizes visible text nodes, buttons, input placeholders, title attributes, and `aria-label`s without template rewrites.
 - 🌍 **100+ Global Languages** — Instant access to every Google Translate language out of the box.
 - ⚡ **Sub-10ms DOM In-Place Patching** — Mutates DOM text references directly with zero React re-renders or layout shifts.

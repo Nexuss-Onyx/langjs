@@ -1,6 +1,6 @@
 {
-  "name": "Langjs — Instant Multi-Lingual Engine for Static Websites",
-  "description": "Langjs dynamically detects, analyzes, and translates all frontend text across static websites using Google Translate and custom locale JSON overrides with a single line of JavaScript.",
+  "name": "Langjs — Universal Client & Server-Side Multi-Lingual Engine",
+  "description": "Langjs provides zero-config full-stack internationalization across browser DOM and server-side runtimes, with codebase AST scanning, .langignore support, and 100+ languages.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
