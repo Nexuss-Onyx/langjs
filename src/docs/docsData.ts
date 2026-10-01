@@ -48,37 +48,41 @@ export const DOC_CATEGORIES: DocCategory[] = [
     items: [
       {
         id: 'ai-skill',
-        title: 'AI Agent Skill (SKILL.md)',
+        title: 'AI Agent Skill',
         category: 'AI AGENT SKILL',
-        badge: 'AI FIRST',
+        badge: 'AI PROMPT',
         badgeType: 'ai',
-        summary: 'End-to-end AI-first specification and operational playbook for autonomous agents implementing LangJS.',
+        summary: 'Prompt draft, repository specification link, and quick guide to empower any AI agent to implement LangJS.',
         content: {
-          overview: 'LangJS provides a dedicated, comprehensive AI Agent Skill at `SKILL/LANGJS/SKILL.md` (and `skills/langjs/SKILL.md`). This authoritative specification primes any autonomous AI coding agent (Claude, Gemini, GPT-4, Cursor, Windsurf, Copilot Workspace) to implement zero-config DOM translation, execute AST codebase scans, maintain side-by-side lang.json manifests, and mount sub-3ms SSR HTML post-render streams without hallucinations.',
+          overview: 'Empower any autonomous AI coding assistant (Cursor, Claude, Copilot, ChatGPT, Gemini, Windsurf) with complete mastery over LangJS. Simply copy and paste the drafted prompt below into your AI chat or project instructions. Your AI agent will automatically review your codebase, run zero-config DOM localization, extract visible text, and configure high-speed multi-lingual rendering without inventing arbitrary keys.',
           codeSnippet: {
-            language: 'bash',
-            title: 'Repository Skill File',
-            code: `# Read or reference the full AI skill file in your repository:
-cat SKILL/LANGJS/SKILL.md
+            language: 'markdown',
+            title: 'Drafted Prompt for AI Agents (Click Copy)',
+            code: `You are an expert full-stack engineer implementing internationalization with LangJS.
 
-# Key capabilities documented in the skill:
-# 1. Zero-key client DOM TreeWalker & in-place patching (< 10ms)
-# 2. Server-side AST codebase scanning across JSX, Vue, Svelte, Blade, PHP
-# 3. .langignore & .gitignore exclusion algorithms
-# 4. Structured dual-format lang/lang.json specification
-# 5. Universal HTML post-render streaming for Express, Next, Nuxt (< 3ms)
-# 6. AI Agent verification and translation auditing SOP`
+Reference the official LangJS specification at:
+https://raw.githubusercontent.com/Nexuss-Onyx/langjs/main/SKILL/LANGJS/SKILL.md
+
+Instructions:
+1. Use client-side LangJS DOM TreeWalker (< 10ms in-place mutation) for zero translation keys.
+2. For server-side rendering, mount ServerTranslateRuntime to intercept HTML in < 3ms.
+3. To extract strings from templates, run: node scripts/scan-codebase.js --languages en,es,fr,ja
+4. Keep translations verified in lang/lang.json with verified: true flags.`
           },
           notes: [
             {
               type: 'tip',
-              text: 'Autonomous agents can invoke `node scripts/scan-codebase.js` directly during CI/CD or PR generation to extract newly added strings and verify translation accuracy before merging.'
+              text: 'Copy the prompt above and paste it directly into Cursor Composer, a Claude Project, or ChatGPT. The AI agent will instantly know every API signature and implementation pattern.'
             }
           ],
           sections: [
             {
+              title: '3-Step Quick Guide for AI Agents',
+              body: '1. Copy the Prompt: Use the one-click copy button above to copy the drafted prompt containing the direct repository link.\n2. Paste into your AI tool: Send it to Claude, Cursor Composer, Windsurf, Copilot, or ChatGPT.\n3. Autonomous Implementation: Your AI assistant inspects your templates, extracts visible strings, and configures LangJS end-to-end with zero manual key setup.'
+            },
+            {
               title: 'Why AI Agents Excel with LangJS',
-              body: '• No Hallucinated Translation Keys: AI agents never have to guess or invent arbitrary key paths like `t("hero.cta.button_text")`.\n• Deterministic Side-by-Side Review: AI agents audit `lang/lang.json` where source text and translations are aligned row-by-row with verified: true flags.\n• Automated CLI Extraction: Agents run 1 command to synchronize codebase strings with translation dictionaries.\n• Complete Full-Stack Playbook: The SKILL.md guide provides zero-ambiguity instructions for client and server setups.'
+              body: '• No Hallucinated Translation Keys: AI agents never have to guess or invent arbitrary key paths like `t("hero.cta.button_text")`.\n• Deterministic Side-by-Side Review: AI agents audit `lang/lang.json` where source text and translations are aligned row-by-row with verified: true flags.\n• Automated CLI Extraction: Agents run 1 command to synchronize codebase strings with translation dictionaries.\n• Complete Full-Stack Playbook: Provides zero-ambiguity instructions for client and server setups.'
             }
           ]
         }

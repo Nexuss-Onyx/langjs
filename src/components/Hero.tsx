@@ -70,20 +70,14 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#9e1b32]/15 via-[#dfd3c3]/20 to-transparent blur-[140px]" />
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-        {/* Release Metadata with AI Skill promotional pill */}
+        {/* Release Metadata */}
         <div className="flex justify-center">
-          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-mono-code text-[var(--text-secondary)] tracking-wide bg-[var(--bg-card)] px-4 py-1.5 rounded-full border border-[var(--border-color)] shadow-xs">
+          <div className="text-xs font-mono-code text-[var(--text-secondary)] tracking-wide bg-[var(--bg-card)] px-4 py-1.5 rounded-full border border-[var(--border-color)] shadow-xs">
             <span className="font-semibold text-[var(--text-hero)]">LangJS v1.1.0</span>
-            <span className="text-[var(--border-hover)]">·</span>
-            <span className="text-[#9e1b32] font-medium">Client & Server i18n</span>
-            <span className="text-[var(--border-hover)]">·</span>
-            <button
-              onClick={onNavigateToAiSkill}
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#9e1b32]/12 hover:bg-[#9e1b32] text-[#9e1b32] hover:text-white border border-[#9e1b32]/35 transition-all font-semibold cursor-pointer shadow-xs group"
-            >
-              <Sparkles className="h-3 w-3 text-[#9e1b32] group-hover:text-white transition-colors" />
-              <span>AI Agent Skill (SKILL.md)</span>
-            </button>
+            <span className="mx-2 text-[var(--border-hover)]">·</span>
+            <span className="text-[#9e1b32] font-medium">Client & Server-Side i18n SDK</span>
+            <span className="mx-2 text-[var(--border-hover)]">·</span>
+            <span>Zero Dependencies</span>
           </div>
         </div>
 

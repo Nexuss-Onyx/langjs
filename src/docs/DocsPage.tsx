@@ -380,17 +380,36 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
                     <Sparkles className="h-4 w-4" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[#9e1b32] tracking-wide uppercase">Official AI Skill Specification</div>
-                    <div className="text-xs text-[var(--text-secondary)] font-mono-code">Repository Path: SKILL/LANGJS/SKILL.md</div>
+                    <div className="text-xs font-bold text-[#9e1b32] tracking-wide uppercase">Official AI Agent Skill</div>
+                    <div className="text-xs text-[var(--text-secondary)]">Ready for Claude, Cursor, Copilot, ChatGPT & Windsurf</div>
                   </div>
                 </div>
-                <button
-                  onClick={() => copyToClipboard('SKILL/LANGJS/SKILL.md', 'skill-path')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e1b32] hover:bg-[#b8223d] text-white text-xs font-semibold shadow-xs transition-colors shrink-0 cursor-pointer"
-                >
-                  {copiedKey === 'skill-path' ? <Check className="h-3.5 w-3.5 text-emerald-300" /> : <Copy className="h-3.5 w-3.5" />}
-                  <span>{copiedKey === 'skill-path' ? 'Path Copied!' : 'Copy Skill Path'}</span>
-                </button>
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  <button
+                    onClick={() => copyToClipboard(`You are an expert full-stack engineer implementing internationalization with LangJS.
+
+Reference the official LangJS specification at:
+https://raw.githubusercontent.com/Nexuss-Onyx/langjs/main/SKILL/LANGJS/SKILL.md
+
+Instructions:
+1. Use client-side LangJS DOM TreeWalker (< 10ms in-place mutation) for zero translation keys.
+2. For server-side rendering, mount ServerTranslateRuntime to intercept HTML in < 3ms.
+3. To extract strings from templates, run: node scripts/scan-codebase.js --languages en,es,fr,ja
+4. Keep translations verified in lang/lang.json with verified: true flags.`, 'ai-prompt')}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e1b32] hover:bg-[#b8223d] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+                  >
+                    {copiedKey === 'ai-prompt' ? <Check className="h-3.5 w-3.5 text-emerald-300" /> : <Copy className="h-3.5 w-3.5" />}
+                    <span>{copiedKey === 'ai-prompt' ? 'Prompt Copied!' : 'Copy Prompt'}</span>
+                  </button>
+
+                  <button
+                    onClick={() => copyToClipboard('https://raw.githubusercontent.com/Nexuss-Onyx/langjs/main/SKILL/LANGJS/SKILL.md', 'skill-link')}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#9e1b32]/40 bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] text-[#9e1b32] text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+                  >
+                    {copiedKey === 'skill-link' ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+                    <span>{copiedKey === 'skill-link' ? 'Link Copied!' : 'Copy Skill URL'}</span>
+                  </button>
+                </div>
               </div>
             )}
           </div>
