@@ -954,6 +954,37 @@ npx @nexuss0781/langjs scan -l en,am,es,fr,ja -o lang/lang.json`
             }
           ]
         }
+      },
+      {
+        id: 'ai-skill-spec',
+        title: 'AI Agent Skill Specification (SKILL.md)',
+        category: 'SERVER SUITE & CLI',
+        badge: 'AI SKILL',
+        badgeType: 'guide',
+        summary: 'End-to-end AI-first specification and operational playbook for autonomous agents implementing LangJS.',
+        content: {
+          overview: 'LangJS includes a dedicated, comprehensive AI Agent Skill located at `SKILL/LANGJS/SKILL.md` (and `skills/langjs/SKILL.md`). It primes any AI coding assistant to understand the end-to-end client DOM TreeWalker, codebase AST scanning, side-by-side verification workflows, and universal SSR streaming without hallucination.',
+          codeSnippet: {
+            language: 'bash',
+            title: 'File Location',
+            code: `# Read or reference the full AI skill file in your repository:
+cat SKILL/LANGJS/SKILL.md
+
+# Key capabilities documented in the skill:
+# 1. Zero-key client DOM TreeWalker & in-place patching
+# 2. Server-side AST codebase scanning across JSX, Vue, Svelte, Blade, PHP
+# 3. .langignore & .gitignore exclusion algorithms
+# 4. Structured dual-format lang/lang.json specification
+# 5. Universal HTML post-render streaming for Express, Next, Nuxt
+# 6. AI Agent verification and translation auditing SOP`
+          },
+          notes: [
+            {
+              type: 'tip',
+              text: 'Autonomous agents can invoke `node scripts/scan-codebase.js` directly during CI/CD or PR generation to extract newly added strings and verify translation accuracy before merging.'
+            }
+          ]
+        }
       }
     ]
   }
