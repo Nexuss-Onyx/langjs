@@ -128,7 +128,12 @@ export default function App() {
 
   // Welcoming Landing Page
   return (
-    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)] selection:bg-[#9e1b32] selection:text-white transition-colors duration-300">
+    <div className="relative min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)] selection:bg-[#9e1b32] selection:text-white transition-colors duration-300 overflow-x-hidden">
+      {/* Architectural Background Ambient Elements (Non-destructive, cool & professional) */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-tech-dots opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)]" />
+      <div className="pointer-events-none fixed -top-40 right-[-10%] h-[600px] w-[600px] rounded-full bg-gradient-to-br from-[#9e1b32]/10 via-[#dfd3c3]/15 to-transparent blur-[140px] z-0" />
+      <div className="pointer-events-none fixed top-1/2 left-[-15%] h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-[#9e1b32]/8 via-amber-700/5 to-transparent blur-[150px] z-0" />
+
       {/* Navigation Bar */}
       <Navbar
         currentLang={currentLang as any}
@@ -137,24 +142,44 @@ export default function App() {
         onNavigateToDocs={() => navigateTo('docs')}
       />
 
-      <main>
+      <main className="relative z-10">
         {/* Welcoming Hero Section */}
         <Hero
           currentLang={currentLang as any}
           onNavigateToDocs={() => navigateTo('docs')}
         />
 
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="section-beam-divider" />
+        </div>
+
         {/* 100+ Global Languages Catalog & Search */}
         <LanguageGrid onSelectLanguage={handleLanguageChange} activeLanguage={currentLang} />
+
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="section-beam-divider" />
+        </div>
 
         {/* Architecture & Asymmetric Bento Grid */}
         <ArchitectureBento />
 
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="section-beam-divider" />
+        </div>
+
         {/* Server-Side Scanner & Studio */}
         <ServerStudioSection />
 
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="section-beam-divider" />
+        </div>
+
         {/* Switcher Button Customizer & Standalone Generator */}
         <SwitcherCustomizer />
+
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="section-beam-divider" />
+        </div>
 
         {/* Quantitative Comparison & Benchmarks */}
         <PerformanceComparison />

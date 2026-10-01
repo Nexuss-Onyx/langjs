@@ -544,35 +544,58 @@ export const ServerStudioSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Express / Framework Agnostic Code Sample */}
             <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-xl">
-              <div className="flex items-center gap-2 text-xs font-mono-code text-[#9e1b32] mb-3">
-                <Terminal className="h-4 w-4" />
-                <span>SERVER RUNTIME INTEGRATION (EXPRESS, SSR, NEXT, NUXT)</span>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2 text-xs font-mono-code text-[#9e1b32]">
+                  <Terminal className="h-4 w-4" />
+                  <span className="font-semibold">SERVER RUNTIME INTEGRATION (EXPRESS, SSR, NEXT, NUXT)</span>
+                </div>
+                <span className="reading-focus-badge">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  Sub-3ms SSR
+                </span>
               </div>
-              <h3 className="text-xl font-bold text-[var(--text-hero)] mb-2">
+              <h3 className="text-xl font-bold text-[var(--text-hero)] mb-2 font-serif-luxury">
                 Universal HTML Post-Render Interceptor
               </h3>
               <p className="text-xs text-[var(--text-secondary)] mb-4 leading-relaxed">
                 Rather than hardcoding template strings in Vue, React, Angular, or Blade, the server middleware intercepts the rendered HTML response and transforms all visible text in-place using the verified <code className="font-mono-code text-[#9e1b32]">lang/lang.json</code> manifest.
               </p>
 
-              <div className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4 font-mono-code text-xs text-[var(--text-primary)] overflow-x-auto leading-relaxed">
-                <span className="text-purple-600">import</span> express <span className="text-purple-600">from</span> <span className="text-emerald-700">'express'</span>;<br />
-                <span className="text-purple-600">import</span> &#123; ServerTranslateRuntime &#125; <span className="text-purple-600">from</span> <span className="text-emerald-700">'@nexuss0781/langjs/server'</span>;<br />
-                <br />
-                <span className="text-blue-600">const</span> app = <span className="text-amber-600">express</span>();<br />
-                <span className="text-blue-600">const</span> runtime = <span className="text-blue-600">new</span> <span className="text-amber-600">ServerTranslateRuntime</span>(&#123;<br />
-                &nbsp;&nbsp;manifestPath: <span className="text-emerald-700">'./lang/lang.json'</span>,<br />
-                &nbsp;&nbsp;defaultLanguage: <span className="text-emerald-700">'en'</span>,<br />
-                &nbsp;&nbsp;supportedLanguages: [<span className="text-emerald-700">'en'</span>, <span className="text-emerald-700">'am'</span>, <span className="text-emerald-700">'es'</span>, <span className="text-emerald-700">'fr'</span>, <span className="text-emerald-700">'ja'</span>]<br />
-                &#125;);<br />
-                <br />
-                <span className="text-[var(--text-muted)]">// Mount universal HTML localization middleware:</span><br />
-                app.<span className="text-blue-600">use</span>(runtime.<span className="text-amber-600">createMiddleware</span>());<br />
-                <br />
-                app.<span className="text-blue-600">get</span>(<span className="text-emerald-700">'/'</span>, (req, res) =&gt; &#123;<br />
-                &nbsp;&nbsp;<span className="text-[var(--text-muted)]">// Renders your raw React/Vue/Blade/HTML template</span><br />
-                &nbsp;&nbsp;res.<span className="text-amber-600">send</span>(renderedHtml);<br />
-                &#125;);
+              {/* Decorated Dark Console */}
+              <div className="relative dark-console-panel rounded-xl p-4 font-mono-code text-xs text-[#f5ede1] overflow-hidden shadow-xl">
+                <div className="corner-glow-accent" />
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-[11px] text-[#d8cab7]/70">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-rose-500/80 inline-block" />
+                    <span className="h-2 w-2 rounded-full bg-amber-500/80 inline-block" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-500/80 inline-block" />
+                    <span className="ml-2 font-semibold text-[#f5ede1]">server.ts</span>
+                  </div>
+                  <span className="text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
+                    Zero Framework Lock-in
+                  </span>
+                </div>
+                <div className="leading-relaxed overflow-x-auto text-[11px]">
+                  <span className="text-rose-400 font-semibold">import</span> express <span className="text-rose-400 font-semibold">from</span> <span className="text-emerald-300">'express'</span>;<br />
+                  <span className="text-rose-400 font-semibold">import</span> &#123; ServerTranslateRuntime &#125; <span className="text-rose-400 font-semibold">from</span> <span className="text-emerald-300">'@nexuss0781/langjs/server'</span>;<br />
+                  <br />
+                  <span className="text-rose-400 font-semibold">const</span> app = <span className="text-amber-300">express</span>();<br />
+                  <span className="text-rose-400 font-semibold">const</span> runtime = <span className="text-rose-400 font-semibold">new</span> <span className="text-amber-300 font-bold">ServerTranslateRuntime</span>(&#123;<br />
+                  &nbsp;&nbsp;manifestPath: <span className="text-emerald-300">'./lang/lang.json'</span>,<br />
+                  &nbsp;&nbsp;defaultLanguage: <span className="text-emerald-300">'en'</span>,<br />
+                  &nbsp;&nbsp;supportedLanguages: [<span className="text-emerald-300">'en'</span>, <span className="text-emerald-300">'am'</span>, <span className="text-emerald-300">'es'</span>, <span className="text-emerald-300">'fr'</span>, <span className="text-emerald-300">'ja'</span>]<br />
+                  &#125;);<br />
+                  <br />
+                  <span className="text-[#d8cab7]/50">// Mount universal HTML post-render interceptor:</span><br />
+                  <div className="-mx-1 px-1.5 py-0.5 rounded bg-[#9e1b32]/25 border border-[#9e1b32]/50 text-white my-1 inline-block">
+                    app.<span className="text-amber-300">use</span>(runtime.<span className="text-amber-300">createMiddleware</span>());
+                  </div><br />
+                  <br />
+                  app.<span className="text-amber-300">get</span>(<span className="text-emerald-300">'/'</span>, (req, res) =&gt; &#123;<br />
+                  &nbsp;&nbsp;<span className="text-[#d8cab7]/50">// Automatically intercepts & transforms raw SSR HTML before sending</span><br />
+                  &nbsp;&nbsp;res.<span className="text-amber-300">send</span>(renderedHtml);<br />
+                  &#125;);
+                </div>
               </div>
             </div>
 
@@ -582,7 +605,7 @@ export const ServerStudioSection: React.FC = () => {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2 text-xs font-mono-code text-emerald-700">
                     <Code className="h-4 w-4" />
-                    <span>INTERACTIVE SSR STREAM TRANSFORMER</span>
+                    <span className="font-semibold">INTERACTIVE SSR STREAM TRANSFORMER</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span className="text-xs text-[var(--text-muted)]">Target:</span>
@@ -619,14 +642,17 @@ export const ServerStudioSection: React.FC = () => {
                   <label className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
                     Localized HTML Stream (Sub-3ms Transformation)
                   </label>
-                  <div className="rounded-xl border border-emerald-500/30 bg-[var(--bg-main)] p-3 font-mono-code text-xs text-emerald-800 dark:text-emerald-400 overflow-x-auto whitespace-pre leading-relaxed">
+                  <div className="relative dark-console-panel rounded-xl p-3 font-mono-code text-xs text-emerald-300 overflow-x-auto whitespace-pre leading-relaxed shadow-md">
                     {getSimulatedOutput()}
                   </div>
                 </div>
               </div>
 
               <div className="mt-4 pt-4 border-t border-[var(--border-color)] flex items-center justify-between text-xs text-[var(--text-muted)]">
-                <span>Transformation Latency: &lt; 2.4ms</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="pulse-beacon" />
+                  <span>Transformation Latency: &lt; 2.4ms</span>
+                </span>
                 <span className="text-emerald-700 font-semibold">100% Exact JSON Match</span>
               </div>
             </div>
@@ -637,65 +663,93 @@ export const ServerStudioSection: React.FC = () => {
         {activeTab === 'ignore' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-xl">
-              <div className="flex items-center gap-2 text-xs font-mono-code text-[#9e1b32] mb-3">
-                <FolderGit2 className="h-4 w-4" />
-                <span>.LANGIGNORE SPECIFICATION</span>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2 text-xs font-mono-code text-[#9e1b32]">
+                  <FolderGit2 className="h-4 w-4" />
+                  <span className="font-semibold">.LANGIGNORE SPECIFICATION</span>
+                </div>
+                <span className="reading-focus-badge">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#9e1b32]" />
+                  Dedicated Ignore File
+                </span>
               </div>
-              <h3 className="text-xl font-bold text-[var(--text-hero)] mb-2">
+              <h3 className="text-xl font-bold text-[var(--text-hero)] mb-2 font-serif-luxury">
                 Cloned & Dedicated Ignore Engine
               </h3>
               <p className="text-xs text-[var(--text-secondary)] mb-4 leading-relaxed">
                 By default, LangJS respects all rules in <code className="font-mono-code text-[#9e1b32]">.gitignore</code>. You can also define a dedicated <code className="font-mono-code text-[#9e1b32]">.langignore</code> file in the repository root to exclude internal test files, mock fixtures, and build artifacts from extraction.
               </p>
 
-              <div className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4 font-mono-code text-xs text-[var(--text-primary)] overflow-x-auto leading-relaxed">
-                <span className="text-[var(--text-muted)]"># Automatically excludes build artifacts and dependencies</span><br />
-                node_modules/<br />
-                dist/<br />
-                build/<br />
-                .next/<br />
-                .nuxt/<br />
-                lang/lang.json<br />
-                *.lock<br />
-                *.log<br />
-                *.svg<br />
-                *.png<br />
-                *.jpg
+              <div className="relative dark-console-panel rounded-xl p-4 font-mono-code text-xs text-[#f5ede1] overflow-hidden shadow-xl">
+                <div className="corner-glow-accent" />
+                <div className="flex items-center gap-1.5 pb-2 mb-2 border-b border-white/10 text-[11px] text-[#d8cab7]/70">
+                  <span className="h-2 w-2 rounded-full bg-rose-500/80 inline-block" />
+                  <span className="h-2 w-2 rounded-full bg-amber-500/80 inline-block" />
+                  <span className="h-2 w-2 rounded-full bg-emerald-500/80 inline-block" />
+                  <span className="ml-2 font-semibold text-[#f5ede1]">.langignore</span>
+                </div>
+                <div className="text-[11px] leading-relaxed text-[#d8cab7]/90">
+                  <span className="text-rose-300/60"># Automatically excludes build artifacts and dependencies</span><br />
+                  node_modules/<br />
+                  dist/<br />
+                  build/<br />
+                  .next/<br />
+                  .nuxt/<br />
+                  lang/lang.json<br />
+                  *.lock<br />
+                  *.log<br />
+                  *.svg<br />
+                  *.png<br />
+                  *.jpg
+                </div>
               </div>
             </div>
 
             <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-xl flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2 text-xs font-mono-code text-emerald-700 mb-3">
-                  <Terminal className="h-4 w-4" />
-                  <span>COMMAND LINE RUNNER</span>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2 text-xs font-mono-code text-emerald-700">
+                    <Terminal className="h-4 w-4" />
+                    <span className="font-semibold">COMMAND LINE RUNNER</span>
+                  </div>
+                  <span className="reading-focus-badge">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                    CLI v1.1.0
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-[var(--text-hero)] mb-2">
+                <h3 className="text-xl font-bold text-[var(--text-hero)] mb-2 font-serif-luxury">
                   1-Command Codebase Scanner
                 </h3>
                 <p className="text-xs text-[var(--text-secondary)] mb-4 leading-relaxed">
                   Run the scanner from your terminal or CI/CD pipeline before building production releases:
                 </p>
 
-                <div className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4 font-mono-code text-xs text-white bg-zinc-950 overflow-x-auto space-y-2">
-                  <div className="flex items-center justify-between text-zinc-400 text-[11px] pb-2 border-b border-zinc-800">
-                    <span>Terminal / Bash</span>
-                    <span>CLI v1.1.0</span>
+                <div className="relative dark-console-panel rounded-xl p-4 font-mono-code text-xs text-white overflow-hidden shadow-xl space-y-2.5">
+                  <div className="corner-glow-accent" />
+                  <div className="flex items-center justify-between text-zinc-400 text-[11px] pb-2 border-b border-white/10">
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-rose-500/80 inline-block" />
+                      <span className="h-2 w-2 rounded-full bg-amber-500/80 inline-block" />
+                      <span className="h-2 w-2 rounded-full bg-emerald-500/80 inline-block" />
+                      <span className="ml-2 font-semibold text-zinc-200">Terminal</span>
+                    </div>
+                    <span className="text-[10px] text-zinc-400">bash</span>
                   </div>
-                  <p className="text-emerald-400">
+                  <p className="text-emerald-400 text-xs font-semibold">
                     $ node scripts/scan-codebase.js --languages en,am,es,fr,ja --out lang/lang.json
                   </p>
-                  <p className="text-zinc-400 text-[11px]">
+                  <p className="text-zinc-300 text-[11px] leading-relaxed">
                     🔍 Scanning codebase in /app/applet...<br />
                     📄 Found 16 UI template/component files.<br />
                     ✨ Extracted 35 unique visible strings.<br />
-                    ✅ Wrote structured side-by-side file to lang/lang.json
+                    ✅ Wrote structured side-by-side file to <span className="text-emerald-400">lang/lang.json</span>
                   </p>
                 </div>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-[var(--border-color)] text-xs text-[var(--text-secondary)]">
-                AI agents and human developers can run this script or edit <code className="font-mono-code text-[#9e1b32]">lang/lang.json</code> directly in VSCode or GitHub web editor.
+              <div className="mt-4 pt-4 border-t border-[var(--border-color)] text-xs text-[var(--text-secondary)] flex items-center justify-between">
+                <span>AI agents and developers can edit directly in VSCode.</span>
+                <span className="font-mono-code text-[11px] text-[#9e1b32] font-semibold">lang/lang.json</span>
               </div>
             </div>
           </div>

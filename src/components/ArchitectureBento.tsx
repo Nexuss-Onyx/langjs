@@ -88,12 +88,18 @@ export const ArchitectureBento: React.FC = () => {
               </p>
             </div>
             
-            <div className="mt-6 rounded-xl border border-[rgba(75,50,30,0.15)] bg-[#1e1713] p-3 text-xs font-mono-code shadow-xs">
-              <div className="flex justify-between text-[#d8cab7]/70 pb-1 border-b border-white/10 text-[10px]">
-                <span>CACHE LAYER</span>
-                <span className="text-emerald-400 font-semibold">99.4% CACHE HIT</span>
+            <div className="mt-6 relative dark-console-panel rounded-xl p-3 text-xs font-mono-code shadow-md overflow-hidden">
+              <div className="corner-glow-accent" />
+              <div className="flex justify-between items-center text-[#d8cab7]/70 pb-1.5 border-b border-white/10 text-[10px]">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-rose-500/80 inline-block" />
+                  <span className="h-2 w-2 rounded-full bg-amber-500/80 inline-block" />
+                  <span className="h-2 w-2 rounded-full bg-emerald-500/80 inline-block" />
+                  <span className="ml-1 font-semibold text-[#f5ede1]">CACHE ENGINE</span>
+                </div>
+                <span className="text-emerald-400 font-semibold bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-500/20">99.4% CACHE HIT</span>
               </div>
-              <div className="mt-2 text-rose-200">
+              <div className="mt-2 text-rose-200/90 leading-relaxed text-[11px]">
                 &gt; Batching 14 unique tokens...<br />
                 &gt; Local memory cache: HIT (0ms)<br />
                 &gt; Mutated 14 DOM references
@@ -110,7 +116,7 @@ export const ArchitectureBento: React.FC = () => {
                 </div>
                 <button
                   onClick={copyJson}
-                  className="flex items-center gap-1 text-[11px] font-mono-code text-[var(--text-muted)] hover:text-[var(--text-hero)]"
+                  className="flex items-center gap-1 text-[11px] font-mono-code text-[var(--text-muted)] hover:text-[var(--text-hero)] cursor-pointer"
                 >
                   {copiedSnippet ? <Check className="h-3 w-3 text-emerald-600" /> : <Copy className="h-3 w-3" />}
                   <span>{copiedSnippet ? 'Copied' : 'Copy'}</span>
@@ -124,7 +130,14 @@ export const ArchitectureBento: React.FC = () => {
               </p>
             </div>
 
-            <div className="mt-6 overflow-x-auto rounded-xl border border-[rgba(75,50,30,0.15)] bg-[#1e1713] p-3 font-mono-code text-[11px] text-[#f5ede1] shadow-xs">
+            <div className="mt-6 relative dark-console-panel overflow-x-auto rounded-xl p-3 font-mono-code text-[11px] text-[#f5ede1] shadow-md">
+              <div className="corner-glow-accent" />
+              <div className="flex items-center gap-1.5 pb-1.5 mb-1.5 border-b border-white/10 text-[10px] text-[#d8cab7]/70">
+                <span className="h-2 w-2 rounded-full bg-rose-500/80 inline-block" />
+                <span className="h-2 w-2 rounded-full bg-amber-500/80 inline-block" />
+                <span className="h-2 w-2 rounded-full bg-emerald-500/80 inline-block" />
+                <span className="ml-1 text-[#f5ede1]">overrides.json</span>
+              </div>
               <pre className="text-amber-200/90">{sampleJsonOverride}</pre>
             </div>
           </div>
@@ -143,11 +156,18 @@ export const ArchitectureBento: React.FC = () => {
               </p>
             </div>
 
-            <div className="mt-6 rounded-xl border border-[rgba(75,50,30,0.15)] bg-[#1e1713] p-3 font-mono-code text-[11px] text-[#f5ede1] shadow-xs">
+            <div className="mt-6 relative dark-console-panel rounded-xl p-3 font-mono-code text-[11px] text-[#f5ede1] shadow-md">
+              <div className="corner-glow-accent" />
+              <div className="flex items-center gap-1.5 pb-1.5 mb-1.5 border-b border-white/10 text-[10px] text-[#d8cab7]/70">
+                <span className="h-2 w-2 rounded-full bg-rose-500/80 inline-block" />
+                <span className="h-2 w-2 rounded-full bg-amber-500/80 inline-block" />
+                <span className="h-2 w-2 rounded-full bg-emerald-500/80 inline-block" />
+                <span className="ml-1 text-[#f5ede1]">client.ts</span>
+              </div>
               <span className="text-[#e11d48]">import</span> {'{ LangJS }'} <span className="text-[#e11d48]">from</span> <span className="text-emerald-300">'@nexuss0781/langjs'</span>;<br />
               <span className="text-[#e11d48]">const</span> lang = <span className="text-[#e11d48]">new</span> LangJS();<br />
               <span className="text-[#d8cab7]/50">// Switch to Japanese:</span><br />
-              <span className="text-rose-300">await</span> lang.setLanguage(<span className="text-emerald-300">'ja'</span>);
+              <span className="text-rose-300 font-semibold">await</span> lang.setLanguage(<span className="text-emerald-300 font-semibold">'ja'</span>);
             </div>
           </div>
 
