@@ -15,7 +15,9 @@ import {
   Package, 
   Code2, 
   X,
-  Menu
+  Menu,
+  Sparkles,
+  Bot
 } from 'lucide-react';
 
 interface DocsPageProps {
@@ -76,6 +78,8 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
 
   const getBadgeStyle = (badgeType?: string) => {
     switch (badgeType) {
+      case 'ai':
+        return 'bg-gradient-to-r from-[#9e1b32] to-[#6e1022] text-white border-[#9e1b32] shadow-sm font-semibold';
       case 'get':
         return 'bg-blue-100 text-blue-900 border-blue-300';
       case 'post':
@@ -190,35 +194,50 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
           </div>
 
           <div className="space-y-4">
-            {DOC_CATEGORIES.map((category) => (
-              <div key={category.id} className="space-y-1">
-                <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
-                  {category.title}
+            {DOC_CATEGORIES.map((category) => {
+              const isAiCategory = category.id === 'ai-agent-skill-category';
+              return (
+                <div key={category.id} className="space-y-1">
+                  <div className={`px-2 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 ${
+                    isAiCategory ? 'text-[#9e1b32]' : 'text-[var(--text-muted)]'
+                  }`}>
+                    {isAiCategory && <Sparkles className="h-3 w-3 text-[#9e1b32]" />}
+                    <span>{category.title}</span>
+                  </div>
+                  {category.items.map((item) => {
+                    const isAiItem = item.id === 'ai-skill';
+                    const isActive = item.id === activeDocId;
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          setActiveDocId(item.id);
+                          setMobileSidebarOpen(false);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className={`flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-xs transition-all ${
+                          isActive
+                            ? 'bg-[#9e1b32] text-white font-semibold shadow-xs'
+                            : isAiItem
+                            ? 'bg-[#9e1b32]/10 border border-[#9e1b32]/30 text-[#9e1b32] font-semibold'
+                            : 'text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]'
+                        }`}
+                      >
+                        <span className="truncate flex items-center gap-1.5">
+                          {isAiItem && <Sparkles className="h-3 w-3 shrink-0" />}
+                          <span>{item.title}</span>
+                        </span>
+                        {item.badge && (
+                          <span className={`ml-2 rounded border px-1.5 py-0.2 text-[9px] font-mono-code font-bold uppercase ${getBadgeStyle(item.badgeType)}`}>
+                            {item.badge}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
-                {category.items.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => {
-                      setActiveDocId(item.id);
-                      setMobileSidebarOpen(false);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className={`flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-xs transition-colors ${
-                      item.id === activeDocId
-                        ? 'bg-[#9e1b32]/10 text-[#9e1b32] font-semibold border border-[#9e1b32]'
-                        : 'text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]'
-                    }`}
-                  >
-                    <span className="truncate">{item.title}</span>
-                    {item.badge && (
-                      <span className={`ml-2 rounded border px-1.5 py-0.2 text-[9px] font-mono-code font-bold uppercase ${getBadgeStyle(item.badgeType)}`}>
-                        {item.badge}
-                      </span>
-                    )}
-                  </button>
-                ))}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
@@ -251,6 +270,7 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
           <div className="space-y-6">
             {DOC_CATEGORIES.map((category) => {
               const isCollapsed = !!collapsedCategories[category.id];
+              const isAiCategory = category.id === 'ai-agent-skill-category';
               const categoryItems = searchQuery
                 ? category.items.filter(
                     (item) =>
@@ -265,18 +285,24 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
                 <div key={category.id} className="space-y-1.5">
                   <button
                     onClick={() => toggleCategory(category.id)}
-                    className="flex w-full items-center justify-between px-2 text-[11px] font-bold tracking-wider uppercase text-[var(--text-muted)] hover:text-[var(--text-hero)] transition-colors"
+                    className={`flex w-full items-center justify-between px-2 text-[11px] font-bold tracking-wider uppercase transition-colors ${
+                      isAiCategory ? 'text-[#9e1b32]' : 'text-[var(--text-muted)] hover:text-[var(--text-hero)]'
+                    }`}
                   >
-                    <span>{category.title}</span>
+                    <span className="flex items-center gap-1.5">
+                      {isAiCategory && <Sparkles className="h-3 w-3 text-[#9e1b32]" />}
+                      <span>{category.title}</span>
+                    </span>
                     <ChevronDown
                       className={`h-3 w-3 transition-transform ${isCollapsed ? '-rotate-90' : ''}`}
                     />
                   </button>
 
                   {!isCollapsed && (
-                    <div className="space-y-0.5 pt-1">
+                    <div className="space-y-1 pt-1">
                       {categoryItems.map((item) => {
                         const isActive = item.id === activeDocId;
+                        const isAiItem = item.id === 'ai-skill';
                         return (
                           <button
                             key={item.id}
@@ -284,13 +310,18 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
                               setActiveDocId(item.id);
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
-                            className={`group flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-xs transition-all ${
+                            className={`group flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-xs transition-all cursor-pointer ${
                               isActive
-                                ? 'bg-[#9e1b32]/10 border border-[#9e1b32] text-[#9e1b32] font-semibold shadow-xs'
+                                ? 'bg-[#9e1b32] text-white font-semibold shadow-md shadow-[#9e1b32]/30'
+                                : isAiItem
+                                ? 'border border-[#9e1b32]/35 bg-gradient-to-r from-[#9e1b32]/12 via-[#9e1b32]/5 to-transparent text-[#9e1b32] font-semibold hover:border-[#9e1b32] hover:bg-[#9e1b32]/18'
                                 : 'text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-hero)]'
                             }`}
                           >
-                            <span className="truncate text-left">{item.title}</span>
+                            <span className="truncate text-left flex items-center gap-1.5">
+                              {isAiItem && <Sparkles className={`h-3 w-3 shrink-0 ${isActive ? 'text-white' : 'text-[#9e1b32]'}`} />}
+                              <span>{item.title}</span>
+                            </span>
                             {item.badge && (
                               <span
                                 className={`ml-2 rounded border px-1.5 py-0.2 font-mono-code text-[9px] font-semibold shrink-0 uppercase ${getBadgeStyle(
@@ -341,6 +372,27 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
             <p className="mt-3 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-2xl">
               {activeDoc.summary}
             </p>
+
+            {activeDoc.id === 'ai-skill' && (
+              <div className="mt-4 rounded-xl border border-[#9e1b32]/35 bg-gradient-to-r from-[#9e1b32]/15 via-[#9e1b32]/8 to-transparent p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                <div className="flex items-center gap-2.5">
+                  <div className="h-8 w-8 rounded-lg bg-[#9e1b32] text-white flex items-center justify-center shrink-0 shadow-sm">
+                    <Sparkles className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-[#9e1b32] tracking-wide uppercase">Official AI Skill Specification</div>
+                    <div className="text-xs text-[var(--text-secondary)] font-mono-code">Repository Path: SKILL/LANGJS/SKILL.md</div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => copyToClipboard('SKILL/LANGJS/SKILL.md', 'skill-path')}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e1b32] hover:bg-[#b8223d] text-white text-xs font-semibold shadow-xs transition-colors shrink-0 cursor-pointer"
+                >
+                  {copiedKey === 'skill-path' ? <Check className="h-3.5 w-3.5 text-emerald-300" /> : <Copy className="h-3.5 w-3.5" />}
+                  <span>{copiedKey === 'skill-path' ? 'Path Copied!' : 'Copy Skill Path'}</span>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Article Body */}

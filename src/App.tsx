@@ -16,6 +16,7 @@ import { DocsPage } from './docs/DocsPage';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'docs'>('home');
+  const [docsInitialId, setDocsInitialId] = useState<string>('welcome');
   const [currentLang, setCurrentLang] = useState<string>('en');
   const [gitHubModalOpen, setGitHubModalOpen] = useState(false);
   const langInstanceRef = useRef<LangJS | null>(null);
@@ -45,6 +46,11 @@ export default function App() {
       window.history.pushState(null, '', '/');
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openDocs = (docId: string = 'welcome') => {
+    setDocsInitialId(docId);
+    navigateTo('docs');
   };
 
   // Initialize global LangJS library on the landing page
@@ -122,6 +128,7 @@ export default function App() {
     return (
       <DocsPage
         onBackToHome={() => navigateTo('home')}
+        initialDocId={docsInitialId}
       />
     );
   }
@@ -139,14 +146,16 @@ export default function App() {
         currentLang={currentLang as any}
         onLanguageChange={handleLanguageChange}
         onOpenGitHub={() => setGitHubModalOpen(true)}
-        onNavigateToDocs={() => navigateTo('docs')}
+        onNavigateToDocs={() => openDocs('welcome')}
+        onNavigateToAiSkill={() => openDocs('ai-skill')}
       />
 
       <main className="relative z-10">
         {/* Welcoming Hero Section */}
         <Hero
           currentLang={currentLang as any}
-          onNavigateToDocs={() => navigateTo('docs')}
+          onNavigateToDocs={() => openDocs('welcome')}
+          onNavigateToAiSkill={() => openDocs('ai-skill')}
         />
 
         <div className="max-w-7xl mx-auto px-6">

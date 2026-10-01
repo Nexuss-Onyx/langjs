@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Terminal, Copy, Check, ArrowRight, BookOpen, Zap, Code2, Layers, Github } from 'lucide-react';
+import { Terminal, Copy, Check, ArrowRight, BookOpen, Zap, Code2, Layers, Github, Sparkles } from 'lucide-react';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
 interface HeroProps {
   currentLang: SupportedLanguage;
   onNavigateToDocs: () => void;
+  onNavigateToAiSkill?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   currentLang,
   onNavigateToDocs,
+  onNavigateToAiSkill,
 }) => {
   const [copied, setCopied] = useState(false);
   const [installMethod, setInstallMethod] = useState<'npm' | 'cdn'>('npm');
@@ -68,14 +70,20 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#9e1b32]/15 via-[#dfd3c3]/20 to-transparent blur-[140px]" />
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-        {/* Release Metadata */}
+        {/* Release Metadata with AI Skill promotional pill */}
         <div className="flex justify-center">
-          <div className="text-xs font-mono-code text-[var(--text-secondary)] tracking-wide bg-[var(--bg-card)] px-4 py-1.5 rounded-full border border-[var(--border-color)] shadow-xs">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-mono-code text-[var(--text-secondary)] tracking-wide bg-[var(--bg-card)] px-4 py-1.5 rounded-full border border-[var(--border-color)] shadow-xs">
             <span className="font-semibold text-[var(--text-hero)]">LangJS v1.1.0</span>
-            <span className="mx-2 text-[var(--border-hover)]">·</span>
-            <span className="text-[#9e1b32] font-medium">Client & Server-Side i18n SDK</span>
-            <span className="mx-2 text-[var(--border-hover)]">·</span>
-            <span>Zero Dependencies</span>
+            <span className="text-[var(--border-hover)]">·</span>
+            <span className="text-[#9e1b32] font-medium">Client & Server i18n</span>
+            <span className="text-[var(--border-hover)]">·</span>
+            <button
+              onClick={onNavigateToAiSkill}
+              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#9e1b32]/12 hover:bg-[#9e1b32] text-[#9e1b32] hover:text-white border border-[#9e1b32]/35 transition-all font-semibold cursor-pointer shadow-xs group"
+            >
+              <Sparkles className="h-3 w-3 text-[#9e1b32] group-hover:text-white transition-colors" />
+              <span>AI Agent Skill (SKILL.md)</span>
+            </button>
           </div>
         </div>
 
@@ -93,25 +101,33 @@ export const Hero: React.FC<HeroProps> = ({
           </p>
         </div>
 
-        {/* Prominent Action Button (Burgundy) + Secondary GitHub Link */}
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+        {/* Prominent Action Buttons with AI Skill Promotion */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <button
             onClick={onNavigateToDocs}
-            className="w-full sm:w-auto luxury-button-primary flex h-11 sm:h-12 items-center justify-center gap-2.5 rounded-xl px-8 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="w-full sm:w-auto luxury-button-primary flex h-11 sm:h-12 items-center justify-center gap-2.5 rounded-xl px-7 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
           >
             <BookOpen className="h-4 w-4 text-white" />
-            <span>View Documentation</span>
+            <span>Documentation</span>
             <ArrowRight className="h-4 w-4 opacity-80" />
+          </button>
+
+          <button
+            onClick={onNavigateToAiSkill}
+            className="w-full sm:w-auto flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl border border-[#9e1b32]/40 bg-[#9e1b32]/10 hover:bg-[#9e1b32] px-6 text-sm font-semibold text-[#9e1b32] hover:text-white transition-all shadow-xs cursor-pointer group"
+          >
+            <Sparkles className="h-4 w-4 text-[#9e1b32] group-hover:text-white transition-colors" />
+            <span>AI Agent Skill</span>
           </button>
 
           <a
             href="https://github.com/Nexuss-Onyx/langjs"
             target="_blank"
             rel="noreferrer"
-            className="w-full sm:w-auto flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] px-6 text-sm font-medium text-[var(--text-primary)] transition-all hover:border-[#9e1b32]/50 hover:bg-[var(--bg-card-hover)]"
+            className="w-full sm:w-auto flex h-11 sm:h-12 items-center justify-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] px-5 text-sm font-medium text-[var(--text-primary)] transition-all hover:border-[#9e1b32]/50 hover:bg-[var(--bg-card-hover)]"
           >
             <Github className="h-4 w-4 text-[#9e1b32]" />
-            <span>GitHub Repository</span>
+            <span>GitHub</span>
           </a>
         </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Check, Search, Github, BookOpen, Menu, X } from 'lucide-react';
+import { ChevronDown, Check, Search, Github, BookOpen, Menu, X, Sparkles } from 'lucide-react';
 import { ALL_100_LANGUAGES } from '../data/languages-100';
 import { SupportedLanguage, DICTIONARY } from '../data/translations';
 
@@ -8,12 +8,14 @@ interface NavbarProps {
   onLanguageChange: (lang: SupportedLanguage) => void;
   onOpenGitHub?: () => void;
   onNavigateToDocs?: () => void;
+  onNavigateToAiSkill?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentLang,
   onLanguageChange,
   onNavigateToDocs,
+  onNavigateToAiSkill,
 }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,6 +68,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="h-1.5 w-1.5 rounded-full bg-[#9e1b32]" />
             <span>Server Suite</span>
           </a>
+          <button
+            onClick={onNavigateToAiSkill}
+            className="transition-all text-[#9e1b32] hover:text-[#701124] font-semibold flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#9e1b32]/10 hover:bg-[#9e1b32]/20 border border-[#9e1b32]/30 shadow-xs cursor-pointer text-xs group"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-[#9e1b32] group-hover:scale-110 transition-transform" />
+            <span>AI Skill</span>
+          </button>
           <a
             href="#benchmarks"
             className="transition-colors hover:text-[var(--text-hero)]"
@@ -204,6 +213,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <span>Server Suite & CLI</span>
             </a>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigateToAiSkill?.();
+              }}
+              className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-[#9e1b32] bg-[#9e1b32]/10 hover:bg-[#9e1b32]/20 border border-[#9e1b32]/30 w-full text-left"
+            >
+              <span className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-[#9e1b32]" />
+                <span>AI Agent Skill (SKILL.md)</span>
+              </span>
+              <span className="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[#9e1b32] text-white">AI SPEC</span>
+            </button>
             <a
               href="#benchmarks"
               onClick={() => setMobileMenuOpen(false)}
