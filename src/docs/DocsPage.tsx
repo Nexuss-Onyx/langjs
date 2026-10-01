@@ -111,8 +111,8 @@ export const DocsPage: React.FC<DocsPageProps> = ({ onBackToHome, initialDocId }
             </div>
           </button>
 
-          <span className="font-mono-code text-xs text-[var(--text-muted)]">
-            v1.0.0
+          <span className="font-mono-code text-xs text-[#9e1b32] font-semibold px-2 py-0.5 rounded-full bg-[#9e1b32]/10 border border-[#9e1b32]/20">
+            v1.1.0
           </span>
         </div>
 

@@ -50,7 +50,7 @@ export const DOC_CATEGORIES: DocCategory[] = [
         id: 'welcome',
         title: 'Welcome to LangJS',
         category: 'GET STARTED',
-        badge: 'v1.0.0',
+        badge: 'v1.1.0',
         badgeType: 'guide',
         summary: 'Overview of LangJS, the ultra-lightweight client-side internationalization SDK and dynamic 100+ language neural translation engine.',
         content: {
@@ -661,6 +661,298 @@ lang.on('languageChanged', ({ language, latencyMs, count }) => {
   <code>const apiKey = 'secret_key_123';</code>
 </div>`
           }
+        }
+      }
+    ]
+  },
+  {
+    title: 'SERVER SUITE & CLI',
+    id: 'server-suite',
+    items: [
+      {
+        id: 'server-overview',
+        title: 'Server-Side Architecture & Universal Runtime',
+        category: 'SERVER SUITE & CLI',
+        badge: 'v1.1.0',
+        badgeType: 'guide',
+        summary: 'Framework-agnostic server-side HTML stream interceptor and codebase scanning suite.',
+        content: {
+          overview: 'While raw machine translation (such as Google Translate) is fast, it frequently produces inaccuracies on idioms, technical terminology, and brand slogans. LangJS v1.1.0 bridges client-side translation to the server by scanning your codebase, extracting visible strings into a structured side-by-side `lang/lang.json` file, and transforming outgoing HTML streams in sub-3ms using verified translations.',
+          notes: [
+            {
+              type: 'info',
+              text: 'The server suite is framework-agnostic. Whether you use React SSR, Vue/Nuxt, SvelteKit, Angular Universal, Astro, Django, Rails, or Laravel, the HTML post-render interceptor handles localization without touching component templates.'
+            },
+            {
+              type: 'tip',
+              text: 'Both human developers and AI coding agents can directly edit `lang/lang.json` to correct inaccuracies and lock in translations permanently.'
+            }
+          ],
+          sections: [
+            {
+              title: 'Why Server-Side Translation Matters',
+              body: '1. SEO & Rich Previews: Search engine crawlers and social share bots receive pre-rendered HTML in the target language (e.g. Amharic, Spanish, or Japanese).\n2. Human & AI Verifiability: Translations are stored in side-by-side JSON format with file and line tracking so you can audit and correct mistranslations.\n3. Zero Client CPU Overhead: Text nodes are replaced on the server before reaching the client browser.'
+            }
+          ]
+        }
+      },
+      {
+        id: 'codebase-scanner',
+        title: 'Codebase AST Scanner (CodebaseScanner)',
+        category: 'SERVER SUITE & CLI',
+        badge: 'CLASS',
+        badgeType: 'class',
+        summary: 'Traverse templates and components across any frontend framework to extract visible strings.',
+        content: {
+          overview: 'The `CodebaseScanner` recursively analyzes your project directory, respects `.gitignore` and `.langignore` files, and extracts visible text nodes, placeholders, `aria-label`, `alt`, and `title` attributes while filtering out code keywords, CSS classes, URLs, and template interpolations.',
+          codeSnippet: {
+            language: 'typescript',
+            title: 'scripts/scan.ts',
+            code: `import { CodebaseScanner } from '@nexuss0781/langjs/server';
+
+const scanner = new CodebaseScanner({
+  rootDir: '.',
+  // Supported template extensions
+  extensions: ['.html', '.vue', '.svelte', '.jsx', '.tsx', '.astro', '.php'],
+  sourceLanguage: 'en',
+  // Target languages to extract and translate side-by-side
+  targetLanguages: ['en', 'am', 'es', 'fr', 'ja', 'de'],
+  ignoreFiles: ['.gitignore', '.langignore']
+});
+
+// 1. Collect all matching UI files
+const files = scanner.collectFiles();
+console.log(\`Found \${files.length} UI templates\`);
+
+// 2. Extract visible strings with file and line occurrences
+const strings = scanner.scanCodebase();
+
+// 3. Generate side-by-side structured manifest
+const manifest = await scanner.generateLangJson(strings);
+
+// 4. Save to lang/lang.json
+scanner.writeManifest(manifest, 'lang/lang.json');`
+          },
+          fields: [
+            {
+              name: 'rootDir',
+              type: 'string',
+              defaultVal: "'.'",
+              required: false,
+              description: 'Project root directory to begin scanning from.'
+            },
+            {
+              name: 'extensions',
+              type: 'string[]',
+              defaultVal: "['.html', '.vue', '.svelte', '.jsx', '.tsx', '.astro', '.php']",
+              required: false,
+              description: 'List of template and component extensions to crawl.'
+            },
+            {
+              name: 'sourceLanguage',
+              type: 'string',
+              defaultVal: "'en'",
+              required: false,
+              description: 'Immutable source language (defaults to English).'
+            },
+            {
+              name: 'targetLanguages',
+              type: 'string[]',
+              defaultVal: "['en', 'am', 'es', 'fr', 'ja']",
+              required: false,
+              description: 'Target language codes to include in the side-by-side dictionary.'
+            }
+          ]
+        }
+      },
+      {
+        id: 'langignore-spec',
+        title: 'Ignore Engine (.gitignore & .langignore)',
+        category: 'SERVER SUITE & CLI',
+        badge: 'CONFIG',
+        badgeType: 'guide',
+        summary: 'Exclude dependencies, build artifacts, lockfiles, and media from translation scanning.',
+        content: {
+          overview: 'To ensure the scanner never extracts strings from third-party libraries (`node_modules`), build artifacts (`dist`, `.next`), or generated files, LangJS automatically respects `.gitignore` rules and supports a dedicated `.langignore` configuration file in the project root.',
+          codeSnippet: {
+            language: 'bash',
+            title: '.langignore',
+            code: `# Dependencies & Vendors
+node_modules/
+vendor/
+.pnpm-store/
+
+# Build artifacts & caches
+dist/
+build/
+out/
+.next/
+.nuxt/
+.astro/
+.svelte-kit/
+
+# Static assets & media
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.ico
+*.woff2
+
+# Lockfiles & Environment
+*.lock
+*.log
+.env
+.env.*
+
+# Generated translation files (prevents recursive scanning)
+lang/lang.json
+lang/`
+          },
+          notes: [
+            {
+              type: 'tip',
+              text: 'You can test ignored paths programmatically using `new IgnoreRuleMatcher(rootDir).shouldIgnore(relativePath)`.'
+            }
+          ]
+        }
+      },
+      {
+        id: 'structured-lang-json',
+        title: 'Structured Side-by-Side lang/lang.json',
+        category: 'SERVER SUITE & CLI',
+        badge: 'SPEC',
+        badgeType: 'guide',
+        summary: 'Dual-format JSON with fast O(1) runtime tables and side-by-side human/AI review records.',
+        content: {
+          overview: 'The generated `lang/lang.json` file contains two synchronized representations: `locales` for instant O(1) runtime lookups, and `sideBySide` for human and AI agent review, allowing you to catch and correct machine translation mistakes directly.',
+          payloadExample: {
+            title: 'lang/lang.json Structure',
+            json: `{
+  "$schema": "https://langjs.dev/schema/v1.json",
+  "meta": {
+    "generator": "LangJS Server Scanner v1.1.0",
+    "version": "1.1.0",
+    "generatedAt": "2026-10-01T00:00:00.000Z",
+    "sourceLanguage": "en",
+    "targetLanguages": ["en", "am", "es", "fr", "ja"],
+    "totalUniqueStrings": 42
+  },
+  "locales": {
+    "en": {
+      "Turn Any Static Website into Multi-Lingual": "Turn Any Static Website into Multi-Lingual"
+    },
+    "am": {
+      "Turn Any Static Website into Multi-Lingual": "ማንኛውንም የማይንቀሳቀስ ድረ-ገጽ ወደ ብዙ ቋንቋ ይለውጡ"
+    },
+    "es": {
+      "Turn Any Static Website into Multi-Lingual": "Convierta cualquier sitio web estático en multilingüe"
+    }
+  },
+  "sideBySide": [
+    {
+      "id": "str_1",
+      "source": "Turn Any Static Website into Multi-Lingual",
+      "type": "tag_text",
+      "occurrences": [
+        { "file": "src/components/Hero.tsx", "line": 42 }
+      ],
+      "translations": {
+        "en": "Turn Any Static Website into Multi-Lingual",
+        "am": "ማንኛውንም የማይንቀሳቀስ ድረ-ገጽ ወደ ብዙ ቋንቋ ይለውጡ",
+        "es": "Convierta cualquier sitio web estático en multilingüe"
+      },
+      "verified": true,
+      "notes": "Verified by developer/AI agent to ensure idiom accuracy"
+    }
+  ]
+}`
+          },
+          notes: [
+            {
+              type: 'info',
+              text: 'Whenever an AI agent or developer edits `sideBySide[i].translations[lang]`, the `verified` flag can be set to `true`. LangJS prioritizes verified translations above all else.'
+            }
+          ]
+        }
+      },
+      {
+        id: 'server-middleware',
+        title: 'Universal SSR & Express Middleware',
+        category: 'SERVER SUITE & CLI',
+        badge: 'RUNTIME',
+        badgeType: 'class',
+        summary: 'Intercept rendered HTML responses and substitute translations in sub-3ms on any server.',
+        content: {
+          overview: 'The `ServerTranslateRuntime` mounts seamlessly into Node.js, Express, Fastify, Next.js custom servers, or Nuxt SSR. It intercepts the rendered HTML response, parses the visible text stream, substitutes verified translations from `lang/lang.json`, and updates `<html lang="..." dir="...">` automatically.',
+          codeSnippet: {
+            language: 'typescript',
+            title: 'server.ts (Express Example)',
+            code: `import express from 'express';
+import { ServerTranslateRuntime } from '@nexuss0781/langjs/server';
+
+const app = express();
+
+// Initialize server translation runtime
+const runtime = new ServerTranslateRuntime({
+  manifestPath: './lang/lang.json',
+  defaultLanguage: 'en',
+  supportedLanguages: ['en', 'am', 'es', 'fr', 'ja', 'de', 'ar']
+});
+
+// Mount HTML localization middleware
+app.use(runtime.createMiddleware());
+
+// Route renders normal React/Vue/Blade/HTML template
+app.get('/', (req, res) => {
+  // If user requests ?lang=am or has langjs cookie, response is automatically
+  // transformed into Amharic before sending to client!
+  res.send(\`
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Turn Any Static Website into Multi-Lingual</h1>
+        <p>Deterministic Hash Keys power sub-10ms mutations.</p>
+      </body>
+    </html>
+  \`);
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));`
+          },
+          sections: [
+            {
+              title: 'Direct Standalone HTML String Transformation',
+              body: 'You can also call `runtime.translateHtml(rawHtml, targetLang)` directly in serverless functions (AWS Lambda, Vercel Functions, Cloudflare Workers):',
+              code: `const localizedHtml = runtime.translateHtml(rawHtml, 'am');`
+            }
+          ]
+        }
+      },
+      {
+        id: 'cli-scanner',
+        title: 'CLI Command Runner (langjs-scan)',
+        category: 'SERVER SUITE & CLI',
+        badge: 'CLI',
+        badgeType: 'guide',
+        summary: 'Scan your codebase and generate side-by-side lang.json via terminal or CI/CD.',
+        content: {
+          overview: 'LangJS includes a built-in CLI command to scan codebases directly from your shell or GitHub Actions pipeline.',
+          codeSnippet: {
+            language: 'bash',
+            title: 'Terminal',
+            code: `# Run via npx or node
+node scripts/scan-codebase.js --languages en,am,es,fr,ja --out lang/lang.json
+
+# Or with npx (when installed globally or locally):
+npx @nexuss0781/langjs scan -l en,am,es,fr,ja -o lang/lang.json`
+          },
+          sections: [
+            {
+              title: 'CLI Options & Flags',
+              body: '- `--languages, -l`: Comma-separated list of target language codes (e.g. `en,am,es,fr,ja`). English (`en`) is always included as source.\n- `--out, -o`: Output destination file path (defaults to `lang/lang.json`).\n- `--ignore, -i`: Additional directory or file patterns to ignore during scan.'
+            }
+          ]
         }
       }
     ]

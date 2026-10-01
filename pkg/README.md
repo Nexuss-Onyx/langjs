@@ -180,6 +180,104 @@ await lang.loadOverridesFromJson('https://cdn.example.com/locales/overrides.json
 
 ---
 
+## 🖥️ Server-Side Suite & Codebase Scanner (`v1.1.0`)
+
+Machine translation alone (e.g. Google Translate) can produce subtle inaccuracies on idioms, technical terms, and brand copy. LangJS v1.1.0 introduces a **full server-side suite** to crawl your codebase, respect `.gitignore` and `.langignore`, and write a structured **side-by-side `lang/lang.json`** so developers and AI agents can correct machine translation mistakes with 100% confidence.
+
+### 1. Codebase AST Scanner
+Traverses `.html`, `.vue`, `.svelte`, `.jsx`, `.tsx`, `.astro`, and `.php` templates:
+
+```typescript
+import { CodebaseScanner } from '@nexuss0781/langjs/server';
+
+const scanner = new CodebaseScanner({
+  rootDir: '.',
+  targetLanguages: ['en', 'am', 'es', 'fr', 'ja', 'de'], // English is default source
+  ignoreFiles: ['.gitignore', '.langignore']
+});
+
+// Crawl templates, extract visible strings, and generate structured lang/lang.json
+const manifest = await scanner.generateLangJson();
+scanner.writeManifest(manifest, 'lang/lang.json');
+```
+
+### 2. Cloned & Dedicated Ignore Engine (`.langignore`)
+LangJS respects your existing `.gitignore` and supports a dedicated `.langignore` file to prevent scanning of build artifacts and media:
+
+```bash
+# .langignore
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+lang/lang.json
+*.lock
+*.svg
+*.png
+*.jpg
+```
+
+### 3. Structured Side-by-Side `lang/lang.json`
+Generates both instant $O(1)$ lookup tables and human/AI-editable side-by-side records:
+
+```json
+{
+  "meta": {
+    "sourceLanguage": "en",
+    "targetLanguages": ["en", "am", "es", "fr", "ja"]
+  },
+  "locales": {
+    "en": { "Get Started": "Get Started" },
+    "am": { "Get Started": "በነጻ ይጀምሩ" },
+    "es": { "Get Started": "Comience Gratis" }
+  },
+  "sideBySide": [
+    {
+      "id": "str_1",
+      "source": "Turn Any Static Website into Multi-Lingual",
+      "occurrences": [{ "file": "src/components/Hero.tsx", "line": 42 }],
+      "translations": {
+        "en": "Turn Any Static Website into Multi-Lingual",
+        "am": "ማንኛውንም የማይንቀሳቀስ ድረ-ገጽ ወደ ብዙ ቋንቋ ይለውጡ",
+        "es": "Convierta cualquier sitio web estático en multilingüe"
+      },
+      "verified": true,
+      "notes": "Verified by developer/AI agent to avoid machine translation mistakes"
+    }
+  ]
+}
+```
+
+### 4. Framework-Agnostic Server Runtime & SSR Middleware
+Mounts into Express, Fastify, Next.js, or Nuxt SSR. Intercepts outgoing rendered HTML and transforms visible text in **< 3ms**:
+
+```typescript
+import express from 'express';
+import { ServerTranslateRuntime } from '@nexuss0781/langjs/server';
+
+const app = express();
+const runtime = new ServerTranslateRuntime({
+  manifestPath: './lang/lang.json',
+  defaultLanguage: 'en',
+  supportedLanguages: ['en', 'am', 'es', 'fr', 'ja']
+});
+
+// Mount universal HTML post-render interceptor
+app.use(runtime.createMiddleware());
+```
+
+### 5. CLI Command Runner
+```bash
+# Run scan from command line
+node scripts/scan-codebase.js --languages en,am,es,fr,ja --out lang/lang.json
+
+# Or via npx:
+npx @nexuss0781/langjs scan -l en,am,es,fr,ja -o lang/lang.json
+```
+
+---
+
 ## 📊 Quantitative Comparison
 
 | Capability / Metric | Traditional i18n Libraries | Langjs Engine |
